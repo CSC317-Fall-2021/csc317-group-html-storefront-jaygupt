@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>System Preferences</title>
+  </head>
+  <body>
+    <!-- Navbar goes here -->
+
+    <br />
+    <p align="center"><font size="10" face="courier">System Preferences</font></p>
+    <br />
+
+    <table align="center" width="97.5%">
+      <tr>
+        <td width="15%">
+          <font size="5" face="courier">Appearance</font>
+        </td>
+        <td width="50%">
+          <input type="radio" id="moon" name="appearance" value="moon">
+          <label for="moon"><img src="moon_icon.png" width="7.5%" /></label>
+          &nbsp; 
+          <font size="3" face="courier">or</font>
+          &nbsp;
+          <input type="radio" id="sun" name="appearance" value="sun">
+          <label for="sun"><img src="sun_icon.png" width="7.5%" /></label>
+        </td>
+        <td width="10%">
+          <label for="language"><font size="5" face="courier">Language</font></label>
+        </td>
+        <td>
+          <select name="language" id="language">
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Hindi">Hindi</option>
+            <option value="French">French</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Arabic">Arabic</option>
+            <option value="German">German</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="results_per_page">
+            <font size="5" face="courier">Results per Page</font>
+          </label>
+        </td>
+        <td>
+            <input id="results_per_page" min="5" name="results_per_page" placeholder="5" type="number">
+        </td>
+        <td>
+          <label for="font"><font size="5" face="courier">Font</font></label>
+        </td>
+        <td>
+          <select name="font" id="font">
+            <option value="Arial">Arial</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Calibri">Calibri</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Cambria">Cambria</option>
+            <option value="Garamond">Garamond</option>
+            <option value="Roboto">Roboto</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><font size="5" face="courier">Autocompletion</font></p>
+        </td>
+        <td>
+          <input type="radio" id="no_autocompletion" name="autocompletion" value="No">
+          <label for="no_autocompletion"><font size="4" face="courier">No</font></label>
+          &nbsp;
+          <font size="3" face="courier">or</font>
+          &nbsp;
+          <input type="radio" id="yes_autocompletion" name="autocompletion" value="Yes">
+          <label for="yes_autocompletion"><font size="4" face="courier">Yes</font></label>
+        </td>
+        <td>
+          <label for="font_size"><font size="5" face="courier">Font Size</font></label>
+        </td>
+        <td>
+          <input id="font_size" min="10" placeholder="10" name="font_size" type="number">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <font size="5" face="courier">Theme</font>
+        </td>
+        <td colspan="3">
+          <img src="theme_colors/green.png" width="3%"/>
+          <img src="theme_colors/yellow.png" width="3%"/>
+          <img src="theme_colors/purple.png" width="3%"/>
+          <img src="theme_colors/blue.png" width="3%"/>
+          <img src="theme_colors/red.png" width="3%"/>
+          <img src="theme_colors/black.png" width="3%"/>
+          <img src="theme_colors/orange.png" width="3%"/>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
