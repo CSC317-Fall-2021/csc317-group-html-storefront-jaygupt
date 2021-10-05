@@ -10,7 +10,6 @@
         <td bgcolor="white" align="center"><font size="10" face="courier">Checkout</font></td>
       </tr>
     </table>  
-
     <table>
       <form>
         <tr height="25px"></tr>
@@ -21,21 +20,21 @@
               <legend><font color="blue" size="5" face="courier">Address Information</font></legend>
               <table width="100%">
                 <tr>
-                  <td><font face="courier">John Smith</font></td>
+                  <td><font face="courier" size="4">John Smith</font></td>
                 </tr>
                 <tr>
-                  <td><font face="courier">123 Goodway St.</font></td>
+                  <td><font face="courier" size="4">123 Goodway St.</font></td>
                 </tr>
                 <tr>
-                  <td><font face="courier">San Jose, CA 94088</font></td>
+                  <td><font face="courier" size="4">San Jose, CA 94088</font></td>
                 </tr>
                 <tr>
-                  <td><font face="courier">United States</font></td>
+                  <td><font face="courier" size="4">United States</font></td>
                 </tr>
                 <tr>
-                  <td><font face="courier">(123) 456-7890</font></td>
+                  <td><font face="courier" size="4">(123) 456-7890</font></td>
                 </tr>
-                
+                <tr height="3px"></tr>
                 <tr>
                   <td width="50%"><font color="blue" face="courier">Edit</font></td>
                   <td><font color="blue" face="courier">Remove</font></td>
@@ -47,48 +46,58 @@
           <td width="100%">
             <fieldset>
               <legend><font color="blue" size="5.5" face="courier">Card Information</font></legend>
-              <table width="100%">
+              <table bgcolor="" width="100%">
                 <tr>
-                  <td width="5%"><font size="4.5" face="courier">We Accept:</font></td>
-                  <td width="5%">
-                    <table border="1" cellpadding="4" bgcolor="blue">
-                      <tr>
-                        <td bgcolor="white"><font face="courier">American Express</font></td>
-                      </tr>
-                    </table>
+                  <td bgcolor="white" colspan="2">
+                    <fieldset>
+                      <legend align="center"><font color="" size="5.5" face="courier">We Accept</font></legend>
+                      <table>
+                        <tr>
+                          <td align="center" width="1%">
+                            <img src="visa_logo.png" width="45%" />
+                          </td>
+                          <td align="center" width="1%">
+                            <img src="mastercard_logo.png" width="45%" />
+                          </td>
+                          <td align="center" width="1%">
+                            <img src="american_express_logo.png" width="45%" />
+                          </td>
+                          <td align="center" width="1%">
+                            <img src="paypal_logo.png" width="45%" />
+                          </td>
+                        </tr>
+                      </table>
+                    </fieldset>
                   </td>
-                  <td width="5%">
-                    <table border="1" cellpadding="4" bgcolor="blue">
-                      <tr><td bgcolor="white"><font face="courier">PayPal</font></td></tr>
-                    </table>
-                  </td>
-                  <td width="5%">
-                    <table border="1" cellpadding="4" bgcolor="blue">
-                      <tr><td bgcolor="white"><font face="courier">MasterCard</font></td></tr>
-                    </table>
-                  </td>
-                  <td width="5%">
-                    <table border="1" cellpadding="4" bgcolor="blue">
-                      <tr><td bgcolor="white"><font face="courier">Visa</font></td></tr>
-                    </table>
-                  </td>
-                  <td width="5%"></td>
                 </tr>
-                <tr height="25px"></tr>
+                <tr height="25px"></tr> 
                 <tr height="2px">
-                  <td><label for="card_number"><font face="courier">Card Number</font></label></td>
-                </tr>
+                  <td>
+                    <label for="card_number"><font face="courier">Card Number</font></label>
+                  </td>
+                </tr>  
                 <tr>
-                  <td><input type="number" id="card_number" name="card_number" placeholder="Card Number" size="10" required></td>
+                  <td>
+                    <input type="number" id="card_number" name="card_number" placeholder="Card Number" size="10" required>
+                  </td>
                 </tr>
                 <tr height="12.5px"></tr>
+                
                 <tr>
-                  <td><label for="expiration_date"><font face="courier">Expiration Date</font></label></td>
-                  <td><label for="cvv"><font face="courier">CVV</font></label></td>
+                  <td width="25%">
+                    <label for="expiration_date"><font face="courier">Expiration Date</font></label>
+                  </td>
+                  <td width="75%">
+                    <label for="cvv"><font face="courier">CVV</font></label>
+                  </td>
                 </tr>
                 <tr>
-                  <td><input type="date" id="expiration_date" name="expiration_date" required></td>
-                  <td colspan="3"><input type="number" id="cvv" name="cvv" placeholder="CVV" required></label></td>
+                  <td>
+                    <input type="date" id="expiration_date" name="expiration_date" required>
+                  </td>
+                  <td>
+                    <input type="number" id="cvv" name="cvv" placeholder="CVV" required></label>
+                  </td>
                 </tr>
               </table>
             </fieldset>
@@ -124,4 +133,3 @@
     </table>
   </body>
 </html>
-
