@@ -122,3 +122,11 @@ a > .logo_Gs {
 #search input {
   width: 500px;
 }
+
+footer {
+  background-color: #f08f57;
+  color: white;
+  padding: 30px 0;
+  margin-top: 50px;
+  text-align: center;
+}
