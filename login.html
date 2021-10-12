@@ -1,93 +1,51 @@
 <html>
     <head>
         <title>Login</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/login.css">
     </head>
     <body leftmargin="0" topmargin="0">
-        <table bgcolor="#3b4047" width="100%" height="70px" cellspacing="0">
-            <tr>
-                <td width="1%"></td>
-                <td width="2%">
-                    <strong><i><font color="#f08f57" size="8" face="courier">G</font><font color="#ffffff" size="6" face="courier">ood</font><font color="#f08f57" size="8" face="courier">G</font><font color="#ffffff" size="6" face="courier">ame</font></i></strong>
-                </td>
-                <td align="center" width="3%"><a href="index.html"><font color="#ffffff" size="5" face="courier">HOME</font></a></td>
-                <td align="center" width="3%"><a href="categories.html"><font color="#ffffff" size="5" face="courier">CATEGORIES</font></a></td>
-                <td align="center" width="3%">
-                    <input type="text" placeholder="Search products..." size="70">
-                </td>
-                <td align="center" width="3%"><a href="#"><font color="#f08f57" size="5" face="courier">LOGIN/REGISTER</font></a></td>
-                <td align="center" width="3%"><a href="cart.html"><font color="#ffffff" size="5" face="courier">CART</font></a></td>
-                <td align="center" width="3%"><a href="about_us.html"><font color="#ffffff" size="5" face="courier">ABOUT</font></a></td> 
-            </tr>
-        </table>
-        <table bgcolor="#f08f57" width="100%" height="3px">
-            <tr></tr>
-        </table>
-        <table bgcolor="#ffffff" width="100%" height="700px">
-            <tr>
-                <td align="center">
-                    <table cellspacing="0" width="60%" height="500px">
-                        <tr>
-                            <td width="50%" bgcolor="#efefef" align="center">
-                                <table height="100%">
-                                    <form>
-                                        <tr height="30%">
-                                            <td align="center"><font color="#000000" size="6" face="courier"><strong>Sign In</strong></font></td>
-                                        </tr>
-                                        <tr height="5%">
-                                            <td><label for="username"><font face="courier" size="4">Username:</font></label></td>
-                                        </tr>
-                                        <tr height="5%">
-                                            <td><input type="text" placeholder="Username" size="40" name="username" id="username" required></td>
-                                        </tr>
-                                        <tr height="5%">
-                                            <td></td>
-                                        </tr>
-                                        <tr height="5%">
-                                            <td><label for="pass"><font face="courier" size="4">Password:</font></label></td>
-                                        </tr>
-                                        <tr height="5%">
-                                            <td><input type="password" placeholder="Password" size="40" name="pass" id="pass" required></td>
-                                        </tr>
-                                        <tr height="15%">
-                                            <td align="center"><a href="#"><font color="gray" size="3" face="courier">Forgot your password?</font></a></td>
-                                        </tr>
-                                        <tr height="15%">
-                                            <td align="center"><button type="submit"><font color="#f08f57" face="courier" size="4">SIGN IN</font></button></td>
-                                        </tr>
-                                        <tr height="15%">
-                                            <td></td>
-                                        </tr>
-                                    </form>
-                                </table>
-                            </td>
-                            <td width="50%" bgcolor="#f08f57" align="center">
-                                <table height="100%" cellpadding="10">
-                                    <tr height="30%">
-                                        <td></td>
-                                    </tr>
-                                    <tr height="10%">
-                                        <td align="center"><font color="#ffffff" size="6" face="courier"><strong>Hello, Friend!</strong></font></td>
-                                    </tr>
-                                    <tr height="10%">
-                                        <td align="center"><font color="#ffffff" size="4" face="courier">Enter your personal details and start shopping with us</font></td>
-                                    </tr>
-                                    <tr height="30%">
-                                        <td align="center"><a href="register.html"><button><font color="#f08f57" face="courier" size="4">SIGN UP</font></button></a></td>
-                                    </tr>
-                                    <tr height="20%">
-                                        <td></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <table bgcolor="#f08f57" width="100%" height="70px">
-            <tr>
-                <td align="center"><font color="#ffffff" size="2" face="courier">GoodGame.com, Copyright &copy;2021</font></td>
-            </tr>
-        </table>
+        <!-- Navbar Beginning -->
+        <header>
+            <nav class="nav_links">
+                <li id="logo"><a href="index.html"><div class="logo_Gs" id="first_G">G</div>ood<div class="logo_Gs">G</div>ame</a></li>
+                <li id="home"><a href="index.html">HOME</a></li>
+                <li><a href="categories.html">CATEGORIES</a></li>
+                <li id="search"><input type="text" placeholder="Search for Products..."></li>
+                <li><a href="#" style="color: #f08f57;">LOGIN/REGISTER</a></li>
+                <li><a href="cart.html">CART</a></li>
+                <li id="about"><a href="about_us.html">ABOUT</a></li>
+            </nav>
+        </header>
+        <!-- Navbar Ending -->
+        
+        <!-- Login/Register -->
+        <div class="sign-in-grid-container">
+            <div class="sign_in">Sign In</div>
+            <div class="sign_up">
+                <div class="sign_up_title">Hello, Friend!</div>
+                <div class="sign_up_subtitle">Enter your personal details and start shopping with us.</div><br />
+                <div class="sign_up_button">
+                    <a href="register.html"><button>SIGN UP</button></a>
+                </div>
+            </div>
+            <div class="sign_in_form">
+                <form>
+                    <label for="username" class="input_field">Username:</label><br />
+                    <input class="username_input" type="text" placeholder="Username" name="username" id="username" required><br />
+                    <label for="password">Password:</label><br />
+                    <input type="password" placeholder="Password" name="password" id="password" required>
+                    <div class="forgot_password"><a href="#">Forgot your password?</a></div>
+                    <div class="sign_in_button">
+                        <button type="submit">SIGN IN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Login/Register Ending -->
+        
+        <!-- Footer Beginning -->
+        <footer>GoodGame.com, Copyright &copy;2021</div></footer>
+        <!-- Footer Ending -->
     </body>
 </html>
