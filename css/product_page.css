@@ -10,7 +10,7 @@
 }
 
 .product_image {
-  width: 55%;
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -31,12 +31,12 @@
   text-align: center;
   font-size: 2em;
   margin-top: 50px;
-  margin-bottom: 12.5px;
+  margin-bottom: 20px;
 }
 
 .similar_product_image {
-  height: 100%;
-  width: 37.5%;
+  height: 92.5%;
+  width: 50%;
   margin: 0 auto;
 }
 
