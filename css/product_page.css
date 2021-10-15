@@ -1,0 +1,53 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5%;
+  border-bottom: 3px solid lightgrey;
+}
+
+.product_specification {
+  font-size: 1.4em;
+}
+
+.product_image {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.product_title {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.product_price {
+  margin: 2% 0;
+}
+
+.product_description {
+  margin-bottom: 2%;
+}
+
+.similar_products_header {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 50px;
+  margin-bottom: 12.5px;
+}
+
+.similar_product_name {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 1% 0;
+}
+
+.similar_product_price {
+  font-size: 1.25em;
+  margin-bottom: 1.25%;
+}
+
+.similar-products-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 15px;
+  text-align: center;
+}

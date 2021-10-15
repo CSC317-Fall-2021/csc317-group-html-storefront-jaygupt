@@ -52,11 +52,6 @@
   padding-top: 2%;
 }
 
-button {
-  font-family: Courier;
-  font-size: 18px;
-}
-
 .sign_up_form form > input {
   width: 100%;
   margin-top: 5px;

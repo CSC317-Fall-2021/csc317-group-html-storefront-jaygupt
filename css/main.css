@@ -119,6 +119,11 @@ a > .logo_Gs {
   width: 500px;
 }
 
+button {
+  font-family: Courier;
+  font-size: 18px;
+}
+
 footer {
   background-color: #f08f57;
   color: white;
