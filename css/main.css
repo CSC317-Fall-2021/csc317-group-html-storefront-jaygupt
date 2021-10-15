@@ -63,8 +63,8 @@ body {
 }
 
 .grid-item > .trending-item-price {
-  display: inline-block;
   font-size: 1.2em;
+  margin-bottom: 1%;
 }
 
 .grid-item > .add-to-cart {
