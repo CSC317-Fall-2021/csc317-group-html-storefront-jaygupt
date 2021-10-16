@@ -37,7 +37,7 @@
 
 .trending-section > .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 50px;
 }
 
@@ -54,13 +54,14 @@
 }
 
 .grid-item > .trending-item-name {
-  font-size: 1.8em;
+  font-size: 2em;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 
 .grid-item > .trending-item-price {
-  font-size: 1.2em;
-  margin-bottom: 1%;
+  font-size: 1.4em;
+  margin-bottom: 1.25%;
 }
 
 .grid-item > .add-to-cart {
