@@ -1,12 +1,14 @@
 .about-title {
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-size: 3.5em;
+  margin: 30px 0;
   text-align: center;
 }
 
 .about-text {
   text-align: center;
   margin: 30px 0;
+  width: 95%;
+  margin: 0 auto;
 }
 
 .about-us-sections {
@@ -15,7 +17,7 @@
 
 .about-us-sections > .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 50px;
 }
 
@@ -24,10 +26,9 @@
 }
 
 .grid-item > .about-us-image {
-  width: 250px;
-  height: 200px;
+  height: 300px;
 
-  /* images keep aspect ratio; resized to fit above height and width */
+  /* images keep aspect ratio; resized to fit above height */
   object-fit: contain;
 }
 
@@ -42,11 +43,6 @@
   background-color: #f08f57;
 }
 
-.faq {
-  text-align: center;
-  margin: 30px 0;
-}
-
 .summary {
   cursor: pointer;
   padding: 1rem;
@@ -54,12 +50,9 @@
 }
 
 .details {
-  /* Went off of a tutorial making this */
   border: 1px solid #f08f57;
   background: #ffffff;
-  margin-bottom: 1.5rem;
   border-radius: 0.35rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
         0 10px 10px -5px rgba(0, 0, 0, 0.04);
-
 }
