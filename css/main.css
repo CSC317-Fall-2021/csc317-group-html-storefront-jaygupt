@@ -1,74 +1,9 @@
+/*
+Styles common to every page on the website.
+*/
+
 body {
   font-family: Courier, monospace;
-}
-
-.homepage-banner {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
-.homepage-banner > img {
-  height: 60%;
-  width: 100%;
-}
-
-.homepage-banner > .centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.centered > .main-tag {
-  font-size: 3em;
-}
-
-.centered > .main-subtitle {
-  margin-top: 50px;
-  font-size: 1.4em;
-}
-
-.trending-section {
-  margin: 30px 0;
-}
-
-.trending-section > .trending-title {
-  font-size: 2em;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.trending-section > .grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 50px;
-}
-
-.grid-container > .grid-item {
-  text-align: center;
-}
-
-.trending-item-image {
-  width: 250px;
-  height: 200px;
-
-  /* images keep aspect ratio; resized to fit above height and width */
-  object-fit: contain;
-}
-
-.grid-item > .trending-item-name {
-  font-size: 1.8em;
-  margin-bottom: 5px;
-}
-
-.grid-item > .trending-item-price {
-  font-size: 1.2em;
-  margin-bottom: 1%;
-}
-
-.grid-item > .add-to-cart {
-  font-family: Courier;
 }
 
 header {
@@ -99,6 +34,10 @@ nav {
 nav > li > a {
   color: white;
   font-size: 25px;
+}
+
+a:hover {
+  color: #f08f57;
 }
 
 a > .logo_Gs {
