@@ -1,187 +1,76 @@
-<html>
-    <head>
-        <title>Checkout</title>
-    </head>
-    <body leftmargin="0" topmargin="0">
-        <table bgcolor="#3b4047" width="100%" height="70px">
-            <tr>
-                <td width="100%" align="center"><font color="#ffffff" size="6" face="courier"><strong>CHECKOUT</strong></font></td>
-            </tr>
-        </table>
-        <table bgcolor="#f08f57" width="100%" height="3px">
-            <tr></tr>
-        </table>
-        <table height="700px" width="100%">
-            <tr height="100%">
-                <td width="5%"></td>
-                <td width="30%">
-                    <table width="100%" height="100%">
-                        <tr height="15%"></tr>
-                        <tr height="35%" valign="top">
-                            <td width="100%">
-                                <fieldset>
-                                    <legend><font size="5" face="courier">Address Information</font></legend>
-                                    <table width="100%">
-                                      <tr>
-                                        <td colspan="2"><font face="courier" size="4">John Smith</font></td>
-                                      </tr>
-                                      <tr>
-                                        <td colspan="2"><font face="courier" size="4">123 Goodway St.</font></td>
-                                      </tr>
-                                      <tr>
-                                        <td colspan="2"><font face="courier" size="4">San Jose, CA 94088</font></td>
-                                      </tr>
-                                      <tr>
-                                        <td colspan="2"><font face="courier" size="4">United States</font></td>
-                                      </tr>
-                                      <tr>
-                                        <td colspan="2"><font face="courier" size="4">(123) 456-7890</font></td>
-                                      </tr>
-                                      <tr height="3px">
-                                          <td colspan="2"></td>
-                                      </tr>
-                                      <tr>
-                                        <td width="50%"><font color="blue" face="courier">Edit</font></td>
-                                        <td><font color="blue" face="courier">Remove</font></td>
-                                      </tr>
-                                    </table>
-                                  </fieldset>
-                            </td>
-                        </tr>
-                        <tr height="5%">
-                            <td></td>
-                        </tr>
-                        <tr height="35%" valign="top">
-                            <td>
-                                <fieldset>
-                                    <legend>
-                                      <font size="5.5" face="courier">Payment Summary</font>
-                                    </legend>
-                                    <table align="center" cellpadding="2" bgcolor="" width="95%">
-                                      <tr bgcolor="white">
-                                        <td width="100%">
-                                          <font face="courier" size="4">Subtotal:</font>
-                                        </td>
-                                        <td align="right">
-                                          <font face="courier" size="4">$54.97</font>
-                                        </td>
-                                      </tr>
-                                      <tr bgcolor="white">
-                                        <td width="100%">
-                                          <font face="courier" size="4">Tax:</font>
-                                        </td>
-                                        <td align="right">
-                                          <font face="courier" size="4">$6.29</font>
-                                        </td>
-                                      </tr>
-                                      <tr bgcolor="white">
-                                        <td width="100%">
-                                          <font face="courier" size="4">Delivery:</font>
-                                        </td>
-                                        <td align="right">
-                                          <font face="courier" size="4">$0.00</font>
-                                        </td>
-                                      </tr>
-                                      <tr bgcolor="white">
-                                        <td width="100%">
-                                          <font face="courier" size="4"><strong>Total:</strong></font>
-                                        </td>
-                                        <td align="right">
-                                          <font face="courier" size="4"><strong>$61.26</strong></font>
-                                        </td>
-                                      </tr>
-                                    </table>
-                                  </fieldset>
-                            </td>
-                        </tr>
-                        <tr height="20%">
-                            <td></td>
-                        </tr>
-                    </table>
-                </td>
-                <td width="10%"></td>
-                <td width="50%">
-                    <table width="100%" height="100%">
-                        <tr height="15%"></tr>
-                        <tr height="50%" valign="top">
-                            <td>
-                                <form>
-                                    <fieldset>
-                                        <legend><font size="5.5" face="courier">Card Information</font></legend>
-                                        <table bgcolor="" width="100%">
-                                          <tr>
-                                            <td bgcolor="white" colspan="2">
-                                              <fieldset>
-                                                <legend align="center"><font size="5.5" face="courier">We Accept</font></legend>
-                                                <table>
-                                                  <tr>
-                                                    <td align="center" width="1%">
-                                                      <img src="images/payment_options/visa_logo.png" width="45%" />
-                                                    </td>
-                                                    <td align="center" width="1%">
-                                                      <img src="images/payment_options/mastercard_logo.png" width="45%" />
-                                                    </td>
-                                                    <td align="center" width="1%">
-                                                      <img src="images/payment_options/american_express_logo.png" width="45%" />
-                                                    </td>
-                                                    <td align="center" width="1%">
-                                                      <img src="images/payment_options/paypal_logo.png" width="45%" />
-                                                    </td>
-                                                  </tr>
-                                                </table>
-                                              </fieldset>
-                                            </td>
-                                          </tr>
-                                          <tr height="25px"></tr> 
-                                          <tr height="2px">
-                                            <td>
-                                              <label for="card_number"><font face="courier">Card Number</font></label>
-                                            </td>
-                                          </tr>  
-                                          <tr>
-                                            <td>
-                                              <input type="text" id="card_number" name="card_number" placeholder="Card Number" width="10px" required>
-                                            </td>
-                                          </tr>
-                                          <tr height="12.5px">
-                                            <td></td>
-                                          </tr>
-                                          <tr>
-                                            <td width="25%">
-                                              <label for="expiration_date"><font face="courier">Expiration Date</font></label>
-                                            </td>
-                                            <td width="75%">
-                                              <label for="cvv"><font face="courier">CVV</font></label>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                              <input type="date" id="expiration_date" name="expiration_date" required>
-                                            </td>
-                                            <td>
-                                              <input type="type" id="cvv" name="cvv" placeholder="CVV" required></label>
-                                            </td>
-                                          </tr>
-                                        </table>
-                                      </fieldset>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr height="15%">
-                            <td align="center"><button><font face="courier" size="5">Place Order</font></button></td>
-                        </tr>
-                        <tr height="30%">
-                            <td></td>
-                        </tr>
-                    </table>
-                </td>
-                <td width="5%"></td>
-            </tr>
-        </table>
-        <table bgcolor="#f08f57" width="100%" height="70px">
-            <tr>
-                <td align="center"><font color="#ffffff" size="2" face="courier">GoodGame.com, Copyright &copy;2021</font></td>
-            </tr>
-        </table>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>CHECKOUT</h1>
+    </nav>
+    <div class="content" id="checkoutContent">
+        <div id="checkoutContentLeft">
+            <fieldset id="addressInformation">
+                <legend>Address Information</legend>
+                <p>John Smith</p>
+                <p>123 Goodway St.</p>
+                <p>San Jose, CA 94088</p>
+                <p>United States</p>
+                <p>(123) 456-7890</p>
+                <br>
+                <a href="#">Edit</a>
+            </fieldset>
+            <fieldset id="paymentSummary">
+                <legend>Payment Summary</legend>
+                <div>
+                    <p>Subtotal:</p>
+                    <p>$54.97</p>
+                </div>
+                <div>
+                    <p>Taxes:</p>
+                    <p>$6.29</p>
+                </div>
+                <div>
+                    <p>Delivery:</p>
+                    <p>$0.00</p>
+                </div>
+                <div>
+                    <p>Total:</p>
+                    <p>$61.26</p>
+                </div>
+            </fieldset>
+        </div>
+        <div id="checkoutContentRight">
+            <fieldset id="cardInformation">
+                <legend>Card Information</legend>
+                <fieldset id="weAccept">
+                    <legend align="center">We Accept</legend>
+                    <img src="images/payment_options/visa_logo.png" width="60px" />
+                    <img src="images/payment_options/mastercard_logo.png" width="60px" />
+                    <img src="images/payment_options/american_express_logo.png" width="60px" />
+                    <img src="images/payment_options/paypal_logo.png" width="60px" />
+                </fieldset>
+                <div>
+                    <label for="cardNum">Card Number</label>
+                    <input type="text" name="cardNum" id="cardNum" placeholder="Card Number">
+                </div>
+                <div>
+                    <label for="expDate">Expiration Date</label>
+                    <input type="date" name="expDate" id="expDate" placeholder="Expiration Date">
+                </div>
+                <div>
+                    <label for="cvv">CVV</label>
+                    <input type="text" name="cvv" id="cvv" placeholder="CVV">
+                </div>
+            </fieldset>
+            <button id="placeOrderBtn">Place Order</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>GoodGame.com, Copyright &copy;2021</p>
+    </footer>
+</body>
 </html>

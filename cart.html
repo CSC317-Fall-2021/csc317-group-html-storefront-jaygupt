@@ -1,217 +1,115 @@
-<html>
-    <head>
-        <title>Cart</title>
-    </head>
-    <body leftmargin="0" topmargin="0">
-        <table bgcolor="#3b4047" width="100%" height="70px" cellspacing="0">
-            <tr>
-                <td width="1%"></td>
-                <td width="2%">
-                    <strong><i><font color="#f08f57" size="8" face="courier">G</font><font color="#ffffff" size="6" face="courier">ood</font><font color="#f08f57" size="8" face="courier">G</font><font color="#ffffff" size="6" face="courier">ame</font></i></strong>
-                </td>
-                <td align="center" width="3%"><a href="index.html"><font color="#ffffff" size="5" face="courier">HOME</font></a></td>
-                <td align="center" width="3%"><a href="categories.html"><font color="#ffffff" size="5" face="courier">CATEGORIES</font></a></td>
-                <td align="center" width="3%">
-                    <input type="text" placeholder="Search products..." size="70">
-                </td>
-                <td align="center" width="3%"><a href="login.html"><font color="#ffffff" size="5" face="courier">LOGIN/REGISTER</font></a></td>
-                <td align="center" width="3%"><a href="#"><font color="#f08f57" size="5" face="courier">CART</font></a></td>
-                <td align="center" width="3%"><a href="about_us.html"><font color="#ffffff" size="5" face="courier">ABOUT</font></a></td> 
-            </tr>
-        </table>
-        <table bgcolor="#f08f57" width="100%" height="3px">
-            <tr></tr>
-        </table>
-        <table bgcolor="#ffffff" width="100%" height="700px" cellspacing="0">
-            <tr>
-                <td align="center" width="65%">
-                    <table width="80%" height="80%">
-                        <tr valign="top" height="10%">
-                            <td><font color="grey" size="4" face="courier">Check Delivery Time and Services -></font></td>
-                            <td><button><font face="courier" size="3">Enter your Zip Code</font></button></td>
-                            <td width="20%"></td>
-                        </tr>
-                        <tr height="90%" valign="top">
-                            <td colspan="3">
-                                <table width="80%" height="100%">
-                                    <tr height="48%">
-                                        <td>
-                                            <table width="100%" height="100%" bgcolor="grey">
-                                                <tr>
-                                                    <td bgcolor="white">
-                                                        <table width="100%" height="100%">
-                                                            <tr>
-                                                                <td rowspan="4" align="center" width="40%"><img src="images/product_images/board_games/monopoly.jpeg" alt="Monopoly" width="220px" height="160px"></td>
-                                                                <td rowspan="4" width="5%"></td>
-                                                                <td><font size="5" face="courier"><strong>Monopoly</strong></font></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label for="quantity"><font size="4" face="courier">Quantity:</font></label>
-                                                                    <select name="quantity" id="quantity">
-                                                                        <option value="1">1</option>
-                                                                        <option value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        <option value="4">4</option>
-                                                                        <option value="5">5</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><font size="4" face="courier">$21.99</font></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><button><font size="3" face="courier">Remove from Cart</font></button></td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr height="4%">
-                                        <td></td>
-                                    </tr>
-                                    <tr height="48%">
-                                        <td>
-                                            <table width="100%" height="100%" bgcolor="grey">
-                                                <tr>
-                                                    <td bgcolor="white">
-                                                        <table width="100%" height="100%">
-                                                            <tr>
-                                                                <td rowspan="4" align="center" width="40%"><img src="images/product_images/building_blocks/legos.jpeg" alt="Legos" width="220px" height="160px"></td>
-                                                                <td rowspan="4" width="5%"></td>
-                                                                <td><font size="5" face="courier"><strong>Legos</strong></font></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label for="quantity"><font size="4" face="courier">Quantity:</font></label>
-                                                                    <select name="quantity" id="quantity">
-                                                                        <option value="1">1</option>
-                                                                        <option selected value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        <option value="4">4</option>
-                                                                        <option value="5">5</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><font size="4" face="courier">$41.98 ($20.99 each)</font></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><button><font size="3" face="courier">Remove from Cart</font></button></td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td width="3px" bgcolor="#f08f57"></td>
-                <td width="35%" valign="top" align="center">
-                    <table height="90%" width="70%">
-                        <tr height="25%">
-                            <td>
-                                <table width="100%" height="100%">
-                                    <tr height="15px"></tr>
-                                    <tr height="25%">
-                                        <td colspan="2"><font color="grey" size="4" face="courier"><strong>COUPONS</strong></font></td>
-                                    </tr>
-                                    <tr height="35%">
-                                        <td width="25px"></td>
-                                        <td><button><font face="courier" size="3">Apply Coupons</font></button></td>
-                                    </tr>
-                                    <tr height="40%">
-                                        <td width="25px"></td>
-                                        <td><a href="login.html"><font color="#f08f57" size="3" face="courier">Login</font></a><font size="3" face="courier"> to get up to 50$ off on your first order.</font></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr height="1px" bgcolor="lightgrey">
-                            <td></td>
-                        </tr>
-                        <tr height="30%">
-                            <td>
-                                <table width="100%" height="100%">
-                                    <tr valign="top" height="25%">
-                                        <td colspan="2"><font color="grey" size="4" face="courier"><strong>GIFTING</strong></font></td>
-                                    </tr>
-                                    <tr height="20%">
-                                        <td width="25px"></td>
-                                        <td><font face="courier" size="3"><strong>Buying for a loved one?</strong></font></td>
-                                    </tr>
-                                    <tr height="25%">
-                                        <td width="25px"></td>
-                                        <td><font face="courier" size="3">Gift wrap and add a personalised message for <em>just $1.99!</em></font></td>
-                                    </tr>
-                                    <tr height="30%">
-                                        <td width="25px"></td>
-                                        <td><a href="#"><font color="#f08f57" face="courier" size="3">Add Gift Wrap</font></a></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr height="1px" bgcolor="lightgrey">
-                            <td></td>
-                        </tr>
-                        <tr height="30%">
-                            <td>
-                                <table width="100%" height="100%">
-                                    <tr valign="top" height="28%">
-                                        <td colspan="2"><font color="grey" size="4" face="courier"><strong>PRICE DETAILS(2 items)</strong></font></td>
-                                    </tr>
-                                    <tr height="18%">
-                                        <td><font face="courier" size="3">Subtotal:</font></td>
-                                        <td align="right"><font face="courier" size="3">$63.97</font></td>
-                                    </tr>
-                                    <tr height="18%">
-                                        <td><font face="courier" size="3">Discount:</font></td>
-                                        <td align="right"><font face="courier" size="3">- $9.00</font></td>
-                                    </tr>
-                                    <tr height="18%">
-                                        <td><font face="courier" size="3">Taxes:</font></td>
-                                        <td align="right"><font face="courier" size="3">$6.29</font></td>
-                                    </tr>
-                                    <tr height="18%">
-                                        <td><font face="courier" size="3">Delivery:</font></td>
-                                        <td align="right"><font face="courier" size="3"><strike>$5.00</strike> FREE</font></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr height="1px" bgcolor="lightgrey">
-                            <td></td>
-                        </tr>
-                        <tr height="15%">
-                            <td>
-                                <table width="100%" height="100%">
-                                    <tr height="40%" valign="top">
-                                        <td><font face="courier" size="3"><strong>Total:</strong></font></td>
-                                        <td align="right"><font face="courier" size="3">$61.26</font></td>
-                                    </tr>
-                                    <tr height="20%">
-                                        <td colspan="2"></td>
-                                    </tr>
-                                    <tr height="40%">
-                                        <td colspan="2" align="center"><a href="checkout.html"><button><font face="courier" size="3">Proceed to Checkout</font></button></a></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <table bgcolor="#f08f57" width="100%" height="70px">
-            <tr>
-                <td align="center"><font color="#ffffff" size="2" face="courier">GoodGame.com, Copyright &copy;2021</font></td>
-            </tr>
-        </table>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!--Navbar Start-->
+    <nav class="navbar">
+        <h1 id="logo"><i><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</i></h1>
+        <a href="index.html">HOME</a>
+        <a href="categories.html">CATEGORIES</a>
+        <input type="text" placeholder="Search products..." size="70">
+        <a href="login.html">LOGIN/REGISTER</a>
+        <a href="#" class="current">CART</a>
+        <a href="about.html">ABOUT</a>
+    </nav>
+    <!--Navbar End-->
+    <div class="content" id="cartContent">
+        <div id="cartItems">
+            <div id="cartDelivery">
+                <p>Check Delivery Time and Services</p>
+                <button>Enter your Zip Code</button>
+            </div>
+            <div class="item">
+                <div class="item-image">
+                    <img src="images/product_images/board_games/monopoly.jpeg" alt="Monopoly" width="220px" height="160px">
+                </div>
+                <div class="item-content">
+                    <h2>Monopoly</h2>
+                    <div>
+                        <label for="quantity">Quantity:</label>
+                        <select name="quantity" id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <p>$21.99</p>
+                    <button>Remove from Cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-image">
+                    <img src="images/product_images/building_blocks/legos.jpeg" alt="Legos" width="220px" height="160px">
+                </div>
+                <div class="item-content">
+                    <h2>Legos</h2>
+                    <div>
+                        <label for="quantity">Quantity:</label>
+                        <select name="quantity" id="quantity">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <p>$41.98 ($20.99 each)</p>
+                    <button>Remove from Cart</button>
+                </div>
+            </div>
+        </div>
+        <div id="cartSummary">
+            <div id="coupons">
+                <h4>COUPONS</h4>
+                <button>Apply Coupons</button>
+                <p><a href="login.html">Login</a> to get up to 50$ off on your first order.</p>
+            </div>
+            <div id="gifting">
+                <h4>GIFTING</h4>
+                <p><b>Buying for a loved one?</b></p>
+                <p>Gift wrap and add a personalised message for just $1.99!</p>
+                <a href="#">Add Gift Wrap</a>
+            </div>
+            <div id="priceDetails">
+                <h4>PRICE DETAILS(2 items)</h4>
+                <div>
+                    <p>Subtotal:</p>
+                    <p>63.97</p>
+                </div>
+                <div>
+                    <p>Discount:</p>
+                    <p>- $9.00</p>
+                </div>
+                <div>
+                    <p>Taxes:</p>
+                    <p>6.29</p>
+                </div>
+                <div>
+                    <p>Delivery:</p>
+                    <p><strike>$5.00</strike> FREE</p>
+                </div>
+            </div>
+            <div id="total">
+                <div>
+                    <p>Total:</p>
+                    <p>$61.26</p>
+                </div>
+                <div id="checkoutButton">
+                    <button><a href="checkout.html">Proceed to Checkout</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>GoodGame.com, Copyright &copy;2021</p>
+    </footer>
+</body>
 </html>
