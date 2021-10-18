@@ -2,7 +2,6 @@
     <head>
         <title>Login</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="css/login.css">
     </head>
     <body leftmargin="0" topmargin="0">
         <!-- Navbar Beginning -->
@@ -20,26 +19,26 @@
         <!-- Navbar Ending -->
         
         <!-- Login/Register -->
-        <div class="sign-in-grid-container">
-            <div class="sign_in">Sign In</div>
-            <div class="sign_up">
-                <div class="sign_up_title">Hello, Friend!</div>
-                <div class="sign_up_subtitle">Enter your personal details and start shopping with us.</div><br />
-                <div class="sign_up_button">
-                    <a href="register.html"><button>SIGN UP</button></a>
-                </div>
-            </div>
-            <div class="sign_in_form">
-                <form>
-                    <label for="username" class="input_field">Username:</label><br />
-                    <input class="username_input" type="text" placeholder="Username" name="username" id="username" required><br />
-                    <label for="password">Password:</label><br />
-                    <input type="password" placeholder="Password" name="password" id="password" required>
-                    <div class="forgot_password"><a href="#">Forgot your password?</a></div>
-                    <div class="sign_in_button">
-                        <button type="submit">SIGN IN</button>
+        <div id="loginContent">
+            <div class="form-container" id="loginForm">
+                <form class="form">
+                    <h1>Sign In</h1>
+                    <div class="social-container">
+                        <a href="#"><img src="Images/social_media_icons/facebook.png" alt="facebook"></a>
+                        <a href="#"><img src="Images/social_media_icons/linkedin.png" alt="linkedin"></a>
+                        <a href="#"><img src="Images/social_media_icons/google_plus.png" alt="google_plus"></a>
                     </div>
+                    <span>or use your account</span>
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                    <a href="#">Forgot your password?</a>
+                    <button type="submit" class="btn">Sign in</button>
                 </form>
+                <div class="side">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <a href="register.html"><button class="btn">Sign Up</button></a>
+                </div>
             </div>
         </div>
         <!-- Login/Register Ending -->

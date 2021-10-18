@@ -2,7 +2,6 @@
     <head>
         <title>Register</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="css/register.css">
     </head>
     <body leftmargin="0" topmargin="0">
         <!-- Navbar Beginning -->
@@ -20,28 +19,25 @@
         <!-- Navbar Ending -->
         
         <!-- Login/Register -->
-        <div class="sign-up-grid-container">
-            <div class="sign_up">Create Account</div>
-            <div class="sign_in">
-                <div class="sign_in_title">Welcome Back!</div>
-                <div class="sign_in_subtitle">Login with your username and password to continue shopping.</div><br />
-                <div class="sign_in_button">
-                    <a href="login.html"><button>SIGN IN</button></a>
+        <div id="registerContent">
+            <div class="form-container" id="registerForm">
+                <div class="side">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <a href="login.html"><button class="btn">Sign In</button></a>
                 </div>
-            </div>
-            <div class="sign_up_form">
-                <form>
-                    <label for="username" class="input_field">Username:</label><br />
-                    <input class="username_input" type="text" placeholder="Username" name="username" id="username" required><br />
-                    <label for="email" class="input_field">Email:</label><br />
-                    <input class="email_input" type="email" placeholder="Email" name="email" id="email" required><br />
-                    <label for="password">Password:</label><br />
-                    <input type="password" placeholder="Password" name="password" id="password" required><br />
-                    <label for="confirm_password">Confirm Password:</label><br />
-                    <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" required><br />
-                    <div class="sign_up_button">
-                        <button type="submit">SIGN UP</button>
+                <form class="form">
+                    <h1>Create Account</h1>
+                    <div class="social-container">
+                        <a href="#"><img src="Images/social_media_icons/facebook.png" alt="facebook"></a>
+                        <a href="#"><img src="Images/social_media_icons/linkedin.png" alt="linkedin"></a>
+                        <a href="#"><img src="Images/social_media_icons/google_plus.png" alt="google_plus"></a>
                     </div>
+                    <input type="text" placeholder="Username" id="username">
+                    <input type="text" placeholder="Email" id="email">
+                    <input type="password" placeholder="Password" id="password">
+                    <input type="password" placeholder="Re-enter Password" id="password2">
+                    <button type="submit" class="btn">Sign Up</button>
                 </form>
             </div>
         </div>
