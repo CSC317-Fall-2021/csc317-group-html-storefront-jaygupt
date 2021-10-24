@@ -1,38 +1,38 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.2rem;
     width: 100vw;
 }
 
-fieldset{
+fieldset {
     padding: 10px;
     border-radius: 5px;
 }
 
-legend{
+legend {
     font-size: 1.3rem;
     font-weight: bold;
 }
 
-button{
+button {
     width: 180px;
     height: 25px;
     font-size: 1rem;
     font-family: 'Courier New', Courier, monospace;
 }
 
-button > a{
+button > a {
     text-decoration: none;
     color: inherit;
 }
 
-.navbar{
+.navbar {
     background-color: #3b4047;
     color: #ffffff;
     width: 100%;
@@ -43,47 +43,47 @@ button > a{
     border-bottom: 3px solid #f08f57;
 }
 
-.navbar a{
+.navbar a {
     color: #ffffff;
 }
 
-.navbar a:hover {
+.navbar a:hover  {
     color: #f08f57;
 }
 
-.navbar a.current{
+.navbar a.current {
     color: #f08f57;
 }
 
-.bottom-line{
+.bottom-line {
     width: 100%;
     height: 3px;
     background-color: #f08f57;
 }
 
-#logo-text {
+#logo-text  {
     text-decoration: none;
 }
 
-#logo{
+#logo {
     color: #ffffff;
     font-size: 2.2rem;
     font-style: italic;
     font-weight: 900;
 }
 
-.logo-g{
+.logo-g {
     font-size: 3rem;
     color: #f08f57;
 }
 
-.content{
+.content {
     width: 100%;
     height: 700px;
     display: flex;
 }
 
-#cartItems{
+#cartItems {
     width: 65%;
     height: 100%;
     border-right: 3px solid #f08f57;
@@ -93,21 +93,21 @@ button > a{
     justify-content: center;
 }
 
-#cartItems #cartDelivery{
+#cartItems #cartDelivery {
     display: flex;
     justify-content: space-between;
 }
 
-#cartItems #cartDelivery p{
+#cartItems #cartDelivery p {
     color: gray;
     margin-right: 50px;
 }
 
-#cartItems #cartDelivery button{
+#cartItems #cartDelivery button {
     width: 200px;
 }
 
-#cartItems .item{
+#cartItems .item {
     margin-top: 30px;
     padding: 0 15px;
     border: 2px solid gray;
@@ -118,20 +118,20 @@ button > a{
     grid-column-gap: 5%;
 }
 
-#cartItems .item .item-image{
+#cartItems .item .item-image {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#cartItems .item .item-content{
+#cartItems .item .item-content {
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: space-evenly;
 }
 
-#cartSummary{
+#cartSummary {
     font-size: 1rem;
     width: 35%;
     padding-bottom: 20px;
@@ -141,64 +141,64 @@ button > a{
     justify-content: center;
 }
 
-#cartSummary > div{
+#cartSummary > div {
     width: 70%;
     border-bottom: 2px solid lightgray;
     padding: 10px 0;
 }
 
-#cartSummary a{
+#cartSummary a {
     color: #f08f57;
 }
 
-#cartSummary > div > *{
+#cartSummary > div > * {
     margin-bottom: 15px;
 }
 
-#cartSummary > div > h4{
+#cartSummary > div > h4 {
     color: gray;
 }
 
 #cartSummary #coupons > button,
 #cartSummary #coupons > p,
 #cartSummary #gifting > p,
-#cartSummary #gifting > a{
+#cartSummary #gifting > a {
     margin-left: 25px;
 }
 
 #cartSummary #priceDetails div,
-#cartSummary #total div{
+#cartSummary #total div {
     display: flex;
     justify-content: space-between;
 }
 
-#cartSummary #total{
+#cartSummary #total {
     border-bottom: none;
 }
 
-#cartSummary #total p{
+#cartSummary #total p {
     font-weight: bold;
 }
 
-#cartSummary #total #checkoutButton{
+#cartSummary #total #checkoutButton {
     justify-content: center;
     margin-top: 30px;
 }
 
-#cartSummary #total button{
+#cartSummary #total button {
     width: 200px;
 }
 
-#cartSummary #total button a{
+#cartSummary #total button a {
     color: #000000;
 }
 
-#checkoutContent{
+#checkoutContent {
     padding: 80px 80px;
     height: 649px;
 }
 
-#checkoutContentLeft{
+#checkoutContentLeft {
     width: 40%;
     padding-bottom: 60px;
     padding-right: 100px;
@@ -207,48 +207,48 @@ button > a{
     justify-content: space-between;
 }
 
-#checkoutContentRight{
+#checkoutContentRight {
     width: 60%;
     display: flex;
     flex-direction: column;
 }
 
-#addressInformation a{
+#addressInformation a {
     color: blue;
     text-decoration: none;
 }
 
-#paymentSummary > div{
+#paymentSummary > div {
     display: flex;
     justify-content: space-between;
     margin-bottom: 3px;
 }
 
-#paymentSummary div:last-child{
+#paymentSummary div:last-child {
     font-weight: bold;
     margin-bottom: 0;
     margin-top: 5px;
 }
 
-#cardInformation > div{
+#cardInformation > div {
     display: flex;
     flex-direction: column;
     font-size: 1rem;
     margin-top: 10px;
 }
 
-#cardInformation > div input{
+#cardInformation > div input {
     width: 150px;
 }
 
-#weAccept{
+#weAccept {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 20px;
 }
 
-#placeOrderBtn{
+#placeOrderBtn {
     align-self: center;
     margin-top: 50px;
     font-weight: bold;
@@ -257,7 +257,7 @@ button > a{
 }
 
 #loginContent,
-#registerContent{
+#registerContent  {
     width: 100%;
     height: 649px;
     display: flex;
@@ -265,7 +265,7 @@ button > a{
     justify-content: center;
 }
 
-.form-container{
+.form-container {
     width: 768px;
     height: 480px;
     border-radius: 10px;
@@ -277,7 +277,7 @@ button > a{
 }
 
 .form,
-.side{
+.side {
     width: 50%;
     height: 100%;
     display: flex;
@@ -287,7 +287,7 @@ button > a{
     text-align: center;
 }
 
-.form input{
+.form input {
     background-color: rgb(221, 219, 219);
     width: 80%;
     height: 40px;
@@ -296,24 +296,24 @@ button > a{
     border: none;
 }
 
-.form > a{
+.form > a {
     text-decoration: none;
     color: rgb(99, 97, 97);
     margin-top: 20px;
     font-size: 1rem;
 }
 
-.form > a:hover{
+.form > a:hover {
     color: black;
 }
 
-.form .social-container{
+.form .social-container {
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;
 }
 
-.form .social-container a{
+.form .social-container a {
     margin: 0 7px;
     border: lightgrey 1px solid;
     border-radius: 50%;
@@ -325,21 +325,21 @@ button > a{
     justify-content: center;
 }
 
-.form .social-container a:hover{
+.form .social-container a:hover {
     transform: scale(1.2);
     color: black;
     border-color: #999797;
 }
 
-.form .social-container a img{
+.form .social-container a img {
     width: 25px;
 }
 
-.form span{
+.form span {
     font-size: 0.9rem;
 }
 
-.btn{
+.btn {
     cursor: pointer;
     background-color: #f08f57;
     color: #fff;
@@ -354,27 +354,27 @@ button > a{
     outline: none;
 }
 
-.btn:hover{
+.btn:hover {
     transform: scale(0.9);
 }
 
-.side{
+.side {
     background-color: #f08f57;
     color: #fff;
 }
 
-.side p{
+.side p {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 80%;
 }
 
-.side .btn{
+.side .btn {
     background-color: transparent;
     border: 1px solid #fff;
 }
 
-.footer{
+.footer {
     width: 100%;
     height: 70px;
     background-color: #f08f57;
