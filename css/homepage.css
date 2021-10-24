@@ -4,23 +4,23 @@
   color: white;
 }
 
-.homepage-banner > img {
+.homepage-banner img {
   height: 60%;
   width: 100%;
 }
 
-.homepage-banner > .centered {
+.homepage-banner .centered {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.centered > .main-tag {
+.centered .main-tag {
   font-size: 3em;
 }
 
-.centered > .main-subtitle {
+.centered .main-subtitle {
   margin-top: 50px;
   font-size: 1.4em;
 }
@@ -29,19 +29,19 @@
   margin: 30px 0;
 }
 
-.trending-section > .trending-title {
+.trending-section .trending-title {
   font-size: 2em;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.trending-section > .grid-container {
+.trending-section .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 50px;
 }
 
-.grid-container > .grid-item {
+.grid-container .grid-item {
   text-align: center;
 }
 
@@ -53,17 +53,17 @@
   object-fit: contain;
 }
 
-.grid-item > .trending-item-name {
+.grid-item .trending-item-name {
   font-size: 2em;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.grid-item > .trending-item-price {
+.grid-item .trending-item-price {
   font-size: 1.4em;
   margin-bottom: 1.25%;
 }
 
-.grid-item > .add-to-cart {
+.grid-item .add-to-cart {
   font-family: Courier;
 }

@@ -47,6 +47,10 @@ button > a{
     color: #ffffff;
 }
 
+.navbar a:hover {
+    color: #f08f57;
+}
+
 .navbar a.current{
     color: #f08f57;
 }
@@ -57,10 +61,15 @@ button > a{
     background-color: #f08f57;
 }
 
+#logo-text {
+    text-decoration: none;
+}
+
 #logo{
-    font-size: 2.2rem;
-    font-weight: 900;
     color: #ffffff;
+    font-size: 2.2rem;
+    font-style: italic;
+    font-weight: 900;
 }
 
 .logo-g{
