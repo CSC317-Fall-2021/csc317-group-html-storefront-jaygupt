@@ -1,4 +1,7 @@
 .grid-container {
+  /* add spacing between the columns */
+  column-gap: 5%;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 5%;
@@ -9,8 +12,9 @@
   font-size: 1.4em;
 }
 
-.product-image {
-  width: 75%;
+.product-image img {
+  height: 500px;
+  object-fit: contain;
   margin: 0 auto;
 }
 
@@ -27,6 +31,10 @@
   margin-bottom: 2%;
 }
 
+.similar-products {
+  margin-bottom: 50px;
+}
+
 .similar-products-header {
   text-align: center;
   font-size: 2em;
@@ -35,8 +43,9 @@
 }
 
 .similar-product-image {
-  height: 92.5%;
-  width: 55%;
+  height: 250px;
+
+  object-fit: contain;
   margin: 0 auto;
 }
 
