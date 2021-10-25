@@ -215,7 +215,7 @@ button > a {
 }
 
 #cartSummary #total button a {
-    color: #000000;
+    color: white;
 }
 
 #checkoutContent {
@@ -288,6 +288,14 @@ button > a {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.forgot-password {
+    margin-bottom: 15px;
+}
+
+#signUpButton {
+    margin-top: 20px;
 }
 
 .form-container {
@@ -368,11 +376,9 @@ button > a {
     cursor: pointer;
     background-color: #f08f57;
     color: #fff;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 20px;
-    width: 140px;
     height: 40px;
     border: none;
     border-radius: 20px;
