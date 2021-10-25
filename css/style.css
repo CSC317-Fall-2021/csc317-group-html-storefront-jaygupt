@@ -121,6 +121,7 @@ button > a {
 #cartItems #cartDelivery {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 #cartItems #cartDelivery p {
