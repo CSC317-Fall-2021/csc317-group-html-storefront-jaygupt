@@ -43,6 +43,10 @@ button > a {
     border-bottom: 3px solid #f08f57;
 }
 
+#productSearch {
+    width: 35%;
+}
+
 .navbar a {
     color: #ffffff;
 }
@@ -53,6 +57,27 @@ button > a {
 
 .navbar a.current {
     color: #f08f57;
+}
+
+@media all and (max-width: 1100px) {
+    .navbar a, input {
+        margin: 0 10px;
+    }
+}
+
+@media all and (max-width: 900px) {
+    .navbar {
+        flex-direction: column;
+        height: 350px;
+    }
+
+    .navbar a, input {
+        margin: 10px 0;
+    }
+
+    #logo-text {
+        margin: 0;
+    }
 }
 
 .bottom-line {
