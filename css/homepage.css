@@ -88,8 +88,34 @@
 }
 
 .banner-text .main-subtitle {
-  margin-top: 50px;
+  margin-top: 1.25%;
   font-size: 1.4em;
+}
+
+@media all and (max-width: 855px) {
+  .banner-text .main-tag {
+    font-size: 2em;
+  }
+}
+
+@media all and (max-width: 650px) {
+  .banner-text .main-tag {
+    font-size: 1.5em;
+  }
+
+  .banner-text .main-subtitle {
+    font-size: 1em;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .banner-text .main-tag {
+    font-size: 1em;
+  }
+
+  .banner-text .main-subtitle {
+    font-size: 0.8em;
+  }
 }
 
 .trending-section {
