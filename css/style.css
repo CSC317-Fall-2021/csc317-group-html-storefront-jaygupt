@@ -49,14 +49,36 @@ button > a {
 
 .navbar a {
     color: #ffffff;
+    text-decoration: none;
+    position: relative;
 }
 
-.navbar a:hover  {
-    color: #f08f57;
+.navbar > a::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #f08f57;
+    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.navbar > a:hover::before{
+    left: 0;
+    right: auto;
+    width: 100%;
 }
 
 .navbar a.current {
     color: #f08f57;
+}
+
+.navbar input{
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
 }
 
 @media all and (max-width: 1100px) {
@@ -409,7 +431,6 @@ button > a {
 .footer {
     width: 100%;
     height: 70px;
-    margin-top: 45px;
     background-color: #f08f57;
     color: #ffffff;
     display: flex;

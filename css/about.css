@@ -1,14 +1,44 @@
-.about-title {
+.title {
   font-size: 2.5em;
   margin: 30px 0;
   text-align: center;
+  color: #3b4047;
 }
 
-.about-text {
-  text-align: center;
-  margin: 30px 0;
-  width: 95%;
-  margin: 0 auto;
+.about-text{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-text p{
+  width: 90%;
+}
+
+#faqSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faq{
+  cursor: pointer;
+  width: 60%;
+  margin-bottom: 10px;
+  background-color: #3b4047;
+  color: #ffffff;
+}
+
+.faq-header{
+  font-size: 1.4rem;
+  padding: 15px;
+}
+
+.faq-content{
+  border-top: 1px solid #ffffff;
+  padding: 20px 15px;
 }
 
 .about-us-sections {
@@ -26,15 +56,17 @@
 }
 
 .grid-item .about-us-image {
-  height: 300px;
-
-  /* images keep aspect ratio; resized to fit above height */
-  object-fit: contain;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  border: 3px solid #3b4047;
+  padding: 3px;
 }
 
 .grid-item .about-us-name {
   font-size: 1.8em;
   margin-bottom: 5px;
+  color: #3b4047;
 }
 
 .close-header {
@@ -43,26 +75,8 @@
   background-color: #f08f57;
 }
 
-.summary {
-  cursor: pointer;
-  padding: 1rem;
-  border-bottom: 1px solid #f08f57;
-}
-
 .contact-us {
   margin: 25px 0;
-}
-
-.details {
-  border: 1px solid #f08f57;
-  background: #ffffff;
-  border-radius: 0.35rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-        0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.answer {
-  margin: 15px 25px;
 }
 
 .privacy-policy {
