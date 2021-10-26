@@ -53,7 +53,7 @@ button > a {
     position: relative;
 }
 
-.navbar > a::before{
+.navbar > a::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -64,7 +64,7 @@ button > a {
     transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.navbar > a:hover::before{
+.navbar > a:hover::before {
     left: 0;
     right: auto;
     width: 100%;
@@ -74,33 +74,12 @@ button > a {
     color: #f08f57;
 }
 
-.navbar input{
+.navbar input {
     padding: 5px;
     border: none;
     border-radius: 3px;
     outline: none;
 }
-
-/*@media all and (max-width: 1100px) {
-    .navbar a, input {
-        margin: 0 10px;
-    }
-}
-
-@media all and (max-width: 900px) {
-    .navbar {
-        flex-direction: column;
-        height: 350px;
-    }
-
-    .navbar a, input {
-        margin: 10px 0;
-    }
-
-    #logo-text {
-        margin: 0;
-    }
-}*/
 
 .bottom-line {
     width: 100%;
@@ -441,9 +420,8 @@ button > a {
 }
 
 
-@media(max-width: 768px){
-
-    .navbar{
+@media(max-width: 1030px) {
+    .navbar {
         font-size: 1rem;
         height: 100px;
         width: 100%;
@@ -452,19 +430,19 @@ button > a {
         grid-template-columns: repeat(12,auto);
     }
 
-    #checkoutNavbar{
+    #checkoutNavbar {
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .navbar #logo{
+    .navbar #logo {
         grid-column-start: 1;
         grid-column-end: 13;
         text-align: center;
     }
 
-    .navbar #productSearch{
+    .navbar #productSearch {
         grid-column-start: 3;
         grid-column-end: 10;
         justify-self: stretch;
@@ -472,29 +450,29 @@ button > a {
     }
 
     #loginContent,
-    #registerContent{
+    #registerContent {
         height: 530px;
     }
 
-    .form-container{
+    .form-container {
         border-radius: 0;
         box-shadow: none;
         width: 100%;
     }
 
     #cartContent,
-    #checkoutContent{
+    #checkoutContent {
         flex-direction: column;
         height: fit-content;
     }
 
     #cartItems,
-    #cartSummary{
+    #cartSummary {
         width: 100%;
         padding: 20px 0;
     }
 
-    #cartItems{
+    #cartItems {
         border-right: none;
         border-bottom: 3px solid #f08f57;
     }
@@ -503,23 +481,35 @@ button > a {
         width: 80%;
     }
 
-    #checkoutContent{
+    #checkoutContent {
         padding: 20px;
         align-items: center;
     }
 
     #checkoutContentLeft,
-    #checkoutContentRight{
+    #checkoutContentRight {
         width: 70%;
         padding: 0;
     }
 
     #checkoutContentLeft > fieldset,
-    #checkoutContentRight > fieldset{
+    #checkoutContentRight > fieldset {
         margin: 20px 0;
     }
 
-    #checkoutContentRight > button{
+    #checkoutContentRight > button {
         margin-top: 20px;
+    }
+}
+
+@media(max-width: 600px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+    }
+
+    .navbar #productSearch {
+        width: 80%;
     }
 }
