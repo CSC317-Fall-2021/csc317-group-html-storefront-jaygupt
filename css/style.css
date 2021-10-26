@@ -463,7 +463,7 @@ button > a {
     #cartContent,
     #checkoutContent {
         flex-direction: column;
-        height: fit-content;
+        height: max-content;
     }
 
     #cartItems,
