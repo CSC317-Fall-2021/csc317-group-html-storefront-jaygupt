@@ -16,7 +16,7 @@
   }
 }
 
-@media all and (max-width: 580px) {
+@media all and (max-width: 780px) {
   .similar-products {
       flex-direction: column;
       align-items: center;
