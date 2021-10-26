@@ -82,3 +82,16 @@
 .privacy-policy {
   margin-bottom: 25px;
 }
+
+@media(max-width: 768px) {
+  
+  .grid-item .about-us-image{
+    width: 150px;
+    height: 150px;
+  }
+
+  .contact-us{
+    text-align: center;
+  }
+
+}
