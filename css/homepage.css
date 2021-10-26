@@ -130,8 +130,10 @@
 
 .trending-section .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 50px;
+  grid-template-columns: repeat(auto-fill, 350px);
+  justify-content: space-evenly;
+  grid-gap: 75px;
+  margin: 0 auto;
 }
 
 .grid-container .grid-item {
