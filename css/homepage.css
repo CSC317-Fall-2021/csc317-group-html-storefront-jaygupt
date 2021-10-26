@@ -1,21 +1,21 @@
-#slider {
+#animatedSlider {
   overflow: hidden;
 }
 
-#slider figure {
+#animatedSlider figure {
   position: relative;
   width: 500%;
   margin: 0;
   left: 0;
-  animation: 15s slider infinite;
+  animation: 15s animatedSlider infinite;
 }
 
-#slider figure .homepage-banner {
+#animatedSlider figure .homepage-banner {
   width: 20%;
   float: left;
 }	
 
-@keyframes slider {
+@keyframes animatedSlider {
   0% {
     left: 0;
   }
