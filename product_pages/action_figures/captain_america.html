@@ -39,66 +39,23 @@
                     <div class="inner">
                         <div class="slide slide-1">
                             <div class="slide-content">
-                                <img src="../../images/product_images/action_figures/captain_america.jpeg"
-                                    alt="Captain America">
                             </div>
                         </div>
                         <div class="slide slide-2">
                             <div class="slide-content">
-                                <img src="../../images/product_images/action_figures/captain_america.jpeg"
-                                    alt="Captain America">
                             </div>
                         </div>
                         <div class="slide slide-3">
                             <div class="slide-content">
-                                <img src="../../images/product_images/action_figures/captain_america.jpeg"
-                                    alt="Captain America">
                             </div>
                         </div>
                         <div class="slide slide-4">
                             <div class="slide-content">
-                                <img src="../../images/product_images/action_figures/captain_america.jpeg"
-                                    alt="Captain America">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="miniImages">
-                <div class="miniImage">
-                    <label for="slide1" class="slide-1">
-                        <img src="../../images/product_images/action_figures/captain_america.jpeg"
-                            alt="Captain America">
-                    </label>
-                </div>
-                <div class="miniImage">
-                    <label for="slide2" class="slide-2">
-                        <img src="../../images/product_images/action_figures/captain_america.jpeg"
-                            alt="Captain America">
-                    </label>
-                </div>
-                <div class="miniImage">
-                    <label for="slide3" class="slide-3">
-                        <img src="../../images/product_images/action_figures/captain_america.jpeg"
-                            alt="Captain America">
-                    </label>
-                </div>
-                <div class="miniImage">
-                    <label for="slide4" class="slide-4">
-                        <img src="../../images/product_images/action_figures/captain_america.jpeg"
-                            alt="Captain America">
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="product-specification">
-            <div class="product-title">Captain America</div>
-            <div class="product-price"><strong>Price:</strong> $15.78</div>
-            <div class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore
-                officiis consequuntur laborum ad dolorem veritatis tenetur praesentium saepe fugiat! Laboriosam laborum
-                veniam architecto aliquam commodi adipisci doloribus, quis sapiente earum voluptatem quas voluptate
-                fugiat! Error officiis odio praesentium dolorum?</div>
-            <button class="btn">Add to Cart</button>
         </div>
     </div>
     <!-- Main Product Image & Description (Ending) -->
@@ -143,8 +100,77 @@
     <!-- Footer Ending -->
 
     <!-- Script Tags -->
-    <script type="text/javascript" src="js/main.js" defer></script>
-    <script type="text/javascript" defer src="../../js/add_to_cart.js"></script>
+    <script type="text/javascript" src="../../js/main.js"></script>
+    <!-- <script type="text/javascript" defer src="../../js/add_to_cart.js"></script> -->
+    <script type="text/javascript" defer>
+        const product = findProduct("Captain America");
+
+        const productName = product.name;
+        const productPrice = product.price;
+        const productDescription = product.description;
+        const productImageURL = product.imageURL;
+
+        /* Create Element for Product Specification (On Right Side) */
+        const productSpecificationDivElement = document.createElement("div");
+        productSpecificationDivElement.className = "product-specification";
+
+        const productTitleDivElement = document.createElement("div");
+        productTitleDivElement.className = "product-title";
+        productTitleDivElement.textContent = productName;
+        productSpecificationDivElement.appendChild(productTitleDivElement);
+
+        const productPriceDivElement = document.createElement("div");
+        productPriceDivElement.className = "product-price";
+        productPriceDivElement.textContent = "Price: $" + productPrice;
+        productSpecificationDivElement.appendChild(productPriceDivElement);
+
+        const productDescriptionDivElement = document.createElement("div");
+        productDescriptionDivElement.className = "product-description";
+        productDescriptionDivElement.textContent = productDescription;
+        productSpecificationDivElement.appendChild(productDescriptionDivElement);
+
+        const mainAddToCartButton = document.createElement("button");
+        mainAddToCartButton.className = "btn";
+        mainAddToCartButton.textContent = "Add to Cart";
+        productSpecificationDivElement.appendChild(mainAddToCartButton);
+
+        const mainProductDivElement = document.getElementById("mainProduct");
+        mainProductDivElement.appendChild(productSpecificationDivElement);
+
+        /* Create Element for Image, and Append it Wherever it is Needed */
+        const productImageElement = document.createElement("img");
+        productImageElement.setAttribute("src", "../../" + productImageURL);
+        productImageElement.setAttribute("alt", "Captain America");
+        
+        const slideContents = document.getElementsByClassName("slide-content");
+
+        // TODO: Submit as Issue Faced: Couldn't simply use append Child; 
+        // had to use cloneNode method as appendChild was only appending the last
+        // image element
+        for (let i = 0; i < slideContents.length; i++) {
+            slideContents[i].appendChild(productImageElement.cloneNode(true));
+        }
+
+        /* Do the same for Mini Image Elements */
+        const miniImagesDivElement = document.createElement("div");
+        miniImagesDivElement.setAttribute("id", "miniImages");
+
+        // append the mini images to the miniImagesDivElement
+        for (var i = 1; i < 5; i++) {
+            const miniImageDivElement = document.createElement("div");
+            miniImageDivElement.className = "mini-image";
+            miniImagesDivElement.appendChild(miniImageDivElement);
+
+            const miniImageLabelElement = document.createElement("label");
+            miniImageDivElement.appendChild(miniImageLabelElement);
+
+            miniImageLabelElement.setAttribute("for", "slide" + i);
+            miniImageLabelElement.className="slide-" + i;
+            miniImageLabelElement.appendChild(productImageElement.cloneNode(true));
+        }
+
+        document.getElementById("slider").appendChild(miniImagesDivElement);
+    </script>
 </body>
 
 </html>

@@ -1,3 +1,36 @@
+var data = {
+  "products": [
+    {
+      "name": "Captain America",
+      "price": 15.78,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore officiis consequuntur laborum ad dolorem veritatis tenetur praesentium saepe fugiat! Laboriosam laborum veniam architecto aliquam commodi adipisci doloribus, quis sapiente earum voluptatem quas voluptate fugiat! Error officiis odio praesentium dolorum?",
+      "imageURL": "images/product_images/action_figures/captain_america.jpeg"
+    },
+    {
+      "name": "Batman",
+      "price": 29.99,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore officiis consequuntur laborum ad dolorem veritatis tenetur praesentium saepe fugiat! Laboriosam laborum veniam architecto aliquam commodi adipisci doloribus, quis sapiente earum voluptatem quas voluptate fugiat! Error officiis odio praesentium dolorum?",
+      "imageURL": "images/product_images/action_figures/batman.jpg"
+    },
+    {
+      "name": "Spider Man",
+      "price": 28.88,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore officiis consequuntur laborum ad dolorem veritatis tenetur praesentium saepe fugiat! Laboriosam laborum veniam architecto aliquam commodi adipisci doloribus, quis sapiente earum voluptatem quas voluptate fugiat! Error officiis odio praesentium dolorum?",
+      "imageURL": "images/product_images/action_figures/spider_man.jpeg"
+    }
+  ]
+}
+
+const productsArray = data.products;
+
+function findProduct(productName) {
+  for (let i = 0; i < productsArray.length; i++) {
+    if (productsArray[i]["name"] == productName) {
+      return productsArray[i];
+    }
+  }
+}
+
 /* Alerts when Leaving Page and Search Input has Content (Beginning) */
 // get the product search input element
 if (document.getElementById("productSearch") !== null) {

@@ -1,5 +1,6 @@
 /* Pushes main product to local storage when 'Add to Cart' button is clicked. */
 
+// TODO: Might Need to Modify This Due to New Variables on Individual Product Pages
 // selects the entire main product div
 const mainProduct = document.getElementById("mainProduct");
 
