@@ -1,32 +1,25 @@
-/* Pushes main product to local storage when 'Add to Cart' button is clicked. */
+/* Alerts when Leaving Page and Search Input has Content (Beginning) */
+// get the product search input element
+if (document.getElementById("productSearch") !== null) {
+  const beforeUnloadListener = (event) => {
+    event.preventDefault();
 
-// selects the entire main product div
-const mainProduct = document.getElementById("mainProduct");
+    // custom message can't be modified
+    return event.returnValue = "Leave site?";
+  };
 
-// selects the product specification portion of the main product div
-const mainProductSpecification = mainProduct.getElementsByClassName("product-specification")[0];
+  const productSearchInput = document.getElementById("productSearch");
 
-// get product name, price, image, and description using product specification
-const mainProductName = mainProductSpecification.getElementsByClassName("product-title")[0].textContent;
-const mainProductPrice = mainProductSpecification.getElementsByClassName("product-price")[0].textContent;
-const mainProductDescription = mainProductSpecification.getElementsByClassName("product-description")[0].textContent;
-const mainProductImage = mainProduct.getElementsByClassName("slide-content")[0].getElementsByTagName("img")[0].src;
-
-// selects the add to cart button of the main product div
-const atcMainProduct = mainProductSpecification.getElementsByClassName("btn")[0];
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-atcMainProduct.addEventListener("click", () => {
-  // console.log(`Name: ${mainProductName}`);
-  // console.log(`Price: ${mainProductPrice}`);
-  // console.log(`Description: ${mainProductDescription}`);
-  // console.log(`Image: ${mainProductImage}`);
-
-  productInformation = [mainProductName, mainProductPrice, mainProductDescription, mainProductImage];
-
-  cart.push(productInformation);
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  location.reload();
-});
+  // add an event listener such that an alert triggers if search has content 
+  // and window is being closed/going to a new tab
+  productSearchInput.addEventListener("input", event => {
+    if (event.target.value !== "") {
+        // add the event listener
+        addEventListener("beforeunload", beforeUnloadListener, {capture: true});
+    } else {
+        // remove the event listener when search is empty
+        removeEventListener("beforeunload", beforeUnloadListener, {capture: true});
+    }
+  });
+}
+/* Alerts when Leaving Page and Search Input has Content (Ending) */
