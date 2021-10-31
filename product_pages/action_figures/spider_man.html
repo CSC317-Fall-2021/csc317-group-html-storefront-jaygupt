@@ -27,72 +27,7 @@
     <!-- Navbar Ending -->
 
     <!-- Main Product Image & Description (Beginning) -->
-    <div id="mainProduct" class="grid-container">
-        <div id="slider">
-            <input type="radio" name="slider" id="slide1" checked>
-            <input type="radio" name="slider" id="slide2">
-            <input type="radio" name="slider" id="slide3">
-            <input type="radio" name="slider" id="slide4">
-
-            <div id="slides">
-                <div id="overflow">
-                    <div class="inner">
-                        <div class="slide slide-1">
-                            <div class="slide-content">
-                                <img src="../../images/product_images/action_figures/spider_man.jpeg" alt="Spider-Man">
-                            </div>
-                        </div>
-                        <div class="slide slide-2">
-                            <div class="slide-content">
-                                <img src="../../images/product_images/action_figures/spider_man.jpeg" alt="Spider-Man">
-                            </div>
-                        </div>
-                        <div class="slide slide-3">
-                            <div class="slide-content">
-                                <img src="../../images/product_images/action_figures/spider_man.jpeg" alt="Spider-Man">
-                            </div>
-                        </div>
-                        <div class="slide slide-4">
-                            <div class="slide-content">
-                                <img src="../../images/product_images/action_figures/spider_man.jpeg" alt="Spider-Man">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="miniImages">
-                <div class="miniImage">
-                    <label for="slide1" class="slide-1">
-                        <img src="../../images/product_images/action_figures/spider_man.jpeg" alt="Spider-Man">
-                    </label>
-                </div>
-                <div class="miniImage">
-                    <label for="slide2" class="slide-2">
-                        <img src="../../images/product_images/action_figures/spider_man.jpeg" alt="Spider-Man">
-                    </label>
-                </div>
-                <div class="miniImage">
-                    <label for="slide3" class="slide-3">
-                        <img src="../../images/product_images/action_figures/spider_man.jpeg" alt="Spider-Man">
-                    </label>
-                </div>
-                <div class="miniImage">
-                    <label for="slide4" class="slide-4">
-                        <img src="../../images/product_images/action_figures/spider_man.jpeg" alt="Spider-Man">
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="product-specification">
-            <div class="product-title">Spider-Man</div>
-            <div class="product-price"><strong>Price:</strong> $28.88</div>
-            <div class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore
-                officiis consequuntur laborum ad dolorem veritatis tenetur praesentium saepe fugiat! Laboriosam laborum
-                veniam architecto aliquam commodi adipisci doloribus, quis sapiente earum voluptatem quas voluptate
-                fugiat! Error officiis odio praesentium dolorum?</div>
-            <button class="btn">Add to Cart</button>
-        </div>
-    </div>
+    <div id="mainProduct" class="grid-container"></div>
     <!-- Main Product Image & Description (Ending) -->
 
     <!-- Similar Products (Beginning) -->
@@ -135,8 +70,12 @@
     <!-- Footer Ending -->
 
     <!-- Script Tags -->
-    <script type="text/javascript" src="../../js/main.js" defer></script>
-    <script type="text/javascript" defer src="../../js/add_to_cart.js"></script>
+    <script type="text/javascript" src="../../js/main.js"></script>
+    <script type="text/javascript" src="../../js/product_page.js"></script>
+    <script type="text/javascript">
+        appendToMainProductDiv("Spider-Man");
+    </script>
+    <!-- <script type="text/javascript" defer src="../../js/add_to_cart.js"></script> -->
 </body>
 
 </html>

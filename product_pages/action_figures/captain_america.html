@@ -27,37 +27,7 @@
     <!-- Navbar Ending -->
 
     <!-- Main Product Image & Description (Beginning) -->
-    <div id="mainProduct" class="grid-container">
-        <div id="slider">
-            <input type="radio" name="slider" id="slide1" checked>
-            <input type="radio" name="slider" id="slide2">
-            <input type="radio" name="slider" id="slide3">
-            <input type="radio" name="slider" id="slide4">
-
-            <div id="slides">
-                <div id="overflow">
-                    <div class="inner">
-                        <div class="slide slide-1">
-                            <div class="slide-content">
-                            </div>
-                        </div>
-                        <div class="slide slide-2">
-                            <div class="slide-content">
-                            </div>
-                        </div>
-                        <div class="slide slide-3">
-                            <div class="slide-content">
-                            </div>
-                        </div>
-                        <div class="slide slide-4">
-                            <div class="slide-content">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="mainProduct" class="grid-container"></div>
     <!-- Main Product Image & Description (Ending) -->
 
     <!-- Similar Products (Beginning) -->
@@ -101,76 +71,11 @@
 
     <!-- Script Tags -->
     <script type="text/javascript" src="../../js/main.js"></script>
-    <!-- <script type="text/javascript" defer src="../../js/add_to_cart.js"></script> -->
-    <script type="text/javascript" defer>
-        const product = findProduct("Captain America");
-
-        const productName = product.name;
-        const productPrice = product.price;
-        const productDescription = product.description;
-        const productImageURL = product.imageURL;
-
-        /* Create Element for Product Specification (On Right Side) */
-        const productSpecificationDivElement = document.createElement("div");
-        productSpecificationDivElement.className = "product-specification";
-
-        const productTitleDivElement = document.createElement("div");
-        productTitleDivElement.className = "product-title";
-        productTitleDivElement.textContent = productName;
-        productSpecificationDivElement.appendChild(productTitleDivElement);
-
-        const productPriceDivElement = document.createElement("div");
-        productPriceDivElement.className = "product-price";
-        productPriceDivElement.textContent = "Price: $" + productPrice;
-        productSpecificationDivElement.appendChild(productPriceDivElement);
-
-        const productDescriptionDivElement = document.createElement("div");
-        productDescriptionDivElement.className = "product-description";
-        productDescriptionDivElement.textContent = productDescription;
-        productSpecificationDivElement.appendChild(productDescriptionDivElement);
-
-        const mainAddToCartButton = document.createElement("button");
-        mainAddToCartButton.className = "btn";
-        mainAddToCartButton.textContent = "Add to Cart";
-        productSpecificationDivElement.appendChild(mainAddToCartButton);
-
-        const mainProductDivElement = document.getElementById("mainProduct");
-        mainProductDivElement.appendChild(productSpecificationDivElement);
-
-        /* Create Element for Image, and Append it Wherever it is Needed */
-        const productImageElement = document.createElement("img");
-        productImageElement.setAttribute("src", "../../" + productImageURL);
-        productImageElement.setAttribute("alt", "Captain America");
-        
-        const slideContents = document.getElementsByClassName("slide-content");
-
-        // TODO: Submit as Issue Faced: Couldn't simply use append Child; 
-        // had to use cloneNode method as appendChild was only appending the last
-        // image element
-        for (let i = 0; i < slideContents.length; i++) {
-            slideContents[i].appendChild(productImageElement.cloneNode(true));
-        }
-
-        /* Do the same for Mini Image Elements */
-        const miniImagesDivElement = document.createElement("div");
-        miniImagesDivElement.setAttribute("id", "miniImages");
-
-        // append the mini images to the miniImagesDivElement
-        for (var i = 1; i < 5; i++) {
-            const miniImageDivElement = document.createElement("div");
-            miniImageDivElement.className = "mini-image";
-            miniImagesDivElement.appendChild(miniImageDivElement);
-
-            const miniImageLabelElement = document.createElement("label");
-            miniImageDivElement.appendChild(miniImageLabelElement);
-
-            miniImageLabelElement.setAttribute("for", "slide" + i);
-            miniImageLabelElement.className="slide-" + i;
-            miniImageLabelElement.appendChild(productImageElement.cloneNode(true));
-        }
-
-        document.getElementById("slider").appendChild(miniImagesDivElement);
+    <script type="text/javascript" src="../../js/product_page.js"></script>
+    <script type="text/javascript">
+        appendToMainProductDiv("Captain America");
     </script>
+    <!-- <script type="text/javascript" defer src="../../js/add_to_cart.js"></script> -->
 </body>
 
 </html>
