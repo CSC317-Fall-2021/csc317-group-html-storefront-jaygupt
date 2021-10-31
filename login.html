@@ -24,24 +24,62 @@
 
     <!-- Login/Register -->
     <div id="loginContent">
-        <div class="form-container" id="loginForm">
-            <form class="form">
-                <h1>Sign In</h1>
-                <div class="social-container">
-                    <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
-                    <a href="#"><img src="images/social_media_icons/linkedin.png" alt="linkedin"></a>
-                    <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
+        <div class="container">
+            <div class="signin">
+                <form class="form">
+                    <h1>Sign In</h1>
+                    <div class="social-container">
+                        <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
+                        <a href="#"><img src="images/social_media_icons/linkedin.png" alt="linkedin"></a>
+                        <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
+                    </div>
+                    <span>or use your account</span>
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                    <a href="#">Forgot your password?</a>
+                    <button type="submit" class="btn">Sign in</button>
+                    <span class="mobile-only">New Here?</span>
+                    <button type="button" class="btn mobile-only">Sign up</button>
+                </form>
+                <div class="side">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="btn">Sign up</button>
                 </div>
-                <span>or use your account</span>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <a href="#" class="forgot-password">Forgot your password?</a>
-                <button type="submit" class="btn">Sign in</button>
-            </form>
-            <div class="side">
-                <h1>Hello, Friend!</h1>
-                <p>Enter your personal details and start journey with us</p>
-                <a href="register.html"><button class="btn">Sign Up</button></a>
+            </div>
+            <div class="signup hidden">
+                <form class="form">
+                    <h1>Create Account</h1>
+                    <div class="social-container">
+                        <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
+                        <a href="#"><img src="images/social_media_icons/linkedin.png" alt="linkedin"></a>
+                        <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
+                    </div>
+                    <div class="form-control" id="firstControl">
+                        <input type="text" placeholder="Username" id="username">
+                        <small>error message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" placeholder="Email" id="email">
+                        <small>error message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="password" placeholder="Password" id="password">
+                        <small>error message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="password" placeholder="Re-enter Password" id="password2">
+                        <small>error message</small>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                    <span class="mobile-only">Have an account?</span>
+                    <button type="button" class="btn mobile-only">Sign in</button>
+                </form>
+                <div class="side">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="btn">Sign in</button>
+                </div>
             </div>
         </div>
     </div>
@@ -52,6 +90,7 @@
         <p>GoodGame.com, Copyright &copy;2021</p>
     </footer>
     <!-- Footer Ending -->
+    <script src="main.js"></script>
 </body>
 
 </html>
