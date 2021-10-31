@@ -13,7 +13,8 @@
     <!--Navbar Start-->
     <header>
         <nav class="navbar">
-            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</a></h1>
+            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span
+                        class="logo-g">G</span>ame</a></h1>
             <a href="index.html">HOME</a>
             <a href="categories.html">CATEGORIES</a>
             <input type="text" placeholder="Search products..." id="productSearch">
@@ -78,16 +79,18 @@
     </footer>
 
     <!-- Script Tags -->
+    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" defer>
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const cartItemsDivElement = document.getElementById("cartItems");
 
         // display all items added to cart
-        for (var i = 0; i < cart.length; i++) { 
-            const itemName = cart[i][0];
-            const itemPrice = cart[i][1];
-            const itemDescription = cart[i][2];
-            const itemImage = cart[i][3];
+        for (var i = 0; i < cart.length; i++) {
+            const itemName = cart[i];
+            const productInformation = findProduct(itemName);
+            const itemPrice = productInformation["price"];
+            const itemDescription = productInformation["description"];
+            const itemImage = productInformation["imageURL"];
 
             var itemDivElement = document.createElement("div");
             itemDivElement.className = "item";
@@ -127,7 +130,7 @@
                 quantityOptionElement.setAttribute("value", j);
                 quantityOptionElement.textContent = j;
             }
-            
+
             var paragraphPriceElement = document.createElement("p");
             paragraphPriceElement.textContent = itemPrice;
             itemContentDivElement.appendChild(paragraphPriceElement);
@@ -143,14 +146,14 @@
 
         // using querySelectorAll in order to add an event listener to each remove button
         const removeFromCartButtons = cartItemsDivElement.querySelectorAll(".item-content button");
-        removeFromCartButtons.forEach(function(btn) {
-            btn.addEventListener('click', function() {
+        removeFromCartButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
                 console.log(btn);
                 var itemKey = btn.getAttribute("itemkey");
-                
+
                 // remove the element from the cart array
                 cart.splice(itemKey, 1);
-                
+
                 // reset the value of cart in local storage
                 localStorage.setItem("cart", JSON.stringify(cart));
 

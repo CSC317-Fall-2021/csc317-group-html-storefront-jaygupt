@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 1fr;
-  padding: 5%;
+  padding: 4%;
   border-bottom: 3px solid lightgrey;
 }
 
@@ -112,7 +112,7 @@
   height: 50px;
 }
 
-.miniImage {
+.mini-image {
   display: inline-block;
   margin: 0 20px;
 }
@@ -128,7 +128,6 @@
     height: 350px;
   }
 }
-
 
 .product-title {
   font-size: 2.5em;
@@ -169,7 +168,7 @@
   margin: 0 auto;
 }
 
-.similar-product-name {
+.similar-product-title {
   font-size: 1.5em;
   font-weight: bold;
   margin: 1% 0;
