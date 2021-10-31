@@ -2,7 +2,8 @@ function appendToMainProductDiv(productName) {
   // Create Element for Slider (Left Side)
   const sliderDivElement = document.createElement("div");
   sliderDivElement.setAttribute("id", "slider");
-  document.getElementById("mainProduct").appendChild(sliderDivElement);
+  const mainProductDivElement = document.getElementById("mainProduct");
+  mainProductDivElement.appendChild(sliderDivElement);
 
   // Create Radio Input Elements & Append them to sliderDivElement
   for (let i = 1; i < 5; i++) {
@@ -66,11 +67,11 @@ function appendToMainProductDiv(productName) {
   productSpecificationDivElement.appendChild(productDescriptionDivElement);
 
   const mainAddToCartButton = document.createElement("button");
-  mainAddToCartButton.className = "btn";
+  mainAddToCartButton.classList.add("btn", "add-to-cart");
+
   mainAddToCartButton.textContent = "Add to Cart";
   productSpecificationDivElement.appendChild(mainAddToCartButton);
 
-  const mainProductDivElement = document.getElementById("mainProduct");
   mainProductDivElement.appendChild(productSpecificationDivElement);
 
   // Create Element for Image, and Append it Wherever it is Needed

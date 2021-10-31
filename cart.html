@@ -79,17 +79,18 @@
     </footer>
 
     <!-- Script Tags -->
-    <script type="text/javascript" src="js/main.js" defer></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" defer>
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const cartItemsDivElement = document.getElementById("cartItems");
 
         // display all items added to cart
         for (var i = 0; i < cart.length; i++) {
-            const itemName = cart[i][0];
-            const itemPrice = cart[i][1];
-            const itemDescription = cart[i][2];
-            const itemImage = cart[i][3];
+            const itemName = cart[i];
+            const productInformation = findProduct(itemName);
+            const itemPrice = productInformation["price"];
+            const itemDescription = productInformation["description"];
+            const itemImage = productInformation["imageURL"];
 
             var itemDivElement = document.createElement("div");
             itemDivElement.className = "item";

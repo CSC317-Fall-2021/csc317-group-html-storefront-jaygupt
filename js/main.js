@@ -215,6 +215,7 @@ var data = {
 
 const productsArray = data.products;
 
+// Returns name, price, description, imageURL, and category given the name of the product
 function findProduct(productName) {
   for (let i = 0; i < productsArray.length; i++) {
     if (productsArray[i]["name"] == productName) {

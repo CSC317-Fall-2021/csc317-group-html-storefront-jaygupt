@@ -129,7 +129,6 @@
   }
 }
 
-
 .product-title {
   font-size: 2.5em;
   font-weight: bold;
@@ -169,7 +168,7 @@
   margin: 0 auto;
 }
 
-.similar-product-name {
+.similar-product-title {
   font-size: 1.5em;
   font-weight: bold;
   margin: 1% 0;
