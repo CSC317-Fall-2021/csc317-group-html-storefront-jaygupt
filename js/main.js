@@ -356,11 +356,15 @@ function checkValues(e){
     const passwordValue = password.value.trim();
     const password2Value = password2.value.trim();
 
+    let isError = false;
+
     if(usernameValue === ""){
         showError(username,'Username cannot be empty');
+        isError = true;
     }
     else if(usernameValue.length < 10){
         showError(username,'Username should be at least 10 characters');
+        isError = true;
     }
     else{
         success(username);
@@ -368,9 +372,11 @@ function checkValues(e){
 
     if(emailValue === ""){
         showError(email,'Email cannot be empty');
+        isError = true;
     }
     else if(emailValue.indexOf('@') === -1 || emailValue.indexOf(".") === -1){
         showError(email,'Please enter a valid email');
+        isError = true;
     }
     else{
         success(email);
@@ -378,9 +384,11 @@ function checkValues(e){
 
     if(passwordValue === ""){
         showError(password,'Password cannot be empty');
+        isError = true;
     }
     else if(passwordValue.length < 10){
         showError(password,'Password should be at least 10 characters');
+        isError = true;
     }
     else{
         success(password);
@@ -388,9 +396,14 @@ function checkValues(e){
 
     if(password2Value !== passwordValue){
         showError(password2,'Password does not match');
+        isError = true;
     }
     else{
         success(password2);
+    }
+
+    if(!isError){
+      alert("Account Created Succesfully.");
     }
 }
 
@@ -409,3 +422,25 @@ function success(input){
     error.style.visibility = 'hidden';
 }
 /*SignUp form validation End*/
+
+/*SignIn form validation Start*/
+const signInForm = document.querySelector('.signin .form');
+const loginEmail = document.querySelector('#loginEmail');
+const loginPass = document.querySelector('#loginPass');
+
+signInForm.addEventListener('submit',verifyLogin);
+
+function verifyLogin(e){
+    e.preventDefault();
+
+    const loginEmailValue = loginEmail.value.trim();
+    const loginPassValue = loginPass.value.trim();
+
+    if(loginEmailValue === "kpatel10@sfsu.edu" && loginPassValue === "abcdef123456"){
+      alert("Login Successfull");
+    }
+    else{
+      alert("Login failed. Username or Password incorrect.");
+    }
+}
+/*SignIn form validation End*/
