@@ -14,7 +14,8 @@
     <!-- Navbar Beginning -->
     <header>
         <nav class="navbar">
-            <h1 id="logo"><a href="../../index.html" id="logo-text"><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</a></h1>
+            <h1 id="logo"><a href="../../index.html" id="logo-text"><span class="logo-g">G</span>ood<span
+                        class="logo-g">G</span>ame</a></h1>
             <a href="../../index.html">HOME</a>
             <a href="../../categories.html">CATEGORIES</a>
             <input type="text" placeholder="Search products..." id="productSearch">
@@ -26,72 +27,7 @@
     <!-- Navbar Ending -->
 
     <!-- Main Product Image & Description (Beginning) -->
-    <div class="grid-container">
-        <div id="slider">
-            <input type="radio" name="slider" id="slide1" checked>
-            <input type="radio" name="slider" id="slide2">
-            <input type="radio" name="slider" id="slide3">
-            <input type="radio" name="slider" id="slide4">
-            
-            <div id="slides">
-              <div id="overflow">
-                <div class="inner">
-                  <div class="slide slide-1">
-                    <div class="slide-content">
-                        <img src="../../images/product_images/building_blocks/alphabet_blocks.jpeg" alt="Alphabet Blocks">
-                    </div>
-                  </div>
-                  <div class="slide slide-2">
-                    <div class="slide-content">
-                        <img src="../../images/product_images/building_blocks/alphabet_blocks.jpeg" alt="Alphabet Blocks">
-                    </div>
-                  </div>
-                  <div class="slide slide-3">
-                    <div class="slide-content">
-                        <img src="../../images/product_images/building_blocks/alphabet_blocks.jpeg" alt="Alphabet Blocks">
-                    </div>
-                  </div>
-                  <div class="slide slide-4">
-                    <div class="slide-content">
-                        <img src="../../images/product_images/building_blocks/alphabet_blocks.jpeg" alt="Alphabet Blocks">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="miniImages">
-              <div class="miniImage">
-                <label for="slide1" class="slide-1">
-                    <img src="../../images/product_images/building_blocks/alphabet_blocks.jpeg" alt="Alphabet Blocks">
-                </label>
-              </div>
-              <div class="miniImage">
-                <label for="slide2" class="slide-2">
-                    <img src="../../images/product_images/building_blocks/alphabet_blocks.jpeg" alt="Alphabet Blocks">
-                </label>
-              </div>
-              <div class="miniImage">
-                <label for="slide3" class="slide-3">
-                    <img src="../../images/product_images/building_blocks/alphabet_blocks.jpeg" alt="Alphabet Blocks">
-                </label>
-              </div>
-              <div class="miniImage">
-                <label for="slide4" class="slide-4">
-                    <img src="../../images/product_images/building_blocks/alphabet_blocks.jpeg" alt="Alphabet Blocks">
-                </label>
-              </div>
-            </div>
-        </div>
-        <div class="product-specification">
-            <div class="product-title">Alphabet Blocks</div>
-            <div class="product-price"><strong>Price:</strong> $18.99</div>
-            <div class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore
-                officiis consequuntur laborum ad dolorem veritatis tenetur praesentium saepe fugiat! Laboriosam laborum
-                veniam architecto aliquam commodi adipisci doloribus, quis sapiente earum voluptatem quas voluptate
-                fugiat! Error officiis odio praesentium dolorum?</div>
-            <button class="btn">Add to Cart</button>
-        </div>
-    </div>
+    <div id="mainProduct" class="grid-container"></div>
     <!-- Main Product Image & Description (Ending) -->
 
     <!-- Similar Products (Beginning) -->
@@ -102,27 +38,27 @@
                 <img class="similar-product-image" src="../../images/product_images/building_blocks/lincoln_logs.jpg"
                     alt="Lincoln Logs">
             </a>
-            <div class="similar-product-name">Lincoln Logs</div>
+            <div class="similar-product-title product-title">Lincoln Logs</div>
             <div class="similar-product-price">$27.29</div>
-            <button class="btn">Add to Cart</button>
+            <button class="btn add-to-cart">Add to Cart</button>
         </div>
         <div class="similar-product">
             <a href="pilo_blocks.html">
                 <img class="similar-product-image" src="../../images/product_images/building_blocks/pilo_blocks.jpg"
                     alt="Pilo Blocks">
             </a>
-            <div class="similar-product-name">Pilo Blocks</div>
+            <div class="similar-product-title product-title">Pilo Blocks</div>
             <div class="similar-product-price">$32.99</div>
-            <button class="btn">Add to Cart</button>
+            <button class="btn add-to-cart">Add to Cart</button>
         </div>
         <div class="similar-product">
             <a href="legos.html">
                 <img class="similar-product-image" src="../../images/product_images/building_blocks/legos.jpeg"
                     alt="Legos">
             </a>
-            <div class="similar-product-name">Legos</div>
+            <div class="similar-product-title product-title">Legos</div>
             <div class="similar-product-price">$20.99</div>
-            <button class="btn">Add to Cart</button>
+            <button class="btn add-to-cart">Add to Cart</button>
         </div>
     </div>
     <!-- Similar Products (Ending) -->
@@ -132,6 +68,14 @@
         <p>GoodGame.com, Copyright &copy;2021</p>
     </footer>
     <!-- Footer Ending -->
+
+    <!-- Script Tags -->
+    <script type="text/javascript" src="../../js/main.js"></script>
+    <script type="text/javascript" src="../../js/product_page.js"></script>
+    <script type="text/javascript">
+        appendToMainProductDiv("Alphabet Blocks");
+    </script>
+    <script type="text/javascript" defer src="../../js/add_to_cart.js"></script>
 </body>
 
 </html>

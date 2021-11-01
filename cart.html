@@ -13,7 +13,8 @@
     <!--Navbar Start-->
     <header>
         <nav class="navbar">
-            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</a></h1>
+            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span
+                        class="logo-g">G</span>ame</a></h1>
             <a href="index.html">HOME</a>
             <a href="categories.html">CATEGORIES</a>
             <input type="text" placeholder="Search products..." id="productSearch">
@@ -23,53 +24,12 @@
         </nav>
     </header>
     <!--Navbar End-->
+
     <div class="content" id="cartContent">
         <div id="cartItems">
             <div id="cartDelivery">
                 <p>Check Delivery Time and Services</p>
                 <button class="btn">Enter your Zip Code</button>
-            </div>
-            <div class="item">
-                <div class="item-image">
-                    <img src="images/product_images/board_games/monopoly.jpeg" alt="Monopoly" width="220px"
-                        height="160px">
-                </div>
-                <div class="item-content">
-                    <h2>Monopoly</h2>
-                    <div>
-                        <label for="quantity">Quantity:</label>
-                        <select name="quantity" id="quantity">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                    <p>$21.99</p>
-                    <button class="btn">Remove from Cart</button>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-image">
-                    <img src="images/product_images/building_blocks/legos.jpeg" alt="Legos" width="220px"
-                        height="160px">
-                </div>
-                <div class="item-content">
-                    <h2>Legos</h2>
-                    <div>
-                        <label for="quantity">Quantity:</label>
-                        <select name="quantity" id="quantity">
-                            <option value="1">1</option>
-                            <option value="2" selected>2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                    <p>$41.98 ($20.99 each)</p>
-                    <button class="btn">Remove from Cart</button>
-                </div>
             </div>
         </div>
         <div id="cartSummary">
@@ -117,6 +77,90 @@
     <footer class="footer">
         <p>GoodGame.com, Copyright &copy;2021</p>
     </footer>
+
+    <!-- Script Tags -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" defer>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartItemsDivElement = document.getElementById("cartItems");
+
+        // display all items added to cart
+        for (var i = 0; i < cart.length; i++) {
+            const itemName = cart[i];
+            const productInformation = findProduct(itemName);
+            const itemPrice = productInformation["price"];
+            const itemDescription = productInformation["description"];
+            const itemImage = productInformation["imageURL"];
+
+            var itemDivElement = document.createElement("div");
+            itemDivElement.className = "item";
+
+            var itemImageDivElement = document.createElement("div");
+            itemImageDivElement.className = "item-image";
+            itemDivElement.appendChild(itemImageDivElement);
+
+            var itemImageElement = document.createElement("img");
+            itemImageElement.setAttribute("src", itemImage);
+            itemImageElement.setAttribute("alt", itemName);
+            itemImageDivElement.appendChild(itemImageElement);
+
+            var itemContentDivElement = document.createElement("div");
+            itemContentDivElement.className = "item-content";
+            itemDivElement.appendChild(itemContentDivElement);
+
+            var itemHeader = document.createElement("h2");
+            itemHeader.textContent = itemName;
+            itemContentDivElement.appendChild(itemHeader);
+
+            var quantityDivElement = document.createElement("div");
+            itemContentDivElement.appendChild(quantityDivElement);
+
+            var quantityLabelElement = document.createElement("label");
+            quantityDivElement.appendChild(quantityLabelElement);
+            quantityLabelElement.setAttribute("for", "quantity");
+            quantityLabelElement.textContent = "Quantity:";
+
+            var quantitySelectElement = document.createElement("select");
+            quantityDivElement.appendChild(quantitySelectElement);
+            quantityLabelElement.setAttribute("name", "quantity");
+            quantityLabelElement.setAttribute("id", "quantity");
+            for (var j = 1; j < 11; j++) {
+                quantityOptionElement = document.createElement("option");
+                quantitySelectElement.appendChild(quantityOptionElement);
+                quantityOptionElement.setAttribute("value", j);
+                quantityOptionElement.textContent = j;
+            }
+
+            var paragraphPriceElement = document.createElement("p");
+            paragraphPriceElement.textContent = itemPrice;
+            itemContentDivElement.appendChild(paragraphPriceElement);
+
+            var removeFromCartButton = document.createElement("button");
+            removeFromCartButton.setAttribute("class", "btn");
+            removeFromCartButton.setAttribute("itemkey", i);
+            removeFromCartButton.textContent = "Remove from Cart";
+            itemContentDivElement.appendChild(removeFromCartButton);
+
+            cartItemsDivElement.appendChild(itemDivElement);
+        }
+
+        // using querySelectorAll in order to add an event listener to each remove button
+        const removeFromCartButtons = cartItemsDivElement.querySelectorAll(".item-content button");
+        removeFromCartButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                console.log(btn);
+                var itemKey = btn.getAttribute("itemkey");
+
+                // remove the element from the cart array
+                cart.splice(itemKey, 1);
+
+                // reset the value of cart in local storage
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                location.reload();
+            });
+        });
+    </script>
 </body>
 
 </html>
