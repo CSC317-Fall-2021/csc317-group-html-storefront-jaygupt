@@ -39,6 +39,7 @@ function appendToMainProductDiv(productName) {
 
       const slideContentDivElement = document.createElement("div");
       slideContentDivElement.className = "slide-content";
+
       slideClassDivElement.appendChild(slideContentDivElement);
   }
 
@@ -107,4 +108,45 @@ function appendToMainProductDiv(productName) {
   }
 
   sliderDivElement.appendChild(miniImagesDivElement);
+
+  /* Use DOM to Add to Similar Products Div Element */
+  const similarProductsDivElement = document.getElementsByClassName("similar-products")[0];
+  const similarProductsArray = findSimilarProducts(productName);
+
+  for (let i = 0; i < similarProductsArray.length; i++) {
+    const similarProductName = similarProductsArray[i];
+    const similarProductInformation = findProduct(similarProductName);
+    const similarProductPageURL = similarProductInformation.pageURL;
+    const similarProductImageURL = similarProductInformation.imageURL;
+    const similarProductPrice = similarProductInformation.price;
+
+    const similarProductDivElement = document.createElement("div");
+    similarProductDivElement.className = "similar-product";
+    similarProductsDivElement.appendChild(similarProductDivElement);
+
+    const similarProductAElement = document.createElement("a");
+    similarProductAElement.setAttribute("href", similarProductPageURL);
+    similarProductDivElement.appendChild(similarProductAElement);
+
+    const similarProductImgElement = document.createElement("img");
+    similarProductImgElement.className = "similar-product-image";
+    similarProductImgElement.setAttribute("src", "../../" + similarProductImageURL);
+    similarProductImgElement.setAttribute("alt", similarProductName);
+    similarProductAElement.appendChild(similarProductImgElement);
+
+    const similarProductTitleDivElement = document.createElement("div");
+    similarProductTitleDivElement.classList.add("similar-product-title", "product-title");
+    similarProductTitleDivElement.textContent = similarProductName;
+    similarProductDivElement.appendChild(similarProductTitleDivElement);
+
+    const similarProductPriceDivElement = document.createElement("div");
+    similarProductPriceDivElement.className = "similar-product-price";
+    similarProductPriceDivElement.textContent = "$" + similarProductPrice;
+    similarProductDivElement.appendChild(similarProductPriceDivElement);
+
+    const similarProductAddToCartButton = document.createElement("button");
+    similarProductAddToCartButton.classList.add("btn", "add-to-cart");
+    similarProductAddToCartButton.textContent = "Add to Cart";
+    similarProductDivElement.appendChild(similarProductAddToCartButton);
+  }
 }
