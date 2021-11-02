@@ -10,5 +10,6 @@ for (let i = 0; i < addToCartButtons.length; i++) {
   addToCartButton.addEventListener("click", () => {  
     cart.push(productName);
     localStorage.setItem("cart", JSON.stringify(cart));
+    location.reload();
   });
 }
