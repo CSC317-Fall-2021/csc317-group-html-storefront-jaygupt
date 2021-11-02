@@ -90,7 +90,7 @@
             const productInformation = findProduct(itemName);
             const itemPrice = productInformation["price"];
             const itemDescription = productInformation["description"];
-            const itemImage = productInformation["imageURL"];
+            const itemImageSrc = productInformation["imageSrc"];
 
             var itemDivElement = document.createElement("div");
             itemDivElement.className = "item";
@@ -100,7 +100,7 @@
             itemDivElement.appendChild(itemImageDivElement);
 
             var itemImageElement = document.createElement("img");
-            itemImageElement.setAttribute("src", itemImage);
+            itemImageElement.setAttribute("src", itemImageSrc);
             itemImageElement.setAttribute("alt", itemName);
             itemImageDivElement.appendChild(itemImageElement);
 
