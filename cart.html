@@ -22,18 +22,109 @@
             <a href="#" class="current">CART</a>
             <a href="about_us.html">ABOUT</a>
         </nav>
+        <style>
+            #cartItems {
+                display: grid;
+                grid-template-columns: 1fr 3fr 2fr 1fr;
+                margin: 0 auto;
+                row-gap: 25px;
+                width: 85%;
+            }
+
+            .item-picture {
+                margin: 0 auto;
+            }
+
+            .item-picture img {
+                height: 200px;
+                object-fit: contain;
+            }
+
+            .item-information {
+                margin-left: 20px;
+            }
+
+            .item-quantity, .item-price {
+                margin: 0 auto;
+            }
+
+            .item-price p {
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            #priceSummary {
+                display: grid;
+                grid-template-columns: auto auto;
+                margin-bottom: 30px;
+                margin-left: auto;
+                margin-right: 7.5%;
+                row-gap: 5px;
+                width: 25%;
+            }
+
+            #priceSummary > .amount {
+                text-align: right;
+            }
+
+            .divider {
+                background-color: #f08f57;
+                grid-column-start: 1;
+                grid-column-end: 3;
+                height: 3px;
+                width: 100%; 
+            }
+
+            #checkoutButton {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                margin-top: 5px;
+            }
+
+            #checkoutButton button {
+                width: 100%;
+            }
+        </style>
     </header>
     <!--Navbar End-->
-    
+
+    <div class="title">Cart</div>
+    <div id="cartItems"></div>
+    <div id="priceSummary">
+        <div class="subtotal">Subtotal:</div>
+        <div class="subtotal-amount amount">$75.87</div>
+        <div class="discount">Discount:</div>
+        <div class="discount-amount amount">-$9.00</div>
+        <div class="tax">Tax:</div>
+        <div class="tax-amount amount">$6.29</div>
+        <div class="delivery">Delivery:</div>
+        <div class="delivery-amount amount">$5.00</div>
+        <div class="divider"></div>
+        <div class="total">Total:</div>
+        <div class="total-amount amount">$89.19</div>
+        <a id="checkoutButton" href="checkout.html">
+            <button class="btn">Checkout</button>
+        </a>
+    </div>
+
     <footer class="footer">
         <p>GoodGame.com, Copyright &copy;2021</p>
     </footer>
 
     <!-- Script Tags -->
     <script type="text/javascript" src="js/main.js"></script>
-    <!-- <script type="text/javascript" defer>
+    <script type="text/javascript" defer>
+        // get the cart variable from local storage as an array
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const cartItemsDivElement = document.getElementById("cartItems");
+
+        const categoryToFolder = {
+            "Action Figures": "action_figures",
+            "Board Games": "board_games",
+            "Building Blocks": "building_blocks",
+            "Cards": "cards",
+            "Cars and Motorcycles": "cars_and_motorcycles"
+        }
 
         // display all items added to cart
         for (var i = 0; i < cart.length; i++) {
@@ -42,62 +133,86 @@
             const itemPrice = productInformation["price"];
             const itemDescription = productInformation["description"];
             const itemImage = productInformation["imageURL"];
+            const itemPageURL = productInformation["pageURL"];
+            const itemCategory = productInformation["category"];
+            const correspondingCategoryFolder = categoryToFolder[itemCategory];
+            const linkToProductPage = `product_pages/${correspondingCategoryFolder}/${itemPageURL}`;
 
-            var itemDivElement = document.createElement("div");
-            itemDivElement.className = "item";
+            const itemPictureDivElement = document.createElement("div");
+            cartItemsDivElement.appendChild(itemPictureDivElement);
+            itemPictureDivElement.className = "item-picture";
 
-            var itemImageDivElement = document.createElement("div");
-            itemImageDivElement.className = "item-image";
-            itemDivElement.appendChild(itemImageDivElement);
+            const itemImageAElement = document.createElement("a");
+            itemPictureDivElement.appendChild(itemImageAElement);
+            itemImageAElement.setAttribute("href", linkToProductPage);
 
-            var itemImageElement = document.createElement("img");
+            const itemImageElement = document.createElement("img");
+            itemImageAElement.appendChild(itemImageElement);
             itemImageElement.setAttribute("src", itemImage);
             itemImageElement.setAttribute("alt", itemName);
-            itemImageDivElement.appendChild(itemImageElement);
 
-            var itemContentDivElement = document.createElement("div");
-            itemContentDivElement.className = "item-content";
-            itemDivElement.appendChild(itemContentDivElement);
+            const itemInformationDivElement = document.createElement("div");
+            itemInformationDivElement.className = "item-information";
+            cartItemsDivElement.appendChild(itemInformationDivElement);
 
-            var itemHeader = document.createElement("h2");
-            itemHeader.textContent = itemName;
-            itemContentDivElement.appendChild(itemHeader);
+            const itemHeaderElement = document.createElement("h1");
+            itemHeaderElement.textContent = itemName;
+            itemInformationDivElement.appendChild(itemHeaderElement);
 
-            var quantityDivElement = document.createElement("div");
-            itemContentDivElement.appendChild(quantityDivElement);
+            const itemPricePerUnitElement = document.createElement("p");
+            itemPricePerUnitElement.textContent = "Price per Unit: $" + itemPrice;
+            itemInformationDivElement.appendChild(itemPricePerUnitElement);
 
-            var quantityLabelElement = document.createElement("label");
-            quantityDivElement.appendChild(quantityLabelElement);
-            quantityLabelElement.setAttribute("for", "quantity");
-            quantityLabelElement.textContent = "Quantity:";
+            const itemDescriptionElement = document.createElement("p");
+            itemInformationDivElement.appendChild(itemDescriptionElement);
 
-            var quantitySelectElement = document.createElement("select");
-            quantityDivElement.appendChild(quantitySelectElement);
-            quantityLabelElement.setAttribute("name", "quantity");
-            quantityLabelElement.setAttribute("id", "quantity");
+            // display first 50 characters from description
+            itemDescriptionElement.textContent = itemDescription.substring(0, 100) + "...";
+
+            // add "Read More" clickable link to description
+            const readMoreAElement = document.createElement("a");
+            readMoreAElement.setAttribute("href", linkToProductPage);
+            readMoreAElement.textContent = "Read More";
+            itemDescriptionElement.appendChild(readMoreAElement);
+
+            const itemQuantityDivElement = document.createElement("div");
+            itemQuantityDivElement.className = "item-quantity";
+            cartItemsDivElement.appendChild(itemQuantityDivElement);
+
+            const itemQuantityLabelElement = document.createElement("label");
+            itemQuantityDivElement.appendChild(itemQuantityLabelElement);
+            itemQuantityLabelElement.setAttribute("for", "quantity");
+            itemQuantityLabelElement.textContent = "Quantity:";
+
+            const itemQuantitySelectElement = document.createElement("select");
+            itemQuantityDivElement.appendChild(itemQuantitySelectElement);
+            itemQuantityLabelElement.setAttribute("name", "quantity");
+            itemQuantityLabelElement.setAttribute("id", "quantity");
             for (var j = 1; j < 11; j++) {
-                quantityOptionElement = document.createElement("option");
-                quantitySelectElement.appendChild(quantityOptionElement);
+                const quantityOptionElement = document.createElement("option");
+                itemQuantitySelectElement.appendChild(quantityOptionElement);
                 quantityOptionElement.setAttribute("value", j);
                 quantityOptionElement.textContent = j;
             }
+            
+            const itemPriceDivElement = document.createElement("div");
+            cartItemsDivElement.appendChild(itemPriceDivElement);
+            itemPriceDivElement.className = "item-price";
 
-            var paragraphPriceElement = document.createElement("p");
-            paragraphPriceElement.textContent = "$" + itemPrice;
-            itemContentDivElement.appendChild(paragraphPriceElement);
+            const itemPricePElement = document.createElement("p");
+            itemPriceDivElement.appendChild(itemPricePElement);
+            itemPricePElement.textContent = "$" + itemPrice; // TODO: Change this to value of Select * Price Per Unit
 
-            var removeFromCartButton = document.createElement("button");
-            removeFromCartButton.setAttribute("class", "btn");
+            const removeFromCartButton = document.createElement("button");
+            itemPriceDivElement.appendChild(removeFromCartButton);
+            removeFromCartButton.classList.add("btn", "remove-button");
             removeFromCartButton.setAttribute("itemkey", i);
             removeFromCartButton.textContent = "Remove from Cart";
-            itemContentDivElement.appendChild(removeFromCartButton);
-
-            cartItemsDivElement.appendChild(itemDivElement);
         }
 
         // using querySelectorAll in order to add an event listener to each remove button
-        const removeFromCartButtons = cartItemsDivElement.querySelectorAll(".item-content button");
-        removeFromCartButtons.forEach(function (btn) {
+        const removeFromCartButtons = cartItemsDivElement.querySelectorAll(".remove-button");
+        removeFromCartButtons.forEach(btn => {
             btn.addEventListener('click', function () {
                 console.log(btn);
                 var itemKey = btn.getAttribute("itemkey");
@@ -111,7 +226,7 @@
                 location.reload();
             });
         });
-    </script> -->
+    </script>
 </body>
 
 </html>
