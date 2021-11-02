@@ -7,6 +7,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>Cart</title>
+    <style>
+        #cart {
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        #cartItems {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+            margin: 0 auto;
+            row-gap: 20px;
+        }
+
+        .item-picture {
+            margin: 0 auto;
+        }
+
+        .item-picture img {
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .item-information {
+            margin-left: 20px;
+        }
+
+        .item-quantity,
+        .item-price {
+            margin: 0 auto;
+        }
+
+        .item-price p {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .item-subtotal {
+            text-align: center;
+        }
+
+        .item-subtotal p {
+            margin-bottom: 10px;
+        }
+
+        #bottomPart {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+
+        #enterCoupon {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #enterCoupon > label {
+            font-size: 1.25em;
+            margin-bottom: 5px;
+        }
+
+        #coupon {
+            height: 40px;
+        }
+
+        #priceSummary {
+            display: grid;
+            grid-template-columns: auto auto;
+            margin-bottom: 30px;
+            row-gap: 5px;
+            width: 25%;
+        }
+
+        #priceSummary > .amount {
+            text-align: right;
+        }
+
+        .divider {
+            background-color: #f08f57;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            height: 3px;
+            width: 100%;
+        }
+
+        #checkoutButton {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            margin-top: 5px;
+        }
+
+        #checkoutButton button {
+            width: 100%;
+        }
+
+        .cart-column {
+            background-color: #f08f57;
+            color: white;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        #productColumn {
+            grid-column: 2 / 3;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        #priceColumn {
+            grid-column: 3 / 4;
+        }
+
+        #quantityColumn {
+            grid-column: 4 / 5;
+        }
+
+        #subtotalColumn {
+            grid-column: 5 / 6;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,89 +141,43 @@
             <a href="#" class="current">CART</a>
             <a href="about_us.html">ABOUT</a>
         </nav>
-        <style>
-            #cartItems {
-                display: grid;
-                grid-template-columns: 1fr 3fr 2fr 1fr;
-                margin: 0 auto;
-                row-gap: 25px;
-                width: 85%;
-            }
-
-            .item-picture {
-                margin: 0 auto;
-            }
-
-            .item-picture img {
-                height: 200px;
-                object-fit: contain;
-            }
-
-            .item-information {
-                margin-left: 20px;
-            }
-
-            .item-quantity, .item-price {
-                margin: 0 auto;
-            }
-
-            .item-price p {
-                margin-bottom: 10px;
-                text-align: center;
-            }
-
-            #priceSummary {
-                display: grid;
-                grid-template-columns: auto auto;
-                margin-bottom: 30px;
-                margin-left: auto;
-                margin-right: 7.5%;
-                row-gap: 5px;
-                width: 25%;
-            }
-
-            #priceSummary > .amount {
-                text-align: right;
-            }
-
-            .divider {
-                background-color: #f08f57;
-                grid-column-start: 1;
-                grid-column-end: 3;
-                height: 3px;
-                width: 100%; 
-            }
-
-            #checkoutButton {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                margin-top: 5px;
-            }
-
-            #checkoutButton button {
-                width: 100%;
-            }
-        </style>
     </header>
     <!--Navbar End-->
 
     <div class="title">Cart</div>
-    <div id="cartItems"></div>
-    <div id="priceSummary">
-        <div class="subtotal">Subtotal:</div>
-        <div class="subtotal-amount amount">$75.87</div>
-        <div class="discount">Discount:</div>
-        <div class="discount-amount amount">-$9.00</div>
-        <div class="tax">Tax:</div>
-        <div class="tax-amount amount">$6.29</div>
-        <div class="delivery">Delivery:</div>
-        <div class="delivery-amount amount">$5.00</div>
-        <div class="divider"></div>
-        <div class="total">Total:</div>
-        <div class="total-amount amount">$89.19</div>
-        <a id="checkoutButton" href="checkout.html">
-            <button class="btn">Checkout</button>
-        </a>
+    <div id="cart">
+        <div id="cartItems">
+            <div class="cart-column"></div>
+            <div id="productColumn" class="cart-column">Product</div>
+            <div id="priceColumn" class="cart-column">Price</div>
+            <div id="quantityColumn" class="cart-column">Quantity</div>
+            <div id="subtotalColumn" class="cart-column">Subtotal</div>
+        </div>
+        <div id="bottomPart">
+            <div id="enterCoupon">
+                <label for="coupon">Have a Coupon?</label>
+                <div class="coupon-input">
+                    <input type="text" id="coupon" name="coupon" placeholder="Coupon Code">
+                    <button class="btn apply-coupon">Apply</button>
+                </div>
+            </div>
+            <div id="priceSummary">
+                <div class="subtotal">Subtotal:</div>
+                <div class="subtotal-amount amount">$75.87</div>
+                <div class="discount">Discount:</div>
+                <div class="discount-amount amount">-$9.00</div>
+                <div class="tax">Tax:</div>
+                <div class="tax-amount amount">$6.29</div>
+                <div class="delivery">Delivery:</div>
+                <div class="delivery-amount amount">$5.00</div>
+                <div class="divider"></div>
+                <div class="total">Total:</div>
+                <div class="total-amount amount">$89.19</div>
+                <a id="checkoutButton" href="checkout.html">
+                    <button class="btn">Checkout</button>
+                </a>
+            </div>
+        </div>
     </div>
 
     <footer class="footer">
@@ -159,10 +232,6 @@
             itemHeaderElement.textContent = itemName;
             itemInformationDivElement.appendChild(itemHeaderElement);
 
-            const itemPricePerUnitElement = document.createElement("p");
-            itemPricePerUnitElement.textContent = "Price per Unit: $" + itemPrice;
-            itemInformationDivElement.appendChild(itemPricePerUnitElement);
-
             const itemDescriptionElement = document.createElement("p");
             itemInformationDivElement.appendChild(itemDescriptionElement);
 
@@ -175,6 +244,14 @@
             readMoreAElement.textContent = "Read More";
             itemDescriptionElement.appendChild(readMoreAElement);
 
+            const itemPriceDivElement = document.createElement("div");
+            cartItemsDivElement.appendChild(itemPriceDivElement);
+            itemPriceDivElement.classList.add("item-price", "item-price-" + i)
+
+            const itemPricePElement = document.createElement("p");
+            itemPriceDivElement.appendChild(itemPricePElement);
+            itemPricePElement.textContent = "$" + itemPrice;
+
             const itemQuantityDivElement = document.createElement("div");
             itemQuantityDivElement.className = "item-quantity";
             cartItemsDivElement.appendChild(itemQuantityDivElement);
@@ -182,9 +259,9 @@
             const itemQuantityLabelElement = document.createElement("label");
             itemQuantityDivElement.appendChild(itemQuantityLabelElement);
             itemQuantityLabelElement.setAttribute("for", "quantity");
-            itemQuantityLabelElement.textContent = "Quantity:";
 
             const itemQuantitySelectElement = document.createElement("select");
+            itemQuantitySelectElement.className = "quantity-select";
             itemQuantityDivElement.appendChild(itemQuantitySelectElement);
             itemQuantityLabelElement.setAttribute("name", "quantity");
             itemQuantityLabelElement.setAttribute("id", "quantity");
@@ -194,17 +271,16 @@
                 quantityOptionElement.setAttribute("value", j);
                 quantityOptionElement.textContent = j;
             }
-            
-            const itemPriceDivElement = document.createElement("div");
-            cartItemsDivElement.appendChild(itemPriceDivElement);
-            itemPriceDivElement.className = "item-price";
 
-            const itemPricePElement = document.createElement("p");
-            itemPriceDivElement.appendChild(itemPricePElement);
-            itemPricePElement.textContent = "$" + itemPrice; // TODO: Change this to value of Select * Price Per Unit
-
+            const itemSubtotalDivElement = document.createElement("div");
+            cartItemsDivElement.appendChild(itemSubtotalDivElement);
+            itemSubtotalDivElement.className = "item-subtotal";
+            const itemSubtotalPElement = document.createElement("p");
+            itemSubtotalDivElement.appendChild(itemSubtotalPElement);
+            itemSubtotalPElement.className = "subtotal-" + i;
+            itemSubtotalPElement.textContent = "$" + itemPrice;
             const removeFromCartButton = document.createElement("button");
-            itemPriceDivElement.appendChild(removeFromCartButton);
+            itemSubtotalDivElement.appendChild(removeFromCartButton);
             removeFromCartButton.classList.add("btn", "remove-button");
             removeFromCartButton.setAttribute("itemkey", i);
             removeFromCartButton.textContent = "Remove from Cart";
@@ -226,6 +302,23 @@
                 location.reload();
             });
         });
+    </script>
+    <script type="text/javascript" defer>
+        const quantitySelectElements = document.querySelectorAll(".quantity-select");
+
+        // add event listener to every quantitySelect element
+        for (let i = 0; i < quantitySelectElements.length; i++) {
+            quantitySelectElements[i].addEventListener("change", (event) => {
+                const valueChangedTo = event.target.value;
+
+                // get the price per unit of that row
+                const correspondingPricePerUnit = document.getElementsByClassName("item-price-" + i)[0].textContent.slice(1);
+                
+                // get the corresponding subtotal element of that row, to replace its value (2 decimal places)
+                const correspondingSubtotalPElement = document.getElementsByClassName("subtotal-" + i)[0];
+                correspondingSubtotalPElement.textContent = "$" + (correspondingPricePerUnit * valueChangedTo).toFixed(2);
+            });
+        }
     </script>
 </body>
 
