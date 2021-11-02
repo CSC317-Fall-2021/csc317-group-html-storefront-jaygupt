@@ -69,59 +69,7 @@
     <!-- Trending Section Beginning -->
     <div class="trending-section">
         <div class="trending-title">Trending & Best Sellers</div>
-        <div class="grid-container">
-            <div class="grid-item">
-                <a href="product_pages/board_games/monopoly.html">
-                    <img class="trending-item-image" src="images/product_images/board_games/monopoly.jpeg"
-                        alt="Monopoly">
-                </a>
-                <div class="trending-item-name product-title">Monopoly</div>
-                <div class="trending-item-price">$21.99</div>
-                <button class="btn add-to-cart">Add to Cart</button>
-            </div>
-            <div class="grid-item">
-                <a href="product_pages/building_blocks/legos.html">
-                    <img class="trending-item-image" src="images/product_images/building_blocks/legos.jpeg" alt="Legos">
-                </a>
-                <div class="trending-item-name product-title">Legos</div>
-                <div class="trending-item-price">$20.99</div>
-                <button class="btn add-to-cart">Add to Cart</button>
-            </div>
-            <div class="grid-item">
-                <a href="product_pages/cards/uno.html">
-                    <img class="trending-item-image" src="images/product_images/cards/uno.jpeg" alt="Uno">
-                </a>
-                <div class="trending-item-name product-title">Uno</div>
-                <div class="trending-item-price">$12.39</div>
-                <button class="btn add-to-cart">Add to Cart</button>
-            </div>
-            <div class="grid-item">
-                <a href="product_pages/cars_and_motorcycles/ride_on_car.html">
-                    <img class="trending-item-image" src="images/product_images/cars_and_motorcycles/ride_on_car.jpeg"
-                        alt="Ride-On Car">
-                </a>
-                <div class="trending-item-name product-title">Ride-On Car</div>
-                <div class="trending-item-price">$499.99</div>
-                <button class="btn add-to-cart">Add to Cart</button>
-            </div>
-            <div class="grid-item">
-                <a href="product_pages/cars_and_motorcycles/hot_wheels.html">
-                    <img class="trending-item-image" src="images/product_images/cars_and_motorcycles/hot_wheels.jpeg"
-                        alt="Hot Wheels">
-                </a>
-                <div class="trending-item-name product-title">Hot Wheels</div>
-                <div class="trending-item-price">$19.99</div>
-                <button class="btn add-to-cart">Add to Cart</button>
-            </div>
-            <div class="grid-item">
-                <a href="product_pages/board_games/life.html">
-                    <img class="trending-item-image" src="images/product_images/board_games/life.jpg" alt="Life">
-                </a>
-                <div class="trending-item-name product-title">Life</div>
-                <div class="trending-item-price">$22.99</div>
-                <button class="btn add-to-cart">Add to Cart</button>
-            </div>
-        </div>
+        <div class="grid-container"></div>
     </div>
     <!-- Trending Section Ending -->
 
@@ -133,6 +81,65 @@
 
     <!-- Script Tags -->
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" defer>
+        const trendingItems = ["Monopoly", "Batman", "Uno", "Ride-On Car", "Hot Wheels", "Life"];
+        const gridContainerDivElement = document.getElementsByClassName("grid-container")[0];
+
+        for (let i = 0; i < trendingItems.length; i++) {
+            /*
+                <div class="grid-item">
+                    <a href="product_pages/board_games/monopoly.html">
+                        <img class="trending-item-image" src="images/product_images/board_games/monopoly.jpeg"
+                            alt="Monopoly">
+                    </a>
+                    <div class="trending-item-name product-title">Monopoly</div>
+                    <div class="trending-item-price">$21.99</div>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+            */
+            const itemName = trendingItems[i];
+            const itemInformation = findProduct(itemName);
+            const gridItemDivElement = document.createElement("div");
+            gridContainerDivElement.appendChild(gridItemDivElement);
+            gridItemDivElement.className = "grid-item";
+
+            /*
+                <a href="product_pages/board_games/monopoly.html">
+                    <img class="trending-item-image" src="images/product_images/board_games/monopoly.jpeg"
+                        alt="Monopoly">
+                </a>
+            */
+            const gridItemAElement = document.createElement("a");
+            gridItemDivElement.appendChild(gridItemAElement);
+            const linkToProductPage = getLinkToProductPage(itemName);
+            gridItemAElement.setAttribute("href", linkToProductPage);
+            const gridItemImgElement = document.createElement("img");
+            gridItemAElement.appendChild(gridItemImgElement);
+            const itemImageSrc = itemInformation["imageSrc"];
+            gridItemImgElement.className = "trending-item-image";
+            gridItemImgElement.setAttribute("src", itemImageSrc);
+            gridItemImgElement.setAttribute("alt", itemName);
+
+            /* <div class="trending-item-name product-title">Monopoly</div> */
+            const itemNameDivElement = document.createElement("div");
+            gridItemDivElement.appendChild(itemNameDivElement);
+            itemNameDivElement.classList.add("trending-item-name", "product-title");
+            itemNameDivElement.textContent = itemName;
+
+            /* <div class="trending-item-price">$21.99</div> */
+            const itemPriceDivElement = document.createElement("div");
+            gridItemDivElement.appendChild(itemPriceDivElement);
+            itemPriceDivElement.className = "trending-item-price";
+            const itemPrice = itemInformation["price"];
+            itemPriceDivElement.textContent = "$" + itemPrice;
+
+            /* <button class="btn add-to-cart">Add to Cart</button> */
+            const addToCartButton = document.createElement("button");
+            gridItemDivElement.appendChild(addToCartButton);
+            addToCartButton.classList.add("btn", "add-to-cart");
+            addToCartButton.textContent = "Add to Cart";
+        }
+    </script>
     <script type="text/javascript" defer src="js/add_to_cart.js"></script>
 </body>
 

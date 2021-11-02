@@ -72,21 +72,13 @@
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const cartItemsDivElement = document.getElementById("cartItems");
 
-        const categoryToFolder = {
-            "Action Figures": "action_figures",
-            "Board Games": "board_games",
-            "Building Blocks": "building_blocks",
-            "Cards": "cards",
-            "Cars and Motorcycles": "cars_and_motorcycles"
-        }
-
         // display all items added to cart
         for (var i = 0; i < cart.length; i++) {
             const itemName = cart[i];
             const productInformation = findProduct(itemName);
             const itemPrice = productInformation["price"];
             const itemDescription = productInformation["description"];
-            const itemImage = productInformation["imageURL"];
+            const itemImageSrc = productInformation["imageSrc"];
             const itemPageURL = productInformation["pageURL"];
             const itemCategory = productInformation["category"];
             const correspondingCategoryFolder = categoryToFolder[itemCategory];
@@ -102,7 +94,7 @@
 
             const itemImageElement = document.createElement("img");
             itemImageAElement.appendChild(itemImageElement);
-            itemImageElement.setAttribute("src", itemImage);
+            itemImageElement.setAttribute("src", itemImageSrc);
             itemImageElement.setAttribute("alt", itemName);
 
             const itemInformationDivElement = document.createElement("div");

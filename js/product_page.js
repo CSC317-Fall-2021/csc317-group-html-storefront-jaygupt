@@ -46,7 +46,7 @@ function appendToMainProductDiv(productName) {
   const product = findProduct(productName);
   const productPrice = product.price;
   const productDescription = product.description;
-  const productImageURL = product.imageURL;
+  const productimageSrc = product.imageSrc;
 
   // Create Element for Product Specification (On Right Side)
   const productSpecificationDivElement = document.createElement("div");
@@ -77,7 +77,7 @@ function appendToMainProductDiv(productName) {
 
   // Create Element for Image, and Append it Wherever it is Needed
   const productImageElement = document.createElement("img");
-  productImageElement.setAttribute("src", "../../" + productImageURL);
+  productImageElement.setAttribute("src", "../../" + productimageSrc);
   productImageElement.setAttribute("alt", productName);
 
   const slideContents = document.getElementsByClassName("slide-content");
@@ -117,7 +117,7 @@ function appendToMainProductDiv(productName) {
     const similarProductName = similarProductsArray[i];
     const similarProductInformation = findProduct(similarProductName);
     const similarProductPageURL = similarProductInformation.pageURL;
-    const similarProductImageURL = similarProductInformation.imageURL;
+    const similarProductimageSrc = similarProductInformation.imageSrc;
     const similarProductPrice = similarProductInformation.price;
 
     const similarProductDivElement = document.createElement("div");
@@ -130,7 +130,7 @@ function appendToMainProductDiv(productName) {
 
     const similarProductImgElement = document.createElement("img");
     similarProductImgElement.className = "similar-product-image";
-    similarProductImgElement.setAttribute("src", "../../" + similarProductImageURL);
+    similarProductImgElement.setAttribute("src", "../../" + similarProductimageSrc);
     similarProductImgElement.setAttribute("alt", similarProductName);
     similarProductAElement.appendChild(similarProductImgElement);
 
