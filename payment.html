@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Payment</title>
+</head>
+
+<body>
+    <!--Navbar Start-->
+    <header>
+      <nav class="checkout-navbar navbar">CHECKOUT</nav>
+  </header>
+  <!--Navbar End-->
+
+  <div id="paymentInformation">Payment Information</div>
+    <div class="payment-form">
+      <div id="weAccept">
+        <p class="we-accept-text">We Accept:</p>
+        <div id="weAcceptImages">
+          <img src="images/payment_options/american_express_logo.png" alt="American Express">
+          <img src="images/payment_options/mastercard_logo.png" alt="Mastercard">
+          <img src="images/payment_options/paypal_logo.png" alt="Paypal">
+          <img src="images/payment_options/visa_logo.png" alt="Visa">
+        </div>
+      </div>
+      <div class="name-on-card">
+          <label for="nameOnCard"><span class="required-asterisk">*</span>Name on Credit Card:</label>
+          <input type="text" name="nameOnCard" id="nameOnCard" placeholder="Johnny Appleseed">
+      </div>
+      <div class="card-number">
+          <label for="cardNumber"><span class="required-asterisk">*</span>Credit Card Number:</label>
+          <input type="text" name="cardNumber" id="cardNumber" placeholder="1234 5678 9012 4567">
+      </div>
+      <div class="expiry-date">
+          <label for="expiryDate"><span class="required-asterisk">*</span>Expiry Date:</label>
+          <input type="month" name="expiryDate" id="expiryDate" placeholder="January">
+      </div>
+      <div class="cvv">
+          <label for="cvv"><span class="required-asterisk">*</span>CVV:</label>
+          <input type="password" name="cvv" id="cvv" placeholder="123">
+      </div>
+      <a class="go-to-review" href="review.html">
+          <button class="btn" id="goToReviewButton" type="submit">Go to Review!</button>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>GoodGame.com, Copyright &copy;2021</p>
+  </footer>
+</body>
+
+</html>

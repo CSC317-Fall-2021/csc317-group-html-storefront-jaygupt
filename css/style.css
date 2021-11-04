@@ -366,6 +366,7 @@ button > a {
     background-color: #f08f57;
     color: white;
     font-size: 1.5em;
+    padding: 5px;
     text-align: center;
 }
 
@@ -388,6 +389,163 @@ button > a {
 }
 /* Cart Page (Ending) */
 
+/* Shipping Information Page (Beginning) */
+.checkout-navbar {
+    font-size: 2em;
+}
+
+#shippingInformation {
+    font-size: 1.8em;
+    margin-top: 35px;
+    text-align: center;
+}
+
+.shipping-form {
+    column-gap: 25px;
+    row-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 15px auto;
+    margin-bottom: 35px;
+    width: 50%;
+}
+
+.shipping-form input {
+    height: 30px;
+}
+
+.shipping-form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.street-address, .special-instructions, .go-to-payment {
+    grid-column: 1 / 3;
+}
+
+#goToPaymentButton {
+    width: 100%;
+}
+/* Shipping Information Page (Ending) */
+
+/* Payment Page (Beginning) */
+#paymentInformation {
+    font-size: 1.8em;
+    margin-top: 35px;
+    text-align: center;
+}
+
+.payment-form {
+    column-gap: 25px;
+    row-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 15px auto;
+    margin-bottom: 35px;
+    width: 50%;
+}
+
+.payment-form input {
+    height: 30px;
+}
+
+.payment-form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+#weAccept, .name-on-card, .card-number, .go-to-review {
+    grid-column: 1 / 3;
+}
+
+#goToReviewButton {
+    width: 100%;
+}
+
+#weAcceptImages {
+    display: flex;
+    flex-direction: row;
+}
+
+.we-accept-text {
+    display: block;
+    margin-bottom: 7.5px;
+}
+
+#weAcceptImages > img {
+    height: 50px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+/* Payment Page (Ending) */
+
+/* Review Page (Beginning) */
+#review {
+    font-size: 1.8em;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#reviewSummary {
+    margin: 15px auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 30px;
+    row-gap: 5px;
+    width: 25%;
+}
+
+#reviewSummary > .amount {
+    text-align: right;
+}
+
+.divider {
+    background-color: #f08f57;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 3px;
+    width: 100%;
+}
+
+#reviewButton {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-top: 5px;
+}
+
+#reviewButton button {
+    width: 100%;
+}
+/* Review Page (Ending) */
+
+/* Confirmation Page (Beginning) */
+#confirmation {
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+#greenCheckmark {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#greenCheckmark img {
+    height: 200px;
+    object-fit: contain;
+}
+
+#continueShopping {
+    text-align: center;
+}
+
+#continueShopping button {
+    width: 350px;
+    margin-bottom: 25px;
+}
+/* Confirmation Page (Ending) */
+
 .footer {
     width: 100%;
     height: 70px;
@@ -399,7 +557,6 @@ button > a {
     font-size: 0.9rem;
     font-weight: bold;
 }
-
 
 @media(max-width: 1030px) {
     .navbar {

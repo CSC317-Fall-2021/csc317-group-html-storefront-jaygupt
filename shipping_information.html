@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Shipping Information</title>
+</head>
+
+<body>
+    <!--Navbar Start-->
+    <header>
+        <nav class="checkout-navbar navbar">CHECKOUT</nav>
+    </header>
+    <!--Navbar End-->
+
+    <div id="shippingInformation">Shipping Information</div>
+    <div class="shipping-form">
+        <div class="first-name">
+            <label for="firstName"><span class="required-asterisk">*</span>First Name:</label>
+            <input type="text" name="firstName" id="firstName" placeholder="Johnny">
+        </div>
+        <div class="last-name">
+            <label for="lastName"><span class="required-asterisk">*</span>Last Name:</label>
+            <input type="text" name="lastName" id="lastName" placeholder="Appleseed">
+        </div>
+        <div class="street-address">
+            <label for="streetAddress"><span class="required-asterisk">*</span>Street Address:</label>
+            <input type="text" name="streetAddress" id="streetAddress" placeholder="1234 Greendale Way">
+        </div>
+        <div class="city">
+            <label for="city"><span class="required-asterisk">*</span>City:</label>
+            <input type="text" name="city" id="city" placeholder="San Francisco">
+        </div>
+        <div class="state">
+            <label for="state"><span class="required-asterisk">*</span>State:</label>
+            <input type="text" name="state" id="state" placeholder="California">
+        </div>
+        <div class="postal-code">
+            <label for="postalCode"><span class="required-asterisk">*</span>Postal Code:</label>
+            <input type="number" name="postalCode" id="postalCode" placeholder="12345">
+        </div>
+        <div class="country">
+            <label for="country"><span class="required-asterisk">*</span>Country:</label>
+            <input type="text" name="country" id="country" placeholder="United States">
+        </div>
+        <div class="phone-number">
+            <label for="phoneNumber"><span class="required-asterisk">*</span>Phone Number:</label>
+            <input type="text" name="phoneNumber" id="phoneNumber" placeholder="(123) 456-7890">
+        </div>
+        <div class="email-order-confirmation">
+            <label for="emailOrderConfirmation"><span class="required-asterisk">*</span>Email (Order Confirmation):</label>
+            <input type="email" name="emailOrderConfirmation" id="emailOrderConfirmation" placeholder="johnnyappleseed@gmail.com">
+        </div>
+        <div class="special-instructions">
+            <label for="specialInstructions">Special Instructions:</label>
+            <textarea id="specialInstructions" name="specialInstructions" rows="5" cols="50"></textarea>
+        </div>
+        <a class="go-to-payment" href="payment.html">
+            <button class="btn" id="goToPaymentButton" type="submit">Go to Payment!</button>
+        </a>
+    </div>
+
+    <footer class="footer">
+        <p>GoodGame.com, Copyright &copy;2021</p>
+    </footer>
+</body>
+
+</html>
