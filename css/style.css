@@ -424,6 +424,7 @@ button > a {
 }
 
 #goToPaymentButton {
+    margin-bottom: 100px;
     width: 100%;
 }
 /* Shipping Information Page (Ending) */
@@ -459,6 +460,7 @@ button > a {
 }
 
 #goToReviewButton {
+    margin-bottom: 150px;
     width: 100%;
 }
 
@@ -514,6 +516,7 @@ button > a {
 }
 
 #reviewButton button {
+    margin-bottom: 150px;
     width: 100%;
 }
 /* Review Page (Ending) */
@@ -542,7 +545,7 @@ button > a {
 
 #continueShopping button {
     width: 350px;
-    margin-bottom: 25px;
+    margin-bottom: 150px;
 }
 /* Confirmation Page (Ending) */
 
