@@ -387,6 +387,11 @@ button > a {
 #subtotalColumn {
     grid-column: 5 / 6;
 }
+
+.success {
+    color: green;
+    font-size: 1.1em;
+}
 /* Cart Page (Ending) */
 
 /* Shipping Information Page (Beginning) */

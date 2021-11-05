@@ -191,6 +191,7 @@
     </script>
     <script type="text/javascript" defer>
         const receivesDiscount = JSON.parse(localStorage.getItem("receivesDiscount")); // true if user receives discount
+        const couponInputField = document.getElementById("coupon");
 
         const quantitySelectElements = document.querySelectorAll(".quantity-select");
         const subtotalSummaryElement = document.getElementsByClassName("subtotal-amount amount")[0];
@@ -210,9 +211,12 @@
         const deliverySummaryValue = 5; // delivery is $5
         var discountSummaryValue;
         if (receivesDiscount) {
+            couponInputField.disabled = true; // disable after getting it correct
+            discountSummaryElement.classList.add("success");
+            document.getElementsByClassName("discount")[0].classList.add("success");
             discountSummaryValue = 8; // discount is $8
         } else {
-            discountSummaryValue = 0;
+            discountSummaryValue = 0; // no discount
         }
         totalSummaryValue = summarySubtotalValue - discountSummaryValue + taxSummaryValue + deliverySummaryValue;
 
@@ -264,7 +268,6 @@
     <script>
         // Activate Coupon Code: GabrielGames for $8 off Total Order!
 
-        const couponInputField = document.getElementById("coupon");
         const applyButton = document.querySelector(".apply-coupon");
         applyButton.addEventListener("click", () => {
             if (couponInputField.value == "GabrielGames") {
