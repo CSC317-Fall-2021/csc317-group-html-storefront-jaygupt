@@ -33,14 +33,14 @@ function appendToMainProductDiv(productName) {
   overflowDivElement.appendChild(innerDivElement);
 
   for (var i = 1; i < 5; i++) {
-      const slideClassDivElement = document.createElement("div");
-      slideClassDivElement.classList.add("slide", "slide-" + i);
-      innerDivElement.appendChild(slideClassDivElement);
+    const slideClassDivElement = document.createElement("div");
+    slideClassDivElement.classList.add("slide", "slide-" + i);
+    innerDivElement.appendChild(slideClassDivElement);
 
-      const slideContentDivElement = document.createElement("div");
-      slideContentDivElement.className = "slide-content";
+    const slideContentDivElement = document.createElement("div");
+    slideContentDivElement.className = "slide-content";
 
-      slideClassDivElement.appendChild(slideContentDivElement);
+    slideClassDivElement.appendChild(slideContentDivElement);
   }
 
   const product = findProduct(productName);
@@ -80,8 +80,8 @@ function appendToMainProductDiv(productName) {
 
   // find quantity of item using cart and quantities array (if it is in cart)
   if (productInCart) {
-      const indexOfProduct = cart.indexOf(productName); // find index of product in cart array
-      itemQuantity = quantities[indexOfProduct];
+    const indexOfProduct = cart.indexOf(productName); // find index of product in cart array
+    itemQuantity = quantities[indexOfProduct];
   }
 
   /* 
@@ -97,10 +97,10 @@ function appendToMainProductDiv(productName) {
 
   // if product is not in cart yet, do not show the increment/decrement counter
   if (!productInCart) {
-      incrementAndDecrementDivElement.setAttribute("style", "display:none");
+    incrementAndDecrementDivElement.setAttribute("style", "display:none");
   } else {
-      // product is in cart; hide the main add to cart button
-      mainAddToCartButton.setAttribute("style", "display: none");
+    // product is in cart; hide the main add to cart button
+    mainAddToCartButton.setAttribute("style", "display: none");
   }
 
   const minusButton = document.createElement("button");
@@ -131,7 +131,7 @@ function appendToMainProductDiv(productName) {
   // had to use cloneNode method as appendChild was only appending the last
   // image element
   for (let i = 0; i < slideContents.length; i++) {
-      slideContents[i].appendChild(productImageElement.cloneNode(true));
+    slideContents[i].appendChild(productImageElement.cloneNode(true));
   }
 
   // Do the same for Mini Image Elements
@@ -140,16 +140,16 @@ function appendToMainProductDiv(productName) {
 
   // append the mini images to the miniImagesDivElement
   for (var i = 1; i < 5; i++) {
-      const miniImageDivElement = document.createElement("div");
-      miniImageDivElement.className = "mini-image";
-      miniImagesDivElement.appendChild(miniImageDivElement);
+    const miniImageDivElement = document.createElement("div");
+    miniImageDivElement.className = "mini-image";
+    miniImagesDivElement.appendChild(miniImageDivElement);
 
-      const miniImageLabelElement = document.createElement("label");
-      miniImageDivElement.appendChild(miniImageLabelElement);
+    const miniImageLabelElement = document.createElement("label");
+    miniImageDivElement.appendChild(miniImageLabelElement);
 
-      miniImageLabelElement.setAttribute("for", "slide" + i);
-      miniImageLabelElement.className = "slide-" + i;
-      miniImageLabelElement.appendChild(productImageElement.cloneNode(true));
+    miniImageLabelElement.setAttribute("for", "slide" + i);
+    miniImageLabelElement.className = "slide-" + i;
+    miniImageLabelElement.appendChild(productImageElement.cloneNode(true));
   }
 
   sliderDivElement.appendChild(miniImagesDivElement);
@@ -201,8 +201,8 @@ function appendToMainProductDiv(productName) {
 
     // find quantity of item using cart and quantities array (if it is in cart)
     if (productInCart) {
-        const indexOfProduct = cart.indexOf(similarProductName); // find index of product in cart array
-        itemQuantity = quantities[indexOfProduct];
+      const indexOfProduct = cart.indexOf(similarProductName); // find index of product in cart array
+      itemQuantity = quantities[indexOfProduct];
     }
 
     /* 
@@ -218,10 +218,10 @@ function appendToMainProductDiv(productName) {
 
     // if product is not in cart yet, do not show the increment/decrement counter
     if (!productInCart) {
-        incrementAndDecrementDivElement.setAttribute("style", "display:none");
+      incrementAndDecrementDivElement.setAttribute("style", "display:none");
     } else {
-        // product is in cart; hide the similar product add to cart button
-        similarProductAddToCartButton.setAttribute("style", "display: none");
+      // product is in cart; hide the similar product add to cart button
+      similarProductAddToCartButton.setAttribute("style", "display: none");
     }
 
     const minusButton = document.createElement("button");
