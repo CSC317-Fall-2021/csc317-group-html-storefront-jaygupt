@@ -73,6 +73,51 @@ function appendToMainProductDiv(productName) {
   mainAddToCartButton.textContent = "Add to Cart";
   productSpecificationDivElement.appendChild(mainAddToCartButton);
 
+  // check to see if product is in cart already
+  const productInCart = cart.includes(productName)
+  // by default, itemQuantity is 0
+  var itemQuantity = 0;
+
+  // find quantity of item using cart and quantities array (if it is in cart)
+  if (productInCart) {
+      const indexOfProduct = cart.indexOf(productName); // find index of product in cart array
+      itemQuantity = quantities[indexOfProduct];
+  }
+
+  /* 
+  <div class="increment-and-decrement">
+      <button class="minus-btn">-</button>
+      <input type="text" class="quantity" value="1" readonly>
+      <button class="plus-btn">+</button>
+  </div>
+  */
+  const incrementAndDecrementDivElement = document.createElement("div");
+  productSpecificationDivElement.appendChild(incrementAndDecrementDivElement);
+  incrementAndDecrementDivElement.className = "increment-and-decrement";
+
+  // if product is not in cart yet, do not show the increment/decrement counter
+  if (!productInCart) {
+      incrementAndDecrementDivElement.setAttribute("style", "display:none");
+  } else {
+      // product is in cart; hide the main add to cart button
+      mainAddToCartButton.setAttribute("style", "display: none");
+  }
+
+  const minusButton = document.createElement("button");
+  incrementAndDecrementDivElement.appendChild(minusButton);
+  minusButton.className = "minus-btn";
+  minusButton.textContent = "-";
+  const quantityInputElement = document.createElement("input");
+  incrementAndDecrementDivElement.appendChild(quantityInputElement);
+  quantityInputElement.setAttribute("type", "text");
+  quantityInputElement.setAttribute("class", "quantity");
+  quantityInputElement.setAttribute("value", itemQuantity);
+  quantityInputElement.readOnly = true;
+  const plusButton = document.createElement("button");
+  incrementAndDecrementDivElement.appendChild(plusButton);
+  plusButton.className = "plus-btn";
+  plusButton.textContent = "+";
+
   mainProductDivElement.appendChild(productSpecificationDivElement);
 
   // Create Element for Image, and Append it Wherever it is Needed
@@ -148,5 +193,50 @@ function appendToMainProductDiv(productName) {
     similarProductAddToCartButton.classList.add("btn", "add-to-cart");
     similarProductAddToCartButton.textContent = "Add to Cart";
     similarProductDivElement.appendChild(similarProductAddToCartButton);
+
+    // check to see if product is in cart already
+    const productInCart = cart.includes(similarProductName)
+    // by default, itemQuantity is 0
+    var itemQuantity = 0;
+
+    // find quantity of item using cart and quantities array (if it is in cart)
+    if (productInCart) {
+        const indexOfProduct = cart.indexOf(similarProductName); // find index of product in cart array
+        itemQuantity = quantities[indexOfProduct];
+    }
+
+    /* 
+    <div class="increment-and-decrement">
+        <button class="minus-btn">-</button>
+        <input type="text" class="quantity" value="1" readonly>
+        <button class="plus-btn">+</button>
+    </div>
+    */
+    const incrementAndDecrementDivElement = document.createElement("div");
+    similarProductDivElement.appendChild(incrementAndDecrementDivElement);
+    incrementAndDecrementDivElement.className = "increment-and-decrement";
+
+    // if product is not in cart yet, do not show the increment/decrement counter
+    if (!productInCart) {
+        incrementAndDecrementDivElement.setAttribute("style", "display:none");
+    } else {
+        // product is in cart; hide the similar product add to cart button
+        similarProductAddToCartButton.setAttribute("style", "display: none");
+    }
+
+    const minusButton = document.createElement("button");
+    incrementAndDecrementDivElement.appendChild(minusButton);
+    minusButton.className = "minus-btn";
+    minusButton.textContent = "-";
+    const quantityInputElement = document.createElement("input");
+    incrementAndDecrementDivElement.appendChild(quantityInputElement);
+    quantityInputElement.setAttribute("type", "text");
+    quantityInputElement.setAttribute("class", "quantity");
+    quantityInputElement.setAttribute("value", itemQuantity);
+    quantityInputElement.readOnly = true;
+    const plusButton = document.createElement("button");
+    incrementAndDecrementDivElement.appendChild(plusButton);
+    plusButton.className = "plus-btn";
+    plusButton.textContent = "+";
   }
 }

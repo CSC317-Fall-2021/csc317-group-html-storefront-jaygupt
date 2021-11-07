@@ -68,12 +68,7 @@
     <!-- Script Tags -->
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" defer>
-        // get the cart variable from local storage as an array
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const cartItemsDivElement = document.getElementById("cartItems");
-
-        // get the quantities variable from local storage as an array
-        let quantities = JSON.parse(localStorage.getItem("quantities")) || [];
 
         // display all items added to cart
         for (var i = 0; i < cart.length; i++) {

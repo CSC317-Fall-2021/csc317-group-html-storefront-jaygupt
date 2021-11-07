@@ -136,6 +136,38 @@ button > a {
     transform: scale(0.9);
 }
 
+/* +/- div that appears after "Add to Cart" has been clicked */
+.increment-and-decrement {
+    display: flex;
+}
+  
+.increment-and-decrement button {
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 30px;
+    height: 40px;
+    width: 40px;
+    background-color: #f08f57;
+}
+
+.minus-btn {
+    border-radius: 45px 0 0 45px;
+}
+
+.plus-btn {
+    border-radius: 0 45px 45px 0;
+}
+
+.increment-and-decrement input[type="text"] {
+    background-color: #f08f57;
+    border: none;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    width: 100px;
+}
+
 .hidden{
     /*visibility: hidden;*/
     opacity: 0;

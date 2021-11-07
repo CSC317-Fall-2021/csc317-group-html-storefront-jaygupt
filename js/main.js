@@ -245,6 +245,10 @@ var data = {
 
 const productsArray = data.products;
 
+// cart and quantities defined here
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const quantities = JSON.parse(localStorage.getItem("quantities")) || [];
+
 // Returns name, price, description, imageSrc, and category given the name of the product
 function findProduct(productName) {
   for (let i = 0; i < productsArray.length; i++) {
