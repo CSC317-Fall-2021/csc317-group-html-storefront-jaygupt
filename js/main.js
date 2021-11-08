@@ -148,7 +148,7 @@ var data = {
       "name": "Apples to Apples",
       "price": 29.99,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore officiis consequuntur laborum ad dolorem veritatis tenetur praesentium saepe fugiat! Laboriosam laborum veniam architecto aliquam commodi adipisci doloribus, quis sapiente earum voluptatem quas voluptate fugiat! Error officiis odio praesentium dolorum?",
-      "imageSrc": "images/product_images/cards/apples_to_apples.jpeg",
+      "imageSrc": "images/product_images/cards/apples_to_apples.webp",
       "pageURL": "apples_to_apples.html",
       "category": "Cards"
     },
@@ -245,11 +245,14 @@ var data = {
 
 const productsArray = data.products;
 
+// all categories
+const categories = ["Action Figures", "Board Games", "Building Blocks", "Cards", "Cars and Motorcycles"];
+
 // cart and quantities defined here
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const quantities = JSON.parse(localStorage.getItem("quantities")) || [];
 
-// Returns name, price, description, imageSrc, and category given the name of the product
+// Returns name, price, description, imageSrc, pageURL, and category given the name of the product
 function findProduct(productName) {
   for (let i = 0; i < productsArray.length; i++) {
     if (productsArray[i]["name"] == productName) {
@@ -267,7 +270,6 @@ const categoryToFolder = {
   "Cars and Motorcycles": "cars_and_motorcycles"
 }
 
-// TODO: Use in cart.html when merging revise-pages branch
 function getLinkToProductPage(productName) {
   const productInformation = findProduct(productName);
   const productCategory = productInformation["category"];
@@ -277,6 +279,19 @@ function getLinkToProductPage(productName) {
   const linkToProductPage = `product_pages/${productCategoryFolder}/${productPageURL}`;
 
   return linkToProductPage;
+}
+
+// find products in a given category
+function findProductsInCategory(category) {
+  var productsInCategory = [];
+
+  for (var i = 0; i < productsArray.length; i++) {
+    if (productsArray[i]["category"] == category) {
+      productsInCategory.push(productsArray[i]["name"]);
+    }
+  }
+
+  return productsInCategory;
 }
 
 // query for similar products array: same category, and doesn't include the product itself
