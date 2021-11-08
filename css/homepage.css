@@ -130,10 +130,22 @@
 
 .trending-section .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 350px);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: space-evenly;
   grid-gap: 75px;
   margin: 0 auto;
+}
+
+@media all and (max-width: 1030px) {
+  .trending-section .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media all and (max-width: 630px) {
+  .trending-section .grid-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 .grid-container .grid-item {
