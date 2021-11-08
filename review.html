@@ -20,16 +20,16 @@
 
   <div id="reviewSummary">
     <div class="subtotal">Subtotal:</div>
-    <div class="subtotal-amount amount">$75.87</div>
+    <div class="subtotal-amount amount"></div>
     <div class="discount">Discount:</div>
-    <div class="discount-amount amount">-$9.00</div>
+    <div class="discount-amount amount"></div>
     <div class="tax">Tax:</div>
-    <div class="tax-amount amount">$6.29</div>
+    <div class="tax-amount amount"></div>
     <div class="delivery">Delivery:</div>
-    <div class="delivery-amount amount">$5.00</div>
+    <div class="delivery-amount amount"></div>
     <div class="divider"></div>
     <div class="total">Total:</div>
-    <div class="total-amount amount">$89.19</div>
+    <div class="total-amount amount"></div>
     <a id="reviewButton" href="confirmation.html">
         <button class="btn">Confirm!</button>
     </a>
@@ -41,6 +41,30 @@
 
   <!-- Script Tags -->
   <script type="text/javascript" defer>
+    const subtotalReviewElement = document.getElementsByClassName("subtotal-amount amount")[0];
+    const discountReviewElement = document.getElementsByClassName("discount-amount amount")[0];
+    const taxReviewElement = document.getElementsByClassName("tax-amount amount")[0];
+    const deliveryReviewElement = document.getElementsByClassName("delivery-amount amount")[0];
+    const totalReviewElement = document.getElementsByClassName("total-amount amount")[0];
+
+    // query localStorage for values
+    const subtotalReviewValue = localStorage.getItem("subtotal");
+    const discountReviewValue = localStorage.getItem("discount");
+
+    // add success class if discount is not 0
+    if (discountReviewValue != 0) {
+      discountReviewElement.classList.add("success");
+    }
+
+    const taxReviewValue = localStorage.getItem("tax");
+    const deliveryReviewValue = localStorage.getItem("delivery");
+    const totalReviewValue = localStorage.getItem("total");
+
+    subtotalReviewElement.textContent = "$" + subtotalReviewValue; // set review subtotal value
+    discountReviewElement.textContent = "-$" + discountReviewValue; // set review discount value
+    taxReviewElement.textContent = "$" + taxReviewValue; // set review tax value
+    deliveryReviewElement.textContent = "$" + deliveryReviewValue; // set review delivery value
+    totalReviewElement.textContent = "$" + totalReviewValue; // set review total value
   </script>
 </body>
 

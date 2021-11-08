@@ -209,7 +209,7 @@
         for (let i = 0; i < rowSubtotalElements.length; i++) {
             summarySubtotalValue += parseFloat(rowSubtotalElements[i].textContent.slice(1));
         }
-        taxSummaryValue = summarySubtotalValue * 0.0725; // tax is 7.25% of subtotal 
+        taxSummaryValue = (summarySubtotalValue * 0.0725); // tax is 7.25% of subtotal 
         const deliverySummaryValue = 5; // delivery is $5
         var discountSummaryValue;
         if (receivesDiscount) {
@@ -221,6 +221,13 @@
             discountSummaryValue = 0; // no discount
         }
         totalSummaryValue = summarySubtotalValue - discountSummaryValue + taxSummaryValue + deliverySummaryValue;
+
+        // set localStorage values
+        localStorage.setItem("subtotal", summarySubtotalValue.toFixed(2));
+        localStorage.setItem("discount", discountSummaryValue.toFixed(2));
+        localStorage.setItem("tax", taxSummaryValue.toFixed(2));
+        localStorage.setItem("delivery", deliverySummaryValue.toFixed(2));
+        localStorage.setItem("total", totalSummaryValue.toFixed(2));
 
         subtotalSummaryElement.textContent = "$" + summarySubtotalValue.toFixed(2); // set summary subtotal value
         discountSummaryElement.textContent = "-$" + discountSummaryValue.toFixed(2); // set summary discount value
@@ -252,9 +259,20 @@
 
                 // New Summary Subtotal Value = Old Summary Subtotal Value - Old Corresponding Subtotal Value + New Corresponding Subtotal Value 
                 const newSummarySubtotalValue = subtotalSummaryElementOldValue - correspondingSubtotalPElementValue + newCorrespondingSubtotalPElementValue;
-                const newDiscountPElementValue = newSummarySubtotalValue * 0.2; // calculate new discount summary value
+                var newDiscountPElementValue;
+                if (receivesDiscount) {
+                    newDiscountPElementValue = newSummarySubtotalValue * 0.2; // calculate new discount summary value
+                } else {
+                    newDiscountPElementValue = 0; // no discount
+                }
                 const newTaxPElementValue = newSummarySubtotalValue * 0.0725; // calculate new summary tax value
                 const newTotalPElementValue = newSummarySubtotalValue - newDiscountPElementValue + newTaxPElementValue + deliverySummaryValue; // calculate new summary total value
+
+                // set localStorage values
+                localStorage.setItem("subtotal", newSummarySubtotalValue.toFixed(2));
+                localStorage.setItem("discount", newDiscountPElementValue.toFixed(2));
+                localStorage.setItem("tax", newTaxPElementValue.toFixed(2));
+                localStorage.setItem("total", newTotalPElementValue.toFixed(2));
 
                 subtotalSummaryElement.textContent = "$" + newSummarySubtotalValue.toFixed(2);
                 discountSummaryElement.textContent = "-$" + newDiscountPElementValue.toFixed(2); // set the summary discount value
