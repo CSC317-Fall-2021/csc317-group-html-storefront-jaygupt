@@ -424,6 +424,21 @@ button > a {
     color: green;
     font-size: 1.1em;
 }
+
+#noItems {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 250px;
+}
+
+#noItems p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+#noItems button {
+    width: 25%;
+}
 /* Cart Page (Ending) */
 
 /* Shipping Information Page (Beginning) */
