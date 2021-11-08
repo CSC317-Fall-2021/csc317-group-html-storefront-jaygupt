@@ -216,7 +216,7 @@
             couponInputField.disabled = true; // disable after getting it correct
             discountSummaryElement.classList.add("success");
             document.getElementsByClassName("discount")[0].classList.add("success");
-            discountSummaryValue = 10; // discount is $10
+            discountSummaryValue = 0.2 * summarySubtotalValue; // discount is 20% of subtotal
         } else {
             discountSummaryValue = 0; // no discount
         }
@@ -245,16 +245,19 @@
                 const correspondingSubtotalPElement = document.getElementsByClassName("subtotal-" + i)[0];
 
                 const correspondingSubtotalPElementValue = correspondingSubtotalPElement.textContent.slice(1);
+
                 const newCorrespondingSubtotalPElementValue = correspondingPricePerUnit * valueChangedTo;
                 correspondingSubtotalPElement.textContent = "$" + newCorrespondingSubtotalPElementValue.toFixed(2);
                 const subtotalSummaryElementOldValue = subtotalSummaryElement.textContent.slice(1);
 
                 // New Summary Subtotal Value = Old Summary Subtotal Value - Old Corresponding Subtotal Value + New Corresponding Subtotal Value 
                 const newSummarySubtotalValue = subtotalSummaryElementOldValue - correspondingSubtotalPElementValue + newCorrespondingSubtotalPElementValue;
+                const newDiscountPElementValue = newSummarySubtotalValue * 0.2; // calculate new discount summary value
                 const newTaxPElementValue = newSummarySubtotalValue * 0.0725; // calculate new summary tax value
-                const newTotalPElementValue = newSummarySubtotalValue - discountSummaryValue + newTaxPElementValue + deliverySummaryValue; // calculate new summary total value
+                const newTotalPElementValue = newSummarySubtotalValue - newDiscountPElementValue + newTaxPElementValue + deliverySummaryValue; // calculate new summary total value
 
                 subtotalSummaryElement.textContent = "$" + newSummarySubtotalValue.toFixed(2);
+                discountSummaryElement.textContent = "-$" + newDiscountPElementValue.toFixed(2); // set the summary discount value
                 taxSummaryElement.textContent = "$" + newTaxPElementValue.toFixed(2); // set the summary tax value
                 totalSummaryElement.textContent = "$" + newTotalPElementValue.toFixed(2); // set the summary total value
             });
