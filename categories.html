@@ -73,48 +73,94 @@
                 innerSliderDivElement.appendChild(productDivElement);
                 productDivElement.className = "product";
 
-               /*
-                <a href="product_pages/action_figures/captain_america.html">
-                    <img class="item-image"
-                        src="images/product_images/action_figures/captain_america.jpeg"
-                        alt="Captain America">
-                </a>
-               */
-               const productAElement = document.createElement("a");
-               productDivElement.appendChild(productAElement);
+                /*
+                 <a href="product_pages/action_figures/captain_america.html">
+                     <img class="item-image"
+                         src="images/product_images/action_figures/captain_america.jpeg"
+                         alt="Captain America">
+                 </a>
+                */
+                const productAElement = document.createElement("a");
+                productDivElement.appendChild(productAElement);
 
-               // get link to product page
-               const linkToProductPage = getLinkToProductPage(product);
-               productDivElement.appendChild(productAElement);
-               productAElement.setAttribute("href", linkToProductPage);
+                // get link to product page
+                const linkToProductPage = getLinkToProductPage(product);
+                productDivElement.appendChild(productAElement);
+                productAElement.setAttribute("href", linkToProductPage);
 
-               const productImage = document.createElement("img");
-               productAElement.appendChild(productImage);
-               productImage.className = "item-image";
-               productImage.setAttribute("src", productInformation["imageSrc"]);
-               productImage.setAttribute("alt", product);
+                const productImage = document.createElement("img");
+                productAElement.appendChild(productImage);
+                productImage.className = "item-image";
+                productImage.setAttribute("src", productInformation["imageSrc"]);
+                productImage.setAttribute("alt", product);
 
-               // <div class="product-title">Captain America</div>
-               const productTitleDivElement = document.createElement("div");
-               productDivElement.appendChild(productTitleDivElement);
-               productTitleDivElement.className = "product-title";
-               productTitleDivElement.textContent = product;
+                // <div class="product-title">Captain America</div>
+                const productTitleDivElement = document.createElement("div");
+                productDivElement.appendChild(productTitleDivElement);
+                productTitleDivElement.className = "product-title";
+                productTitleDivElement.textContent = product;
 
-               // <div class="item-price">$29.99</div>
-               const itemPriceDivElement = document.createElement("div");
-               productDivElement.appendChild(itemPriceDivElement);
-               itemPriceDivElement.className = "item-price";
-               itemPriceDivElement.textContent = "$" + productInformation["price"];
+                // <div class="item-price">$29.99</div>
+                const itemPriceDivElement = document.createElement("div");
+                productDivElement.appendChild(itemPriceDivElement);
+                itemPriceDivElement.className = "item-price";
+                itemPriceDivElement.textContent = "$" + productInformation["price"];
 
-               // <button class="btn add-to-cart">Add to Cart</button>
-               const addToCartButton = document.createElement("button");
-               productDivElement.appendChild(addToCartButton);
-               addToCartButton.classList.add("btn", "add-to-cart");
-               addToCartButton.textContent = "Add to Cart";
+                // <button class="btn add-to-cart">Add to Cart</button>
+                const addToCartButton = document.createElement("button");
+                productDivElement.appendChild(addToCartButton);
+                addToCartButton.classList.add("btn", "add-to-cart");
+                addToCartButton.textContent = "Add to Cart";
+
+                // check to see if product is in cart already
+                const productInCart = cart.includes(product);
+
+                // by default, itemQuantity is 0
+                var itemQuantity = 0;
+
+                const incrementAndDecrementDivElement = document.createElement("div");
+                productDivElement.appendChild(incrementAndDecrementDivElement);
+                incrementAndDecrementDivElement.className = "increment-and-decrement";
+
+                // find quantity of item using cart and quantities array (if it is in cart)
+                if (productInCart) {
+                    const indexOfProduct = cart.indexOf(product); // find index of product in cart array
+                    itemQuantity = quantities[indexOfProduct];
+                }
+
+                // if product is not in cart yet, do not show the increment/decrement counter
+                if (!productInCart) {
+                    incrementAndDecrementDivElement.setAttribute("style", "display:none");
+                } else {
+                    // product is in cart; hide the add to cart button
+                    addToCartButton.setAttribute("style", "display: none");
+                }
+
+                /* 
+                <div class="increment-and-decrement">
+                    <button class="minus-btn">-</button>
+                    <input type="text" class="quantity" value="1" readonly>
+                    <button class="plus-btn">+</button>
+                </div>
+                */
+                const minusButton = document.createElement("button");
+                incrementAndDecrementDivElement.appendChild(minusButton);
+                minusButton.className = "minus-btn";
+                minusButton.textContent = "-";
+                const quantityInputElement = document.createElement("input");
+                incrementAndDecrementDivElement.appendChild(quantityInputElement);
+                quantityInputElement.setAttribute("type", "text");
+                quantityInputElement.setAttribute("class", "quantity");
+                quantityInputElement.setAttribute("value", itemQuantity);
+                quantityInputElement.readOnly = true;
+                const plusButton = document.createElement("button");
+                incrementAndDecrementDivElement.appendChild(plusButton);
+                plusButton.className = "plus-btn";
+                plusButton.textContent = "+";
             }
         }
     </script>
-    <!-- <script type="text/javascript" defer src="js/add_to_cart.js"></script> -->
+    <script type="text/javascript" defer src="js/add_to_cart.js"></script>
     <script type="text/javascript" defer>
         /* carousel drag function */
         let sliders = document.getElementsByClassName("slider");
@@ -150,9 +196,9 @@
             slider.addEventListener("mousemove", (e) => {
                 if (!pressed) return;
                 e.preventDefault();
-                
+
                 x = e.offsetX;
-                
+
                 innerSlider.style.left = `${x - startx}px`;
                 checkBoundary();
             });
@@ -160,7 +206,7 @@
             function checkBoundary() {
                 let outer = slider.getBoundingClientRect();
                 let inner = innerSlider.getBoundingClientRect();
-                
+
                 if (parseInt(innerSlider.style.left) > 0) {
                     innerSlider.style.left = "0px";
                 } else if (inner.right < outer.right) {
