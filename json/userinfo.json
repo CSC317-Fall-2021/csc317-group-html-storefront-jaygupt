@@ -1,0 +1,12 @@
+{
+    "userlist": [
+        {
+            "email": "kpatel10@sfsu.edu",
+            "password": "abcdef123456"
+        },
+        {
+            "email": "kpatel20@sfsu.edu",
+            "password": "abcdef123456"
+        }
+    ]
+}

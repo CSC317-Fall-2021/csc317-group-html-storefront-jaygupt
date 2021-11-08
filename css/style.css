@@ -257,15 +257,19 @@ button > a {
 }
 
 .form .form-control input{
+    background-color: rgb(221, 219, 219);
     margin-top: 5px;
     width: 100%;
+    padding-left: 10px;
+    border: none;
+    height: 40px;
 }
 
 #firstControl{
     margin-top: 15px;
 }
 
-.form input{
+.form > input{
     background-color: rgb(221, 219, 219);
     width: 80%;
     height: 40px;
@@ -298,6 +302,21 @@ button > a {
 .side .btn{
     background-color: transparent;
     border: 1px solid #fff;
+}
+
+#loginCheckbox{
+    display: flex;
+    font-size: 0.9rem;
+    align-content: center;
+    justify-content: left;
+    justify-self: left;
+    padding-top: 15px;
+    width: 80%;
+}
+
+#showPass{
+    width: 15px;
+    margin-right: 5px;
 }
 
 /* Cart Page (Beginning) */
