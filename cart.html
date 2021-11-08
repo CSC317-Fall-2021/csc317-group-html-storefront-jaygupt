@@ -59,6 +59,12 @@
                 </a>
             </div>
         </div>
+        <div id="noItems">
+            <p>There are no items in your cart!</p>
+            <a href="index.html">
+                <button class="btn">Click Here to Continue Shopping!</button>
+            </a>
+        </div>
     </div>
 
     <footer class="footer">
@@ -68,6 +74,7 @@
     <!-- Script Tags -->
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" defer>
+        const cartDivElement = document.getElementById("cart");
         const cartItemsDivElement = document.getElementById("cartItems");
 
         // display all items added to cart
@@ -209,7 +216,7 @@
             couponInputField.disabled = true; // disable after getting it correct
             discountSummaryElement.classList.add("success");
             document.getElementsByClassName("discount")[0].classList.add("success");
-            discountSummaryValue = 8; // discount is $8
+            discountSummaryValue = 10; // discount is $10
         } else {
             discountSummaryValue = 0; // no discount
         }
@@ -253,11 +260,17 @@
             });
         }
 
-        // if there are no items, hide the summary
+        // if there are no items, don't display cart items and bottom part; display a message to continue shopping
         const itemPictureDivElements = document.getElementsByClassName("item-picture");
         const bottomPartDivElement = document.getElementById("bottomPart");
+        const noItemsDivElement = document.getElementById("noItems"); // message
         if (itemPictureDivElements.length == 0) {
-            bottomPartDivElement.style.visibility = "hidden";
+            cartItemsDivElement.style.display = "none";
+            bottomPartDivElement.style.display = "none";
+            noItemsDivElement.style.display = "block";
+        } else {
+            // hide the message
+            noItemsDivElement.style.display = "none";
         }
     </script>
     <script>
