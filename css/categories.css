@@ -1,167 +1,54 @@
-.close-header {
-  width: 100%;
-  height: 3px;
-  background-color: #f08f57;
-}
-
-.no-arrows {
-  display: none;
-}
-
-.category-sections {
-  margin: 30px 0;
-}
-
-.category-sections .category-title {
-  font-size: 2.8em;
-  margin-bottom: 20px;
+.category-title {
+  font-size: 2.8rem;
   text-align: center;
+  margin-bottom: 30px;
 }
 
-.category-sections .grid-container {
+.slider {
+  position: relative;
+  margin: 50px auto;
+  height: 450px;
+  overflow: hidden;
+}
+
+.slider-inner {
+  column-gap: 50px;
+  pointer-events: none;
+  position: absolute;
+  width: 150%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 50px;
+  grid-template-columns: repeat(6, 1fr);
 }
 
-@media all and (max-width: 1180px) {
-  .with-arrows {
-    display: none;
-  }
-  
-  .no-arrows {
-    display: block;
-  }
-
-  .category-sections .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 260px);
-    justify-content: space-evenly;
-    grid-gap: 50px;
-    margin: 0 auto;
-  }
-}
-
-.grid-container .grid-item {
-  align-items: center;
+.product {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  height: 100%;
   text-align: center;
 }
 
-.category-item-image {
-  width: 250px;
-  height: 200px;
-
-  /* images keep aspect ratio; resized to fit above height and width */
-  object-fit: contain;
-}
-
-.grid-item .category-item-name {
-  font-size: 1.8em;
+.product .product-title {
+  font-size: 1.85em;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.grid-item .category-item-price {
+.product a img {
+  height: 200px;
+  object-fit: contain;
+  pointer-events: auto;
+}
+
+.product .item-price {
   font-size: 1.4em;
   margin-bottom: 1.25%;
 }
 
-/* Row Carousel */
-.carousel-wrapper {
-  height: 350px;
-  position: relative;
-  width: 100%;
-  display: block;
+.product button {
+  pointer-events: auto;
 }
 
-.carousel-item {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 25px 50px;
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
-}
-
-.arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 12px;
-}
-
-.arrow-prev {
-  left: 50px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) rotate(135deg);
-}
-
-.arrow-next {
-  right: 50px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) rotate(-45deg);
-}
-
-[id^="item"] {
-  display: none;
-}
-
-.item-1 {
-  z-index: 2;
-  opacity: 1;
-}
-
-*:target~.item-1 {
-  opacity: 0;
-}
-
-#actionFiguresFirstRow:target~.item-1 {
-  opacity: 1;
-}
-
-#actionFiguresSecondRow:target~.item-2 {
-  z-index: 3;
-  opacity: 1;
-}
-
-#boardGamesFirstRow:target~.item-1 {
-  opacity: 1;
-}
-
-#boardGamesSecondRow:target~.item-2 {
-  z-index: 3;
-  opacity: 1;
-}
-
-#buildingBlocksFirstRow:target~.item-1 {
-  opacity: 1;
-}
-
-#buildingBlocksSecondRow:target~.item-2 {
-  z-index: 3;
-  opacity: 1;
-}
-
-#cardGamesFirstRow:target~.item-1 {
-  opacity: 1;
-}
-
-#cardGamesSecondRow:target~.item-2 {
-  z-index: 3;
-  opacity: 1;
-}
-
-#carsAndMotorcyclesFirstRow:target~.item-1 {
-  opacity: 1;
-}
-
-#carsAndMotorcyclesSecondRow:target~.item-2 {
-  z-index: 3;
-  opacity: 1;
+.increment-and-decrement {
+  justify-content: center;
 }
