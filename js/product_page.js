@@ -127,9 +127,6 @@ function appendToMainProductDiv(productName) {
 
   const slideContents = document.getElementsByClassName("slide-content");
 
-  // TODO: Submit as Issue Faced: Couldn't simply use append Child; 
-  // had to use cloneNode method as appendChild was only appending the last
-  // image element
   for (let i = 0; i < slideContents.length; i++) {
     slideContents[i].appendChild(productImageElement.cloneNode(true));
   }
