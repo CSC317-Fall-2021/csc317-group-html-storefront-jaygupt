@@ -84,19 +84,9 @@
     <script type="text/javascript">
         var gridContainerDivElement = document.getElementsByClassName("grid-container")[0];
 
-        // fetches trending products data from mySQL database
-        async function fetchTrendingProductsData() {
-            try {
-                let response = await fetch("/products/trendingData");
-                return await response.json();
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
         // displays trending products data
         async function renderTrendingProductsData() {
-            let trendingProductsData = await fetchTrendingProductsData();
+            var trendingProductsData = await fetchData("/products/trendingData");
 
             for (let i = 0; i < trendingProductsData.length; i++) {
                 const categoryFolder = categoryToFolder[trendingProductsData[i].category]

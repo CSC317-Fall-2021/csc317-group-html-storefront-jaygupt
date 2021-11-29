@@ -3,7 +3,6 @@
 const addToCartButtons = document.getElementsByClassName("add-to-cart");
 
 for (let i = 0; i < addToCartButtons.length; i++) {
-  console.log("Hello World!");
   // const addToCartButton = addToCartButtons[i];
   // const correspondingIncrementAndDecrement = addToCartButton.nextSibling;
   // const correspondingMinusButton = correspondingIncrementAndDecrement.firstChild;

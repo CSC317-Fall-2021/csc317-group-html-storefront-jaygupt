@@ -348,3 +348,13 @@ if (document.getElementById("productSearch") !== null) {
   });
 }
 /* Alerts when Leaving Page and Search Input has Content (Ending) */
+
+// fetches data from mySQL database, given an endpoint
+async function fetchData(endpoint) {
+  try {
+      let response = await fetch(endpoint);
+      return await response.json();
+  } catch (error) {
+      console.log(error);
+  }
+}
