@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 
-// TODO: Use env variables to hide sensitive data.
 const con = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
