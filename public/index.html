@@ -80,6 +80,7 @@
 
     <!-- Script Tags -->
     <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/add_to_cart.js"></script>
     <script type="text/javascript">
         var gridContainerDivElement = document.getElementsByClassName("grid-container")[0];
 
@@ -112,9 +113,10 @@
             }
         }
 
-        renderTrendingProductsData();
+        renderTrendingProductsData().then(() => {
+            addToCart();
+        });;
     </script>
-    <script src="js/add_to_cart.js"></script>
 </body>
 
 </html>

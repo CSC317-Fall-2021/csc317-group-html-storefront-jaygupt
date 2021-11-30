@@ -1,6 +1,5 @@
 /* Pushes product to local storage when 'Add to Cart' button is clicked. */
-
-window.addEventListener("load", function() {
+function addToCart() {
   const addToCartButtons = document.getElementsByClassName("add-to-cart");
 
   for (let i = 0; i < addToCartButtons.length; i++) {
@@ -74,4 +73,4 @@ window.addEventListener("load", function() {
       correspondingMinusButton.nextElementSibling.value = currentQuantity;
     });
   }
-});
+}

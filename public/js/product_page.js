@@ -65,24 +65,7 @@ function createSimilarProductsDiv(similarProductsData, productCategoryFolder) {
   return similarProductsDiv;
 }
 
-async function appendToMainProductDiv(productName) {
-  // await fetchData
-  var productData = await fetchData(`/products/${productName}`);
-  productData = productData[0];
-
-  const productTitle = productData.name;
-  const productCategory = productData.category;
-  const productCategoryFolder = categoryToFolder[productCategory];
-  const productFile = productData.file_name;
-  const productPrice = productData.price;
-  const productDescription = productData.description;
-  const productImageURL = `../../images/product_images/${productCategoryFolder}/${productFile}.jpg`;
-
-  const mainProductDivElement = document.getElementById("mainProduct");
-  const sliderRadioButtons = createSliderRadioButtons();
-  const slideContentDivs = createSlideContentDivs(productTitle, productImageURL);
-  const miniImagesDiv = createMiniImagesDiv(productTitle, productImageURL);
-
+async function createMainProductDivElement(mainProductDivElement, sliderRadioButtons, slideContentDivs, miniImagesDiv, productTitle, productPrice, productDescription) {
   mainProductDivElement.innerHTML += 
     `<div id="slider">
       ${sliderRadioButtons}
@@ -108,8 +91,35 @@ async function appendToMainProductDiv(productName) {
         <button class="plus-btn">+</button>
       </div>
     </div>`;
-  
+}
+
+async function appendToMainProductDiv(productName) {
+  // await fetchData
+  var productData = await fetchData(`/products/${productName}`);
+  productData = productData[0];
+
+  const productTitle = productData.name;
+  const productCategory = productData.category;
+  const productCategoryFolder = categoryToFolder[productCategory];
+  const productFile = productData.file_name;
+  const productPrice = productData.price;
+  const productDescription = productData.description;
+  const productImageURL = `../../images/product_images/${productCategoryFolder}/${productFile}.jpg`;
+
+  const mainProductDivElement = document.getElementById("mainProduct");
+  const sliderRadioButtons = createSliderRadioButtons();
+  const slideContentDivs = createSlideContentDivs(productTitle, productImageURL);
+  const miniImagesDiv = createMiniImagesDiv(productTitle, productImageURL);
+
+  // createMainProductDivElement().then(() => {
+  //   console.log("This is a test.");
+  // });
+
+  createMainProductDivElement(mainProductDivElement, sliderRadioButtons, slideContentDivs, miniImagesDiv, productTitle, productPrice, productDescription);
+
   const similarProductsData = await fetchData(`/products/similarProducts/${productCategory}/${productTitle}`);
   const similarProductsDivElement = document.getElementsByClassName("similar-products")[0];
   similarProductsDivElement.innerHTML = createSimilarProductsDiv(similarProductsData, productCategoryFolder);
+
+  addToCart();
 }

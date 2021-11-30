@@ -34,27 +34,83 @@
 
     <!-- Script Tags -->
     <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/add_to_cart.js"></script>
+    <script>
+        /* carousel drag function */
+        function carouselDrag() {
+            let sliders = document.getElementsByClassName("slider");
+            let innerSliders = document.getElementsByClassName("slider-inner");
+
+            for (let i = 0; i < sliders.length; i++) {
+                let pressed = false;
+                let startx;
+                let x;
+
+                const slider = sliders[i];
+                const innerSlider = innerSliders[i];
+
+                slider.addEventListener("mousedown", (e) => {
+                    pressed = true;
+                    startx = e.offsetX - innerSlider.offsetLeft;
+                    slider.style.cursor = "grabbing";
+                });
+
+                slider.addEventListener("mouseenter", () => {
+                    slider.style.cursor = "grab";
+                });
+
+                slider.addEventListener("mouseup", () => {
+                    slider.style.cursor = "grab";
+                });
+
+                window.addEventListener("mouseup", () => {
+                    pressed = false;
+                });
+
+                slider.addEventListener("mousemove", (e) => {
+                    if (!pressed) return;
+                    e.preventDefault();
+
+                    x = e.offsetX;
+
+                    innerSlider.style.left = `${x - startx}px`;
+                    checkBoundary();
+                });
+
+                function checkBoundary() {
+                    let outer = slider.getBoundingClientRect();
+                    let inner = innerSlider.getBoundingClientRect();
+
+                    if (parseInt(innerSlider.style.left) > 0) {
+                        innerSlider.style.left = "0px";
+                    } else if (inner.right < outer.right) {
+                        innerSlider.style.left = `-${inner.width - outer.width}px`;
+                    }
+                }
+            }
+        }
+    </script>
     <script type="text/javascript">
         /* add elements to DOM */
         var categoriesDivElement = document.getElementById("categories");
 
         // displays categories data
         async function renderCategoriesData() {
-            var trendingProductsData = await fetchData("/products/categoryData");
+            var categoryProductsData = await fetchData("/products/categoryData");
 
-            // trendingProductsData[i][0].category gives category of that block
-            for (var i = 0; i < trendingProductsData.length; i++) {
-                const category = trendingProductsData[i][0].category;
+            // categoryProductsData[i][0].category gives category of that block
+            for (var i = 0; i < categoryProductsData.length; i++) {
+                const category = categoryProductsData[i][0].category;
                 const categoryFolder = categoryToFolder[category];
 
                 var gridItem = `<div class="category slider">
                                     <div class="category-title">${category}</div>
                                     <div class="slider-inner">`;
-                for (var j = 0; j < trendingProductsData[i].length; j++) {
-                    const productHref = trendingProductsData[i][j].name;
-                    const productTitle = trendingProductsData[i][j].name;
-                    const productPrice = trendingProductsData[i][j].price;
-                    const productFile = trendingProductsData[i][j].file_name;
+                for (var j = 0; j < categoryProductsData[i].length; j++) {
+                    const productHref = categoryProductsData[i][j].name;
+                    const productTitle = categoryProductsData[i][j].name;
+                    const productPrice = categoryProductsData[i][j].price;
+                    const productFile = categoryProductsData[i][j].file_name;
                     gridItem += `<div class="product">
                                     <a href="product_pages/${categoryFolder}/${productFile}.html">
                                         <img class="item-image" src="images/product_images/${categoryFolder}/${productFile}.jpg"
@@ -78,61 +134,10 @@
             }
         }
 
-        renderCategoriesData();
-    </script>
-    <script type="text/javascript" src="js/add_to_cart.js"></script>
-    <script type="text/javascript">
-        /* carousel drag function */
-        let sliders = document.getElementsByClassName("slider");
-        let innerSliders = document.getElementsByClassName("slider-inner");
-
-        for (let i = 0; i < sliders.length; i++) {
-            let pressed = false;
-            let startx;
-            let x;
-
-            const slider = sliders[i];
-            const innerSlider = innerSliders[i];
-
-            slider.addEventListener("mousedown", (e) => {
-                pressed = true;
-                startx = e.offsetX - innerSlider.offsetLeft;
-                slider.style.cursor = "grabbing";
-            });
-
-            slider.addEventListener("mouseenter", () => {
-                slider.style.cursor = "grab";
-            });
-
-            slider.addEventListener("mouseup", () => {
-                slider.style.cursor = "grab";
-            });
-
-            window.addEventListener("mouseup", () => {
-                pressed = false;
-            });
-
-            slider.addEventListener("mousemove", (e) => {
-                if (!pressed) return;
-                e.preventDefault();
-
-                x = e.offsetX;
-
-                innerSlider.style.left = `${x - startx}px`;
-                checkBoundary();
-            });
-
-            function checkBoundary() {
-                let outer = slider.getBoundingClientRect();
-                let inner = innerSlider.getBoundingClientRect();
-
-                if (parseInt(innerSlider.style.left) > 0) {
-                    innerSlider.style.left = "0px";
-                } else if (inner.right < outer.right) {
-                    innerSlider.style.left = `-${inner.width - outer.width}px`;
-                }
-            }
-        }
+        renderCategoriesData().then(() => {
+            addToCart();
+            carouselDrag();
+        });
     </script>
 </body>
 
