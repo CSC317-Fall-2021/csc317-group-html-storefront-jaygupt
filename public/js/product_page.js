@@ -40,13 +40,14 @@ function createMiniImagesDiv(productTitle, productImageURL) {
 function createSimilarProductsDiv(similarProductsData, productCategoryFolder) {
   var similarProductsDiv = "";
   for (var i = 0; i < similarProductsData.length; i++) {
+    const similarProductID = similarProductsData[i].product_ID;
     const similarProductTitle = similarProductsData[i].name;
     const similarProductFile = similarProductsData[i].file_name;
     const similarProductPrice = similarProductsData[i].price;
     const similarProductImageURL = `../../images/product_images/${productCategoryFolder}/${similarProductFile}.jpg`;
 
     similarProductsDiv += `
-    <div class="similar-product">
+    <div id=${similarProductID} class="similar-product">
       <a href="${similarProductFile}.html">
         <img class="similar-product-image" src="${similarProductImageURL}" alt="${similarProductTitle}">
       </a>
@@ -65,7 +66,7 @@ function createSimilarProductsDiv(similarProductsData, productCategoryFolder) {
   return similarProductsDiv;
 }
 
-async function createMainProductDivElement(mainProductDivElement, sliderRadioButtons, slideContentDivs, miniImagesDiv, productTitle, productPrice, productDescription) {
+async function createMainProductDivElement(mainProductDivElement, sliderRadioButtons, slideContentDivs, miniImagesDiv, productID, productTitle, productPrice, productDescription) {
   mainProductDivElement.innerHTML += 
     `<div id="slider">
       ${sliderRadioButtons}
@@ -80,7 +81,7 @@ async function createMainProductDivElement(mainProductDivElement, sliderRadioBut
         ${miniImagesDiv}
       </div>
     </div>
-    <div class="product-specification">
+    <div id=${productID} class="product-specification">
       <div class="product-title">${productTitle}</div>
       <div class="product-price">Price: $${productPrice}</div>
       <div class="product-description">${productDescription}</div>
@@ -98,6 +99,7 @@ async function appendToMainProductDiv(productName) {
   var productData = await fetchData(`/products/${productName}`);
   productData = productData[0];
 
+  const productID = productData.product_ID;
   const productTitle = productData.name;
   const productCategory = productData.category;
   const productCategoryFolder = categoryToFolder[productCategory];
@@ -111,11 +113,7 @@ async function appendToMainProductDiv(productName) {
   const slideContentDivs = createSlideContentDivs(productTitle, productImageURL);
   const miniImagesDiv = createMiniImagesDiv(productTitle, productImageURL);
 
-  // createMainProductDivElement().then(() => {
-  //   console.log("This is a test.");
-  // });
-
-  createMainProductDivElement(mainProductDivElement, sliderRadioButtons, slideContentDivs, miniImagesDiv, productTitle, productPrice, productDescription);
+  createMainProductDivElement(mainProductDivElement, sliderRadioButtons, slideContentDivs, miniImagesDiv, productID, productTitle, productPrice, productDescription);
 
   const similarProductsData = await fetchData(`/products/similarProducts/${productCategory}/${productTitle}`);
   const similarProductsDivElement = document.getElementsByClassName("similar-products")[0];

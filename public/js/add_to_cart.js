@@ -1,14 +1,15 @@
 /* Pushes product to local storage when 'Add to Cart' button is clicked. */
-function addToCart() {
+async function addToCart() {
   const addToCartButtons = document.getElementsByClassName("add-to-cart");
 
   for (let i = 0; i < addToCartButtons.length; i++) {
     const addToCartButton = addToCartButtons[i];
-    // console.log(addToCartButton);
+
     const correspondingIncrementAndDecrement = addToCartButton.nextElementSibling;
     const correspondingMinusButton = correspondingIncrementAndDecrement.firstElementChild;
     const correspondingPlusButton = correspondingIncrementAndDecrement.lastElementChild;
     const productName = addToCartButton.parentNode.getElementsByClassName("product-title")[0].textContent;
+    const productID = addToCartButton.parentNode.id;
     
     addToCartButton.addEventListener("click", () => {
       // hide the "Add to Cart" button
@@ -17,6 +18,11 @@ function addToCart() {
   
       // initial value is 1
       correspondingMinusButton.nextElementSibling.value = 1;
+
+      // insert the product into the cart table: insert user_ID, product_ID, and quantity_bought (1)
+      fetchData(`/products/insertProduct/${productID}`).then(result => {
+        console.log(result);
+      });
   
       cart.push(productName);
       quantities.push(1); // by default, each product starts out with a quantity of 1

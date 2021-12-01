@@ -75,5 +75,21 @@ router.get("/similarProducts/:categoryName/:productName", (req, res) => {
   });
 });
 
+// insert into cart table
+router.get("/insertProduct/:productID", (req, res) => {
+  const userID = 1; // as of now
+  const productID = req.params.productID;
+  const quantityBought = 1;
+
+  const sql = `INSERT INTO cart (user_ID, product_ID, quantity_bought) VALUES (${userID}, ${productID}, ${quantityBought})`;
+  con.query(sql, (err, results, fields) => {
+    if (err) throw err;
+
+    res.send({
+      "Message": "1 Record Inserted"
+    });
+  });
+});
+
 // export router for use in app.js
 module.exports = router;

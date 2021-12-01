@@ -91,7 +91,7 @@
             for (let i = 0; i < trendingProductsData.length; i++) {
                 const categoryFolder = categoryToFolder[trendingProductsData[i].category]
                 var gridItem = `
-                    <div class="grid-item">
+                    <div id=${trendingProductsData[i].product_ID} class="grid-item">
                         <a href="product_pages/${categoryFolder}/${trendingProductsData[i].file_name}.html">
                             <img 
                                 class="trending-item-image" 

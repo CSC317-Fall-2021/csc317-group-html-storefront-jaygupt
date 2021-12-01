@@ -107,11 +107,13 @@
                                     <div class="category-title">${category}</div>
                                     <div class="slider-inner">`;
                 for (var j = 0; j < categoryProductsData[i].length; j++) {
+                    const productID = categoryProductsData[i][j].product_ID;
                     const productHref = categoryProductsData[i][j].name;
                     const productTitle = categoryProductsData[i][j].name;
                     const productPrice = categoryProductsData[i][j].price;
                     const productFile = categoryProductsData[i][j].file_name;
-                    gridItem += `<div class="product">
+
+                    gridItem += `<div id=${productID} class="product">
                                     <a href="product_pages/${categoryFolder}/${productFile}.html">
                                         <img class="item-image" src="images/product_images/${categoryFolder}/${productFile}.jpg"
                                             alt="${productTitle}" />
