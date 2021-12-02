@@ -158,7 +158,7 @@
             });
 
             // add event listener to every quantitySelect element; change subtotal when quantity changes, and store
-            // the new value of quantity in localStorage
+            // the new value of quantity in database
             const quantitySelectElements = document.querySelectorAll(".quantity-select");
             for (let i = 0; i < quantitySelectElements.length; i++) {
                 quantitySelectElements[i].addEventListener("change", event => {
@@ -177,94 +177,80 @@
 
                     // productID, newQuantity
                     postData("/products/updateCart", {"productID": correspondingProductID, "newQuantity": valueChangedTo}).then(result => {
-                        console.log(result);
-                    })
-
-                    // const subtotalSummaryElementOldValue = subtotalSummaryElement.textContent.slice(1);
-
-                //     // New Summary Subtotal Value = Old Summary Subtotal Value - Old Corresponding Subtotal Value + New Corresponding Subtotal Value 
-                //     const newSummarySubtotalValue = subtotalSummaryElementOldValue - correspondingSubtotalPElementValue + newCorrespondingSubtotalPElementValue;
-                //     var newDiscountPElementValue;
-                //     if (receivesDiscount) {
-                //         newDiscountPElementValue = newSummarySubtotalValue * 0.2; // calculate new discount summary value
-                //     } else {
-                //         newDiscountPElementValue = 0; // no discount
-                //     }
-                //     const newTaxPElementValue = newSummarySubtotalValue * 0.0725; // calculate new summary tax value
-                //     const newTotalPElementValue = newSummarySubtotalValue - newDiscountPElementValue + newTaxPElementValue + deliverySummaryValue; // calculate new summary total value
-
-                //     // set localStorage values
-                //     localStorage.setItem("subtotal", newSummarySubtotalValue.toFixed(2));
-                //     localStorage.setItem("discount", newDiscountPElementValue.toFixed(2));
-                //     localStorage.setItem("tax", newTaxPElementValue.toFixed(2));
-                //     localStorage.setItem("total", newTotalPElementValue.toFixed(2));
-
-                //     subtotalSummaryElement.textContent = "$" + newSummarySubtotalValue.toFixed(2);
-                //     discountSummaryElement.textContent = "-$" + newDiscountPElementValue.toFixed(2); // set the summary discount value
-                //     taxSummaryElement.textContent = "$" + newTaxPElementValue.toFixed(2); // set the summary tax value
-                //     totalSummaryElement.textContent = "$" + newTotalPElementValue.toFixed(2); // set the summary total value
+                        location.reload();
+                    });
                 });
             }
+        }).then(() => {
+            const subtotalSummaryElement = document.getElementsByClassName("subtotal-amount amount")[0];
+            const discountSummaryElement = document.getElementsByClassName("discount-amount amount")[0];
+            const taxSummaryElement = document.getElementsByClassName("tax-amount amount")[0];
+            const deliverySummaryElement = document.getElementsByClassName("delivery-amount amount")[0];
+            const totalSummaryElement = document.getElementsByClassName("total-amount amount")[0];
+
+            // calculate subtotal, tax, & total based on what is in the cart initially
+            const rowSubtotalElements = document.querySelectorAll(".item-subtotal p"); // getting all the subtotal row elements
+
+            var summarySubtotalValue = 0;
+            for (let i = 0; i < rowSubtotalElements.length; i++) {
+                summarySubtotalValue += parseFloat(rowSubtotalElements[i].textContent.slice(1));
+            }
+
+            var discountSummaryValue;
+            postData("summaryOfCharges/receivesDiscountValue", {"userID": 1}).then(result => {
+                if (result[0].receivesDiscount) {
+                    couponInputField.disabled = true; // disable after getting it correct
+                    discountSummaryElement.classList.add("success");
+                    document.getElementsByClassName("discount")[0].classList.add("success");
+                    discountSummaryValue = 0.2 * summarySubtotalValue; // discount is 20% of subtotal
+                } else {
+                    discountSummaryValue = 0; // no discount
+                }
+            }).then(() => {
+                // tax is 7.25% of subtotal
+                const taxSummaryValue = summarySubtotalValue * 0.0725; 
+
+                // delivery is $5
+                const deliverySummaryValue = 5;
+
+                // calculate total
+                const totalSummaryValue = summarySubtotalValue - discountSummaryValue + taxSummaryValue + deliverySummaryValue;
+
+                // userID is 1 (for now)
+                postData("/summaryOfCharges/updateCharges", {
+                    "userID": 1, 
+                    "subtotal": summarySubtotalValue, 
+                    "discount": discountSummaryValue,
+                    "tax": taxSummaryValue,
+                    "delivery": deliverySummaryValue,
+                    "total": totalSummaryValue
+                }).then(result => {
+                    console.log(result);
+                });
+
+                subtotalSummaryElement.textContent = "$" + summarySubtotalValue.toFixed(2); // set summary subtotal value
+                discountSummaryElement.textContent = "-$" + discountSummaryValue.toFixed(2); // set summary discount value
+                taxSummaryElement.textContent = "$" + taxSummaryValue.toFixed(2); // set summary tax value
+                deliverySummaryElement.textContent = "$" + deliverySummaryValue.toFixed(2); // set summary delivery value
+                totalSummaryElement.textContent = "$" + totalSummaryValue.toFixed(2); // set summary total value
+            });
         });
     </script>
-    <!-- <script type="text/javascript" defer>
-        const receivesDiscount = JSON.parse(localStorage.getItem("receivesDiscount")); // true if user receives discount
+    <script>
+        // Activate Coupon Code: GabrielGames for 20% off Total Order!
+        const applyButton = document.querySelector(".apply-coupon");
         const couponInputField = document.getElementById("coupon");
 
-        const quantitySelectElements = document.querySelectorAll(".quantity-select");
-        const subtotalSummaryElement = document.getElementsByClassName("subtotal-amount amount")[0];
-        const discountSummaryElement = document.getElementsByClassName("discount-amount amount")[0];
-        const taxSummaryElement = document.getElementsByClassName("tax-amount amount")[0];
-        const totalSummaryElement = document.getElementsByClassName("total-amount amount")[0];
-        const deliverySummaryElement = document.getElementsByClassName("delivery-amount amount")[0];
-
-        // calculate subtotal, tax, & total based on what is in the cart initially
-        const rowSubtotalElements = document.querySelectorAll(".item-subtotal p"); // getting all the subtotal row elements
-        var summarySubtotalValue = 0;
-        var totalSummaryValue = 0;
-        for (let i = 0; i < rowSubtotalElements.length; i++) {
-            summarySubtotalValue += parseFloat(rowSubtotalElements[i].textContent.slice(1));
-        }
-        taxSummaryValue = (summarySubtotalValue * 0.0725); // tax is 7.25% of subtotal 
-        const deliverySummaryValue = 5; // delivery is $5
-        var discountSummaryValue;
-        if (receivesDiscount) {
-            couponInputField.disabled = true; // disable after getting it correct
-            discountSummaryElement.classList.add("success");
-            document.getElementsByClassName("discount")[0].classList.add("success");
-            discountSummaryValue = 0.2 * summarySubtotalValue; // discount is 20% of subtotal
-        } else {
-            discountSummaryValue = 0; // no discount
-        }
-        totalSummaryValue = summarySubtotalValue - discountSummaryValue + taxSummaryValue + deliverySummaryValue;
-
-        // set localStorage values
-        localStorage.setItem("subtotal", summarySubtotalValue.toFixed(2));
-        localStorage.setItem("discount", discountSummaryValue.toFixed(2));
-        localStorage.setItem("tax", taxSummaryValue.toFixed(2));
-        localStorage.setItem("delivery", deliverySummaryValue.toFixed(2));
-        localStorage.setItem("total", totalSummaryValue.toFixed(2));
-
-        subtotalSummaryElement.textContent = "$" + summarySubtotalValue.toFixed(2); // set summary subtotal value
-        discountSummaryElement.textContent = "-$" + discountSummaryValue.toFixed(2); // set summary discount value
-        taxSummaryElement.textContent = "$" + taxSummaryValue.toFixed(2); // set summary tax value
-        deliverySummaryElement.textContent = "$" + deliverySummaryValue.toFixed(2); // set summary delivery value
-        totalSummaryElement.textContent = "$" + totalSummaryValue.toFixed(2); // set summary total value
-    </script> -->
-    <!-- <script>
-        // Activate Coupon Code: GabrielGames for $8 off Total Order!
-
-        const applyButton = document.querySelector(".apply-coupon");
         applyButton.addEventListener("click", () => {
             if (couponInputField.value == "GabrielGames") {
-                localStorage.setItem("receivesDiscount", true); // provided correct coupon code
-            } else {
-                localStorage.setItem("receivesDiscount", false);
+                postData("/summaryOfCharges/receivesDiscount", {"userID": 1, "receivesDiscount": true}).then(result => {
+                    console.log(result);
+                });
             }
 
             location.reload();
         });
-    </script> -->
+    </script>
 </body>
 
 </html>

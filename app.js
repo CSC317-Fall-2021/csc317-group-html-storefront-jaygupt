@@ -13,6 +13,9 @@ app.use(favicon("./public/favicon.ico"));
 var products = require("./routes/products.js");
 app.use("/products", products);
 
+const summaryOfCharges = require("./routes/summaryOfCharges.js");
+app.use("/summaryOfCharges", summaryOfCharges);
+
 // start server, listen on port specified by port variable
 app.listen(port, () => {
   console.log(`Listening on port ${port}!`);
