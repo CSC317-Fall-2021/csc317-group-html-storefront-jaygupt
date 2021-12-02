@@ -92,10 +92,20 @@ router.get("/insertProduct/:productID", (req, res) => {
   });
 });
 
+// query for data from cart table
+router.post("/cart", (req, res) => {
+  const userID = req.body.userID;
+  const sql = `SELECT products.*, cart.quantity_bought FROM products INNER JOIN cart ON products.product_ID = cart.product_ID WHERE user_ID = ?`;
+
+  con.query(sql, userID, (err, results, fields) => {
+    if (err) throw err;
+
+    res.send(results);
+  });
+});
+
 // update cart table
 router.post("/updateCart", (req, res) => {
-  console.log(req.body);
-
   // need: product_ID and new quantity, and later, the user's ID
   const productID = req.body.productID;
   const newQuantity = req.body.newQuantity;

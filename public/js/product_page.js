@@ -129,8 +129,6 @@ async function appendToMainProductDiv(productName) {
   var productData = await fetchData(`/products/${productName}`);
   productData = productData[0];
 
-  console.log(productData);
-
   const productID = productData.product_ID;
   const productTitle = productData.name;
   const productCategory = productData.category;

@@ -97,7 +97,6 @@
         // displays categories data
         async function renderCategoriesData() {
             var categoryProductsData = await fetchData("/products/categoryData");
-            console.log(categoryProductsData);
 
             // categoryProductsData[i][0].category gives category of that block
             for (var i = 0; i < categoryProductsData.length; i++) {
