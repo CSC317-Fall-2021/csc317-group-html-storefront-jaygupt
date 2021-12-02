@@ -44,6 +44,7 @@ function createSimilarProductsDiv(similarProductsData, productCategoryFolder) {
     const similarProductTitle = similarProductsData[i].name;
     const similarProductFile = similarProductsData[i].file_name;
     const similarProductPrice = similarProductsData[i].price;
+    const similarProductQuantityBought = similarProductsData[i].quantity_bought;
     const similarProductImageURL = `../../images/product_images/${productCategoryFolder}/${similarProductFile}.jpg`;
 
     similarProductsDiv += `
@@ -52,22 +53,36 @@ function createSimilarProductsDiv(similarProductsData, productCategoryFolder) {
         <img class="similar-product-image" src="${similarProductImageURL}" alt="${similarProductTitle}">
       </a>
       <div class="similar-product-title product-title">${similarProductTitle}</div>
-      <div class="similar-product-price">$${similarProductPrice}</div>
+      <div class="similar-product-price">$${similarProductPrice}</div>`;
+
+    if (similarProductQuantityBought) {
+      similarProductsDiv += `
+      <button class="btn add-to-cart" style="display: none;">Add to Cart</button>
+      <div class="increment-and-decrement">
+          <button class="minus-btn">-</button>
+          <input type="text" class="quantity" value="${similarProductQuantityBought}" readonly>
+          <button class="plus-btn">+</button>
+      </div>`;
+    } else {
+      similarProductsDiv += `
       <button class="btn add-to-cart">Add to Cart</button>
-      <div class="increment-and-decrement" style="display:none">
-        <button class="minus-btn">-</button>
-        <input type="text" class="quantity" value="0" readonly="">
-        <button class="plus-btn">+</button>
-      </div>
-    </div>
-    `;
+      <div class="increment-and-decrement" style="display: none;">
+          <button class="minus-btn">-</button>
+          <input type="text" class="quantity" value="1" readonly>
+          <button class="plus-btn">+</button>
+      </div>`;
+    }
+
+    similarProductsDiv += "</div>";
   }
 
   return similarProductsDiv;
 }
 
-async function createMainProductDivElement(mainProductDivElement, sliderRadioButtons, slideContentDivs, miniImagesDiv, productID, productTitle, productPrice, productDescription) {
-  mainProductDivElement.innerHTML += 
+function createMainProductDivElement(sliderRadioButtons, slideContentDivs, miniImagesDiv, productID, productTitle, productPrice, productDescription, quantityBought) {
+  var mainProductDivElement = ``;
+
+  mainProductDivElement += 
     `<div id="slider">
       ${sliderRadioButtons}
       <div id="slides">
@@ -84,20 +99,37 @@ async function createMainProductDivElement(mainProductDivElement, sliderRadioBut
     <div id=${productID} class="product-specification">
       <div class="product-title">${productTitle}</div>
       <div class="product-price">Price: $${productPrice}</div>
-      <div class="product-description">${productDescription}</div>
-      <button class="btn add-to-cart">Add to Cart</button>
-      <div class="increment-and-decrement" style="display: none">
-        <button class="minus-btn">-</button>
-        <input type="text" class="quantity" value="0" readonly>
-        <button class="plus-btn">+</button>
-      </div>
-    </div>`;
+      <div class="product-description">${productDescription}</div>`;
+
+      if (quantityBought) {
+        mainProductDivElement += `
+        <button class="btn add-to-cart" style="display: none;">Add to Cart</button>
+        <div class="increment-and-decrement">
+            <button class="minus-btn">-</button>
+            <input type="text" class="quantity" value="${quantityBought}" readonly>
+            <button class="plus-btn">+</button>
+        </div>`;
+      } else {
+        mainProductDivElement += `
+        <button class="btn add-to-cart">Add to Cart</button>
+        <div class="increment-and-decrement" style="display: none;">
+            <button class="minus-btn">-</button>
+            <input type="text" class="quantity" value="1" readonly>
+            <button class="plus-btn">+</button>
+        </div>`;
+      }
+
+    mainProductDivElement += `</div>`;
+
+    return mainProductDivElement;
 }
 
 async function appendToMainProductDiv(productName) {
   // await fetchData
   var productData = await fetchData(`/products/${productName}`);
   productData = productData[0];
+
+  console.log(productData);
 
   const productID = productData.product_ID;
   const productTitle = productData.name;
@@ -106,14 +138,15 @@ async function appendToMainProductDiv(productName) {
   const productFile = productData.file_name;
   const productPrice = productData.price;
   const productDescription = productData.description;
+  const quantityBought = productData.quantity_bought;
   const productImageURL = `../../images/product_images/${productCategoryFolder}/${productFile}.jpg`;
 
-  const mainProductDivElement = document.getElementById("mainProduct");
   const sliderRadioButtons = createSliderRadioButtons();
   const slideContentDivs = createSlideContentDivs(productTitle, productImageURL);
   const miniImagesDiv = createMiniImagesDiv(productTitle, productImageURL);
 
-  createMainProductDivElement(mainProductDivElement, sliderRadioButtons, slideContentDivs, miniImagesDiv, productID, productTitle, productPrice, productDescription);
+  const mainProductDivElement = document.getElementById("mainProduct");
+  mainProductDivElement.innerHTML = createMainProductDivElement(sliderRadioButtons, slideContentDivs, miniImagesDiv, productID, productTitle, productPrice, productDescription, quantityBought);
 
   const similarProductsData = await fetchData(`/products/similarProducts/${productCategory}/${productTitle}`);
   const similarProductsDivElement = document.getElementsByClassName("similar-products")[0];

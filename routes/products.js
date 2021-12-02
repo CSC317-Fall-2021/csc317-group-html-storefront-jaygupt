@@ -12,7 +12,8 @@ const con = mysql.createConnection({
 // query for trending products
 router.get("/trendingData", (req, res) => {
   const trendingItems = ["Monopoly", "Batman", "Uno", "Ride-On Car", "Hot Wheels", "Life"];
-  const sql = "SELECT * FROM products WHERE name IN (?)";
+  const sql = "SELECT products.*, cart.user_ID, cart.quantity_bought FROM products LEFT JOIN cart ON products.product_ID = cart.product_ID WHERE products.name IN (?)";
+
   con.query(sql, [trendingItems], (err, results, fields) => {
     if (err) throw err;
     res.send(results);
@@ -41,7 +42,7 @@ router.get("/categoryData", (req, res) => {
     // this is done as con.query needs to be called for each category
     Promise.all(categories.map(category => {
       return new Promise(resolve => {
-        con.query("SELECT * FROM products WHERE category = ?", category, (err, results, fields) => {
+        con.query("SELECT products.*, cart.user_ID, cart.quantity_bought FROM products LEFT JOIN cart ON products.product_ID = cart.product_ID WHERE category = ?", category, (err, results, fields) => {
           if (err) throw err;
 
           resolve(results);
@@ -55,7 +56,7 @@ router.get("/categoryData", (req, res) => {
 
 // query for information on one product
 router.get("/:productName", (req, res) => {
-  const sql = "SELECT * FROM products WHERE name = ?";
+  const sql = "SELECT products.*, cart.user_ID, cart.quantity_bought FROM products LEFT JOIN cart ON products.product_ID = cart.product_ID WHERE name = ?";
   con.query(sql, req.params.productName, (err, results, fields) => {
     if (err) throw err;
     res.send(results);
@@ -67,7 +68,7 @@ router.get("/similarProducts/:categoryName/:productName", (req, res) => {
   const categoryName = req.params.categoryName;
   const productName = req.params.productName;
 
-  const sql = `SELECT * from products WHERE category = ? AND name != ? LIMIT 3`;
+  const sql = `SELECT products.*, cart.user_ID, cart.quantity_bought FROM products LEFT JOIN cart ON products.product_ID = cart.product_ID WHERE category = ? AND name != ? LIMIT 3`;
 
   con.query(sql, [categoryName, productName], (err, results, fields) => {
     if (err) throw err;
@@ -89,6 +90,39 @@ router.get("/insertProduct/:productID", (req, res) => {
       "Message": "1 Record Inserted"
     });
   });
+});
+
+// update cart table
+router.post("/updateCart", (req, res) => {
+  console.log(req.body);
+
+  // need: product_ID and new quantity, and later, the user's ID
+  const productID = req.body.productID;
+  const newQuantity = req.body.newQuantity;
+
+  var sql;
+
+  if (newQuantity == 0) {
+    // user doesn't want product anymore
+
+    sql = `DELETE FROM cart WHERE product_ID = ?`;
+    con.query(sql, [productID], (err, results, fields) => {
+      if (err) throw err;
+  
+      res.send({
+        "Message": "1 Record Deleted"
+      });
+    });
+  } else {
+    sql = `UPDATE cart SET quantity_bought = ? WHERE product_ID = ?`;
+    con.query(sql, [newQuantity, productID], (err, results, fields) => {
+      if (err) throw err;
+  
+      res.send({
+        "Message": "1 Record Updated"
+      });
+    });
+  }
 });
 
 // export router for use in app.js

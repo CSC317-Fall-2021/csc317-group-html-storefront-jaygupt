@@ -45,3 +45,18 @@ async function fetchData(endpoint) {
       console.log(error);
   }
 }
+
+// posts data to mySQL database, given an endpoint & the data
+async function postData(endpoint, data = {}) {
+  console.log(data);
+
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  return response.json();
+}

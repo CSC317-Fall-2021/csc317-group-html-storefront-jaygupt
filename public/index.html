@@ -89,7 +89,9 @@
             var trendingProductsData = await fetchData("/products/trendingData");
 
             for (let i = 0; i < trendingProductsData.length; i++) {
-                const categoryFolder = categoryToFolder[trendingProductsData[i].category]
+                const quantityBought = trendingProductsData[i].quantity_bought;
+                const categoryFolder = categoryToFolder[trendingProductsData[i].category];
+
                 var gridItem = `
                     <div id=${trendingProductsData[i].product_ID} class="grid-item">
                         <a href="product_pages/${categoryFolder}/${trendingProductsData[i].file_name}.html">
@@ -100,15 +102,30 @@
                             >
                         </a>
                         <div class="trending-item-name product-title">${trendingProductsData[i].name}</div>
-                        <div class="trending-item-price">$${trendingProductsData[i].price}</div>
-                        <button class="btn add-to-cart">Add to Cart</button>
-                        <div class="increment-and-decrement" style="display: none;">
-                            <button class="minus-btn">-</button>
-                            <input type="text" class="quantity" value="1" readonly>
-                            <button class="plus-btn">+</button>
-                        </div>
-                    </div>
-                `;
+                        <div class="trending-item-price">$${trendingProductsData[i].price}</div>`;
+
+                        if (quantityBought) {
+                            gridItem += `
+                            <button class="btn add-to-cart" style="display: none;">Add to Cart</button>
+                            <div class="increment-and-decrement">
+                                <button class="minus-btn">-</button>
+                                <input type="text" class="quantity" value="${quantityBought}" readonly>
+                                <button class="plus-btn">+</button>
+                            </div>
+                            `;
+                        } else {
+                            gridItem += `
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <div class="increment-and-decrement" style="display: none;">
+                                <button class="minus-btn">-</button>
+                                <input type="text" class="quantity" value="1" readonly>
+                                <button class="plus-btn">+</button>
+                            </div>
+                            `;
+                        }
+
+                gridItem += "</div>";
+
                 gridContainerDivElement.innerHTML += gridItem;
             }
         }

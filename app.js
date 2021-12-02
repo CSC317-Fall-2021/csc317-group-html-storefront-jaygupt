@@ -6,6 +6,8 @@ const port = 3000; // running on port 3000
 
 // assign public directory to serve static files through express
 app.use(express.static("public"));
+app.use(express.json()); // to parse incoming request body
+
 app.use(favicon("./public/favicon.ico"));
 
 var products = require("./routes/products.js");
