@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Cart</title>
+</head>
+
+<body>
+    <!--Navbar Start-->
+    <header>
+        <nav class="navbar">
+            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span
+                        class="logo-g">G</span>ame</a></h1>
+            <a href="index.html">HOME</a>
+            <a href="categories.html">CATEGORIES</a>
+            <input type="text" placeholder="Search products..." id="productSearch">
+            <a href="login.html">LOGIN/REGISTER</a>
+            <a href="#" class="current">CART</a>
+            <a href="about_us.html">ABOUT</a>
+        </nav>
+    </header>
+    <!--Navbar End-->
+
+    <div class="title">Cart</div>
+    <div id="cart">
+        <div id="cartItems">
+            <div class="cart-column"></div>
+            <div id="productColumn" class="cart-column">Product</div>
+            <div id="priceColumn" class="cart-column">Price</div>
+            <div id="quantityColumn" class="cart-column">Quantity</div>
+            <div id="subtotalColumn" class="cart-column">Subtotal</div>
+        </div>
+        <div id="bottomPart">
+            <div id="enterCoupon">
+                <label for="coupon">Have a Coupon?</label>
+                <div class="coupon-input">
+                    <input type="text" id="coupon" name="coupon" placeholder="Coupon Code">
+                    <button class="btn apply-coupon">Apply</button>
+                </div>
+            </div>
+            <div id="priceSummary">
+                <div class="subtotal">Subtotal:</div>
+                <div class="subtotal-amount amount"></div>
+                <div class="discount">Discount:</div>
+                <div class="discount-amount amount"></div>
+                <div class="tax">Tax:</div>
+                <div class="tax-amount amount"></div>
+                <div class="delivery">Delivery:</div>
+                <div class="delivery-amount amount"></div>
+                <div class="divider"></div>
+                <div class="total">Total:</div>
+                <div class="total-amount amount"></div>
+                <a id="checkoutButton" href="shipping_information.html">
+                    <button class="btn">Checkout</button>
+                </a>
+            </div>
+        </div>
+        <div id="noItems">
+            <p>There are no items in your cart!</p>
+            <a href="index.html">
+                <button class="btn">Click Here to Continue Shopping!</button>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>GoodGame.com, Copyright &copy;2021</p>
+    </footer>
+
+    <!-- Script Tags -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+        const cartDivElement = document.getElementById("cart");
+        const cartItemsDivElement = document.getElementById("cartItems");
+        const bottomPartDivElement = document.getElementById("bottomPart");
+        const noItemsDivElement = document.getElementById("noItems"); // message
+
+        // for now, send userID of 1
+        postData("/products/cart", {"userID": 1}).then(result => {
+            if (result.length == 0) {
+                // if no cart items, only show the "There are no items..." message
+                cartItemsDivElement.style.display = "none";
+                bottomPartDivElement.style.display = "none";
+                noItemsDivElement.style.display = "block";
+            } else {
+                // hide the message if there are items
+                noItemsDivElement.style.display = "none";
+            }
+
+            var cartItemsDivElementContent = "";
+
+            // display all items added to cart
+            for (var i = 0; i < result.length; i++) {
+                // create the cart items
+                const quantityBought = result[i].quantity_bought; // find corresponding quantity of product
+                const productID = result[i].product_ID;
+                const productName = result[i].name;
+                const productPrice = result[i].price;
+                const productDescription = result[i].description.substring(0, 100);
+                const productSubtotal = (productPrice * quantityBought).toFixed(2);
+                const correspondingCategoryFolder = categoryToFolder[result[i].category];
+                const productPageURL = result[i].file_name;
+                const productImageSrc = `images/product_images/${correspondingCategoryFolder}/${productPageURL}.jpg`;
+                const linkToProductPage = `product_pages/${correspondingCategoryFolder}/${productPageURL}.html`;
+
+                cartItemsDivElementContent += 
+                `
+                <div class="item-picture">
+                    <a href=${linkToProductPage}>
+                        <img src=${productImageSrc} alt=${productName}>
+                    </a>
+                </div>
+                <div class="item-information">
+                    <h1>${productName}</h1>
+                    <p>${productDescription}...<a href=${linkToProductPage}>Read More</a></p>
+                </div>
+                <div class="item-price item-price-${i}">$${productPrice}</div>
+                <div class="item-quantity">
+                    <label for="quantity" name="quantity" id="quantity"></label>
+                    <select class="quantity-select" productid=${productID}>`;
+
+                for (let j = 1; j < 11; j++) {
+                    if (j == quantityBought) {
+                        cartItemsDivElementContent += `<option value="${j}" selected>${j}</option>`;
+                    } else {
+                        cartItemsDivElementContent += `<option value="${j}">${j}</option>`;
+                    }
+                }
+
+                cartItemsDivElementContent += `
+                    </select>
+                </div>
+                <div class="item-subtotal">
+                    <p class="subtotal-${i}">$${productSubtotal}</p>
+                    <button class="btn remove-button" itemkey="${productID}">Remove from Cart</button>
+                </div>
+                `;
+            }
+
+            cartItemsDivElement.innerHTML += cartItemsDivElementContent;
+        }).then(() => {
+            // using querySelectorAll in order to add an event listener to each remove button
+            const removeFromCartButtons = cartItemsDivElement.querySelectorAll(".remove-button");
+            
+            removeFromCartButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const itemKey = btn.getAttribute("itemkey");
+
+                    // remove the item by setting its quantity to 0
+                    postData("/products/updateCart", {"productID": itemKey, "newQuantity": 0}).then(() => {
+                        location.reload();
+                    });
+                });
+            });
+
+            // add event listener to every quantitySelect element; change subtotal when quantity changes, and store
+            // the new value of quantity in database
+            const quantitySelectElements = document.querySelectorAll(".quantity-select");
+            for (let i = 0; i < quantitySelectElements.length; i++) {
+                quantitySelectElements[i].addEventListener("change", event => {
+                    const valueChangedTo = event.target.value;
+
+                    // get the price per unit of that row
+                    const correspondingPricePerUnit = document.getElementsByClassName("item-price-" + i)[0].textContent.slice(1);
+
+                    // get the corresponding subtotal element of that row, to replace its value (2 decimal places)
+                    const correspondingSubtotalElement = document.getElementsByClassName("subtotal-" + i)[0];
+
+                    const newCorrespondingSubtotalElementValue = correspondingPricePerUnit * valueChangedTo;
+                    correspondingSubtotalElement.textContent = "$" + newCorrespondingSubtotalElementValue.toFixed(2);
+
+                    const correspondingProductID = event.target.getAttribute("productid");
+
+                    // productID, newQuantity
+                    postData("/products/updateCart", {"productID": correspondingProductID, "newQuantity": valueChangedTo}).then(result => {
+                        location.reload();
+                    });
+                });
+            }
+        }).then(() => {
+            const subtotalSummaryElement = document.getElementsByClassName("subtotal-amount amount")[0];
+            const discountSummaryElement = document.getElementsByClassName("discount-amount amount")[0];
+            const taxSummaryElement = document.getElementsByClassName("tax-amount amount")[0];
+            const deliverySummaryElement = document.getElementsByClassName("delivery-amount amount")[0];
+            const totalSummaryElement = document.getElementsByClassName("total-amount amount")[0];
+
+            // calculate subtotal, tax, & total based on what is in the cart initially
+            const rowSubtotalElements = document.querySelectorAll(".item-subtotal p"); // getting all the subtotal row elements
+
+            var summarySubtotalValue = 0;
+            for (let i = 0; i < rowSubtotalElements.length; i++) {
+                summarySubtotalValue += parseFloat(rowSubtotalElements[i].textContent.slice(1));
+            }
+
+            var discountSummaryValue;
+            postData("summaryOfCharges/receivesDiscountValue", {"userID": 1}).then(result => {
+                if (result[0].receivesDiscount) {
+                    couponInputField.disabled = true; // disable after getting it correct
+                    discountSummaryElement.classList.add("success");
+                    document.getElementsByClassName("discount")[0].classList.add("success");
+                    discountSummaryValue = 0.2 * summarySubtotalValue; // discount is 20% of subtotal
+                } else {
+                    discountSummaryValue = 0; // no discount
+                }
+            }).then(() => {
+                // tax is 7.25% of subtotal
+                const taxSummaryValue = summarySubtotalValue * 0.0725; 
+
+                // delivery is $5
+                const deliverySummaryValue = 5;
+
+                // calculate total
+                const totalSummaryValue = summarySubtotalValue - discountSummaryValue + taxSummaryValue + deliverySummaryValue;
+
+                // userID is 1 (for now)
+                postData("/summaryOfCharges/updateCharges", {
+                    "userID": 1, 
+                    "subtotal": summarySubtotalValue, 
+                    "discount": discountSummaryValue,
+                    "tax": taxSummaryValue,
+                    "delivery": deliverySummaryValue,
+                    "total": totalSummaryValue
+                }).then(result => {
+                    console.log(result);
+                });
+
+                subtotalSummaryElement.textContent = "$" + summarySubtotalValue.toFixed(2); // set summary subtotal value
+                discountSummaryElement.textContent = "-$" + discountSummaryValue.toFixed(2); // set summary discount value
+                taxSummaryElement.textContent = "$" + taxSummaryValue.toFixed(2); // set summary tax value
+                deliverySummaryElement.textContent = "$" + deliverySummaryValue.toFixed(2); // set summary delivery value
+                totalSummaryElement.textContent = "$" + totalSummaryValue.toFixed(2); // set summary total value
+            });
+        });
+    </script>
+    <script>
+        // Activate Coupon Code: GabrielGames for 20% off Total Order!
+        const applyButton = document.querySelector(".apply-coupon");
+        const couponInputField = document.getElementById("coupon");
+
+        applyButton.addEventListener("click", () => {
+            if (couponInputField.value == "GabrielGames") {
+                postData("/summaryOfCharges/receivesDiscount", {"userID": 1, "receivesDiscount": true}).then(result => {
+                    console.log(result);
+                });
+            }
+
+            location.reload();
+        });
+    </script>
+</body>
+
+</html>

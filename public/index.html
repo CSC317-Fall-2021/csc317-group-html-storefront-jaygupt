@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body leftmargin="0" topmargin="0">
+    <!-- Navbar Beginning -->
+    <header>
+        <nav class="navbar">
+            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</a></h1>
+            <a href="#" class="current">HOME</a>
+            <a href="categories.html">CATEGORIES</a>
+            <input type="text" placeholder="Search products..." id="productSearch">
+            <a href="login.html">LOGIN/REGISTER</a>
+            <a href="cart.html">CART</a>
+            <a href="about_us.html">ABOUT</a>
+        </nav>
+    </header>
+    <!-- Navbar Ending -->
+
+    <!-- Animated Banners Beginning -->
+    <div id="animatedSlider">
+        <figure>
+            <div class="homepage-banner">
+                <img src="images/banner_images/christmas.png" alt="Christmas Background">
+                <div class="banner-text">
+                    <div class="main-tag">Christmas Sale</div>
+                    <div class="main-subtitle">Limited-time holiday sale! Great deals for the whole family!</div>
+                </div>
+            </div>
+            <div class="homepage-banner">
+                <img src="images/banner_images/halloween.jpeg" alt="Jack-O-Lanterns Smiling">
+                <div class="banner-text" id="halloweenText">
+                    <div class="main-tag">Halloween Sale</div>
+                    <div class="main-subtitle">No tricks, just treats! 50% Off on Orders Above $200!</div>
+                </div>
+            </div>
+            <div class="homepage-banner">
+                <img src="images/banner_images/valentines_day.png" id="valentineImage" alt="Valentine's Day">
+                <div class="banner-text">
+                    <div class="main-tag">Will you be my Valentine?</div>
+                    <div class="main-subtitle">Toys for Valentine's Day on sale now. Don't wait till February.</div>
+                </div>
+            </div>
+            <div class="homepage-banner">
+                <img src="images/banner_images/legos.png" id="legoImage" alt="Legos">
+                <div class="banner-text">
+                    <div class="main-tag">Limited Time Sale on Legos!</div>
+                    <div class="main-subtitle">15% off Lego sets over $100</div>
+                </div>
+            </div>
+            <div class="homepage-banner">
+                <img src="images/banner_images/christmas.png" alt="Christmas Background">
+                <div class="banner-text">
+                    <div class="main-tag">Christmas Sale</div>
+                    <div class="main-subtitle">Limited-time holiday sale! Great deals for the whole family!</div>
+                </div>
+            </div>
+        </figure>
+    </div>
+    <!-- Animated Banners Ending -->
+
+    <!-- Trending Section Beginning -->
+    <div class="trending-section">
+        <div class="trending-title">Trending & Best Sellers</div>
+        <div class="grid-container"></div>
+    </div>
+    <!-- Trending Section Ending -->
+
+    <!-- Footer Beginning -->
+    <footer class="footer">
+        <p>GoodGame.com, Copyright &copy;2021</p>
+    </footer>
+    <!-- Footer Ending -->
+
+    <!-- Script Tags -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/add_to_cart.js"></script>
+    <script type="text/javascript">
+        var gridContainerDivElement = document.getElementsByClassName("grid-container")[0];
+
+        // displays trending products data
+        async function renderTrendingProductsData() {
+            var trendingProductsData = await fetchData("/products/trendingData");
+
+            for (let i = 0; i < trendingProductsData.length; i++) {
+                const quantityBought = trendingProductsData[i].quantity_bought;
+                const categoryFolder = categoryToFolder[trendingProductsData[i].category];
+
+                var gridItem = `
+                    <div id=${trendingProductsData[i].product_ID} class="grid-item">
+                        <a href="product_pages/${categoryFolder}/${trendingProductsData[i].file_name}.html">
+                            <img 
+                                class="trending-item-image" 
+                                src="images/product_images/${categoryFolder}/${trendingProductsData[i].file_name}.jpg"
+                                alt=${trendingProductsData[i].name}
+                            >
+                        </a>
+                        <div class="trending-item-name product-title">${trendingProductsData[i].name}</div>
+                        <div class="trending-item-price">$${trendingProductsData[i].price}</div>`;
+
+                        if (quantityBought) {
+                            gridItem += `
+                            <button class="btn add-to-cart" style="display: none;">Add to Cart</button>
+                            <div class="increment-and-decrement">
+                                <button class="minus-btn">-</button>
+                                <input type="text" class="quantity" value="${quantityBought}" readonly>
+                                <button class="plus-btn">+</button>
+                            </div>
+                            `;
+                        } else {
+                            gridItem += `
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <div class="increment-and-decrement" style="display: none;">
+                                <button class="minus-btn">-</button>
+                                <input type="text" class="quantity" value="1" readonly>
+                                <button class="plus-btn">+</button>
+                            </div>
+                            `;
+                        }
+
+                gridItem += "</div>";
+
+                gridContainerDivElement.innerHTML += gridItem;
+            }
+        }
+
+        renderTrendingProductsData().then(() => {
+            addToCart();
+        });;
+    </script>
+</body>
+
+</html>

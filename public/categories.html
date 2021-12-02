@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Categories</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/categories.css">
+</head>
+
+<body leftmargin="0" topmargin="0">
+    <!-- Navbar Beginning -->
+    <header>
+        <nav class="navbar">
+            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span
+                        class="logo-g">G</span>ame</a></h1>
+            <a href="index.html">HOME</a>
+            <a href="#" class="current">CATEGORIES</a>
+            <input type="text" placeholder="Search products..." id="productSearch">
+            <a href="login.html">LOGIN/REGISTER</a>
+            <a href="cart.html">CART</a>
+            <a href="about_us.html">ABOUT</a>
+        </nav>
+    </header>
+    <!-- Navbar Ending -->
+
+    <div id="categories"></div>
+
+    <!-- Footer Beginning -->
+    <footer class="footer">
+        <p>GoodGame.com, Copyright &copy;2021</p>
+    </footer>
+    <!-- Footer Ending -->
+
+    <!-- Script Tags -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/add_to_cart.js"></script>
+    <script>
+        /* carousel drag function */
+        function carouselDrag() {
+            let sliders = document.getElementsByClassName("slider");
+            let innerSliders = document.getElementsByClassName("slider-inner");
+
+            for (let i = 0; i < sliders.length; i++) {
+                let pressed = false;
+                let startx;
+                let x;
+
+                const slider = sliders[i];
+                const innerSlider = innerSliders[i];
+
+                slider.addEventListener("mousedown", (e) => {
+                    pressed = true;
+                    startx = e.offsetX - innerSlider.offsetLeft;
+                    slider.style.cursor = "grabbing";
+                });
+
+                slider.addEventListener("mouseenter", () => {
+                    slider.style.cursor = "grab";
+                });
+
+                slider.addEventListener("mouseup", () => {
+                    slider.style.cursor = "grab";
+                });
+
+                window.addEventListener("mouseup", () => {
+                    pressed = false;
+                });
+
+                slider.addEventListener("mousemove", (e) => {
+                    if (!pressed) return;
+                    e.preventDefault();
+
+                    x = e.offsetX;
+
+                    innerSlider.style.left = `${x - startx}px`;
+                    checkBoundary();
+                });
+
+                function checkBoundary() {
+                    let outer = slider.getBoundingClientRect();
+                    let inner = innerSlider.getBoundingClientRect();
+
+                    if (parseInt(innerSlider.style.left) > 0) {
+                        innerSlider.style.left = "0px";
+                    } else if (inner.right < outer.right) {
+                        innerSlider.style.left = `-${inner.width - outer.width}px`;
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        /* add elements to DOM */
+        var categoriesDivElement = document.getElementById("categories");
+
+        // displays categories data
+        async function renderCategoriesData() {
+            var categoryProductsData = await fetchData("/products/categoryData");
+
+            // categoryProductsData[i][0].category gives category of that block
+            for (var i = 0; i < categoryProductsData.length; i++) {
+                const category = categoryProductsData[i][0].category;
+                const categoryFolder = categoryToFolder[category];
+
+                var gridItem = `<div class="category slider">
+                                    <div class="category-title">${category}</div>
+                                    <div class="slider-inner">`;
+                for (var j = 0; j < categoryProductsData[i].length; j++) {
+                    const productID = categoryProductsData[i][j].product_ID;
+                    const productHref = categoryProductsData[i][j].name;
+                    const productTitle = categoryProductsData[i][j].name;
+                    const productPrice = categoryProductsData[i][j].price;
+                    const productFile = categoryProductsData[i][j].file_name;
+                    const quantityBought = categoryProductsData[i][j].quantity_bought;
+
+                    gridItem += `
+                        <div id=${productID} class="product">
+                            <a href="product_pages/${categoryFolder}/${productFile}.html">
+                                <img class="item-image" src="images/product_images/${categoryFolder}/${productFile}.jpg"
+                                    alt="${productTitle}" />
+                            </a>
+                            <div class="product-title">${productTitle}</div>
+                            <div class="item-price">$${productPrice}</div>`;
+
+                            if (quantityBought) {
+                                gridItem += `
+                                <button class="btn add-to-cart" style="display: none;">Add to Cart</button>
+                                <div class="increment-and-decrement">
+                                    <button class="minus-btn">-</button>
+                                    <input type="text" class="quantity" value="${quantityBought}" readonly>
+                                    <button class="plus-btn">+</button>
+                                </div>
+                                `;
+                            } else {
+                                gridItem += `
+                                <button class="btn add-to-cart">Add to Cart</button>
+                                <div class="increment-and-decrement" style="display: none;">
+                                    <button class="minus-btn">-</button>
+                                    <input type="text" class="quantity" value="1" readonly>
+                                    <button class="plus-btn">+</button>
+                                </div>
+                                `;
+                            }
+
+                    gridItem += "</div>";
+                }
+
+                gridItem += `</div>
+                            </div>`;
+                
+                categoriesDivElement.innerHTML += gridItem;
+            }
+        }
+
+        renderCategoriesData().then(() => {
+            addToCart();
+            carouselDrag();
+        });
+    </script>
+</body>
+
+</html>

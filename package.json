@@ -1,0 +1,31 @@
+{
+  "name": "csc317-group-html-storefront-jaygupt",
+  "version": "1.0.0",
+  "description": "Storefront project for CSC 317.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSC317-Fall-2021/csc317-group-html-storefront-jaygupt.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "mysql",
+    "Routers"
+  ],
+  "author": "Jay Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSC317-Fall-2021/csc317-group-html-storefront-jaygupt/issues"
+  },
+  "homepage": "https://github.com/CSC317-Fall-2021/csc317-group-html-storefront-jaygupt#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "serve-favicon": "^2.5.0"
+  }
+}
