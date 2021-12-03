@@ -93,9 +93,6 @@ function checkValues(e){
     if(isError){
         e.preventDefault();
     }
-    else{
-        alert("Account Created Succesfully.");
-    }
 }
 
 function showError(input,message){
