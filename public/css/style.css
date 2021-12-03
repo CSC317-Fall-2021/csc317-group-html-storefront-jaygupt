@@ -209,7 +209,7 @@ button > a {
 }
 
 .form .social-container{
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
 }
 
@@ -258,7 +258,6 @@ button > a {
 
 .form .form-control input{
     background-color: rgb(221, 219, 219);
-    margin-top: 5px;
     width: 100%;
     padding-left: 10px;
     border: none;
@@ -267,6 +266,16 @@ button > a {
 
 #firstControl{
     margin-top: 15px;
+}
+
+#firstControl > div{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#firstControl > div input:first-of-type{
+    margin-right: 10px;
 }
 
 .form > input{

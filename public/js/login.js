@@ -38,7 +38,6 @@ const password2 = document.querySelector('#password2');
 signUpForm.addEventListener('submit',checkValues);
 
 function checkValues(e){
-    //e.preventDefault();
 
     const usernameValue = username.value.trim();
     const emailValue = email.value.trim();
@@ -91,11 +90,10 @@ function checkValues(e){
         success(password2);
     }
 
-    if(!isError){
-        users.push({
-            email: emailValue,
-            password: passwordValue
-        });
+    if(isError){
+        e.preventDefault();
+    }
+    else{
         alert("Account Created Succesfully.");
     }
 }
