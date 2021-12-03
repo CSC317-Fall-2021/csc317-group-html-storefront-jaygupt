@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="signup hidden">
-                <form class="form">
+                <form class="form"  action="/auth/register" method="POST">
                     <h1>Create Account</h1>
                     <div class="social-container">
                         <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
@@ -58,19 +58,19 @@
                         <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
                     </div>
                     <div class="form-control" id="firstControl">
-                        <input type="text" placeholder="Username" id="username">
+                        <input type="text" placeholder="Username" id="username" name="username">
                         <small>error message</small>
                     </div>
                     <div class="form-control">
-                        <input type="text" placeholder="Email" id="email">
+                        <input type="text" placeholder="Email" id="email" name="email">
                         <small>error message</small>
                     </div>
                     <div class="form-control">
-                        <input type="password" placeholder="Password" id="password">
+                        <input type="password" placeholder="Password" id="password" name="password">
                         <small>error message</small>
                     </div>
                     <div class="form-control">
-                        <input type="password" placeholder="Re-enter Password" id="password2">
+                        <input type="password" placeholder="Re-enter Password" id="password2" name="password2">
                         <small>error message</small>
                     </div>
                     <button type="submit" class="btn">Sign Up</button>

@@ -38,7 +38,7 @@ const password2 = document.querySelector('#password2');
 signUpForm.addEventListener('submit',checkValues);
 
 function checkValues(e){
-    e.preventDefault();
+    //e.preventDefault();
 
     const usernameValue = username.value.trim();
     const emailValue = email.value.trim();
