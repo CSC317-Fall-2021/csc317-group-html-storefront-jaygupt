@@ -111,14 +111,11 @@ function success(input){
 }
 /*SignUp form validation End*/
 
-/*SignIn form validation Start*/
-const signInForm = document.querySelector('.signin .form');
-const loginEmail = document.querySelector('#loginEmail');
+/*Show password functionality Start*/
 const loginPass = document.querySelector('#loginPass');
 const showPass = document.querySelector('#showPass');
 
 showPass.addEventListener('click',togglePass);
-signInForm.addEventListener('submit',verifyLogin);
 
 function togglePass(){
     if(showPass.checked === true){
@@ -128,35 +125,4 @@ function togglePass(){
         loginPass.setAttribute('type','password');
     }
 }
-
-function verifyLogin(e){
-    e.preventDefault();
-
-    const loginEmailValue = loginEmail.value.trim();
-    const loginPassValue = loginPass.value.trim();
-    flag = true;
-
-    users.forEach((user) => {
-        if(loginEmailValue === user.email && loginPassValue === user.password){
-            alert("Login Successfull");
-            flag = false;
-        }
-    });
-    if(flag){
-        alert("Login failed. Username or Password incorrect.");
-    }
-}
-/*SignIn form validation End*/
-
-/*JSON data import Start*/
-let users;
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        users = JSON.parse(xhttp.responseText).userlist;
-        console.log(users);
-    }
-};
-xhttp.open("GET", "./json/userinfo.json", true);
-xhttp.send();
-/*JSON data import End*/
+/*Show password functionality End*/

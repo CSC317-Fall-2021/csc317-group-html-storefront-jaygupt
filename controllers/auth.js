@@ -10,7 +10,7 @@ const con = mysql.createConnection({
 
 exports.register = (req,res) => {
     const { firstname, lastname, username, email, password } = req.body;
-    con.query("SELECT * FROM users WHERE email = ?", req.body.email, (err,result) => {
+    con.query("SELECT * FROM users WHERE email = ?", email, (err,result) => {
         if(err) throw err;
 
         if(result.length > 0){
@@ -21,6 +21,23 @@ exports.register = (req,res) => {
                 if(err) throw err;
                 res.redirect("/login.html");
             });
+        }
+    });
+}
+
+exports.login = (req, res) => {
+    const { loginEmail, loginPass } = req.body;
+    con.query("SELECT * FROM users WHERE email = ? OR username = ?", [loginEmail, loginEmail], (err,result) => {
+        if(err) throw err;
+        
+        if(result.length === 0){
+            res.send("Email does not exist.");
+        }
+        else if(result[0].password !== loginPass){
+            res.send("Incorrect Password");
+        }
+        else{
+            res.send(`Welcome ${result[0].username}`);
         }
     });
 }
