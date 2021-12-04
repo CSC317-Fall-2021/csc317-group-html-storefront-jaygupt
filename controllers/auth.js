@@ -10,16 +10,21 @@ const con = mysql.createConnection({
 
 exports.register = (req,res) => {
     const { firstname, lastname, username, email, password } = req.body;
-    con.query("SELECT * FROM users WHERE email = ?", email, (err,result) => {
+    con.query("SELECT * FROM users WHERE email = ? OR username = ?", [email, username], (err,result) => {
         if(err) throw err;
 
         if(result.length > 0){
-            res.redirect("/login.html");
+            if(result[0].email === email){
+                res.redirect("/login.html#emailExists");
+            }
+            else if(result[0].username === username){
+                res.redirect("/login.html#usernameExists");
+            }
         }
         else{
             con.query("INSERT INTO users SET ?", { first_name: firstname, last_name: lastname, email: email, username: username, password: password }, (err, result) => {
                 if(err) throw err;
-                res.redirect("/login.html");
+                res.redirect("/login.html#accountCreated");
             });
         }
     });
@@ -29,15 +34,14 @@ exports.login = (req, res) => {
     const { loginEmail, loginPass } = req.body;
     con.query("SELECT * FROM users WHERE email = ? OR username = ?", [loginEmail, loginEmail], (err,result) => {
         if(err) throw err;
-        
         if(result.length === 0){
-            res.send("Email does not exist.");
+            res.redirect("/login.html#notFound");
         }
         else if(result[0].password !== loginPass){
-            res.send("Incorrect Password");
+            res.redirect("/login.html#incorrectPass");
         }
         else{
-            res.send(`Welcome ${result[0].username}`);
+            res.redirect("/login.html#loggedIn");
         }
     });
 }

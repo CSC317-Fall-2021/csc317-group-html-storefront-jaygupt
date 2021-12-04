@@ -126,3 +126,32 @@ function togglePass(){
     }
 }
 /*Show password functionality End*/
+
+/* Hash Events Start */
+if(window.location.hash === '#loggedIn'){
+    alert("Login Succesfull");
+    window.location.hash = '';
+}
+if(window.location.hash === '#incorrectPass'){
+    alert("Incorrect Password");
+    window.location.hash = '';
+}
+if(window.location.hash === '#notFound'){
+    alert("User not found");
+    window.location.hash = '';
+}
+if(window.location.hash === '#accountCreated'){
+    alert("Account Created Successfully");
+    window.location.hash = '';
+}
+if(window.location.hash === '#emailExists'){
+    alert("Email already exists");
+    toggle();
+    window.location.hash = '';
+}
+if(window.location.hash === '#usernameExists'){
+    alert("Username already exists");
+    toggle();
+    window.location.hash = '';
+}
+/* Hash Events End */
