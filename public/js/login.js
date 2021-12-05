@@ -38,7 +38,6 @@ const password2 = document.querySelector('#password2');
 signUpForm.addEventListener('submit',checkValues);
 
 function checkValues(e){
-    e.preventDefault();
 
     const usernameValue = username.value.trim();
     const emailValue = email.value.trim();
@@ -91,12 +90,8 @@ function checkValues(e){
         success(password2);
     }
 
-    if(!isError){
-        users.push({
-            email: emailValue,
-            password: passwordValue
-        });
-        alert("Account Created Succesfully.");
+    if(isError){
+        e.preventDefault();
     }
 }
 
@@ -116,14 +111,11 @@ function success(input){
 }
 /*SignUp form validation End*/
 
-/*SignIn form validation Start*/
-const signInForm = document.querySelector('.signin .form');
-const loginEmail = document.querySelector('#loginEmail');
+/*Show password functionality Start*/
 const loginPass = document.querySelector('#loginPass');
 const showPass = document.querySelector('#showPass');
 
 showPass.addEventListener('click',togglePass);
-signInForm.addEventListener('submit',verifyLogin);
 
 function togglePass(){
     if(showPass.checked === true){
@@ -133,35 +125,33 @@ function togglePass(){
         loginPass.setAttribute('type','password');
     }
 }
+/*Show password functionality End*/
 
-function verifyLogin(e){
-    e.preventDefault();
-
-    const loginEmailValue = loginEmail.value.trim();
-    const loginPassValue = loginPass.value.trim();
-    flag = true;
-
-    users.forEach((user) => {
-        if(loginEmailValue === user.email && loginPassValue === user.password){
-            alert("Login Successfull");
-            flag = false;
-        }
-    });
-    if(flag){
-        alert("Login failed. Username or Password incorrect.");
-    }
+/* Hash Events Start */
+if(window.location.hash === '#loggedIn'){
+    alert("Login Succesfull");
+    window.location.hash = '';
 }
-/*SignIn form validation End*/
-
-/*JSON data import Start*/
-let users;
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        users = JSON.parse(xhttp.responseText).userlist;
-        console.log(users);
-    }
-};
-xhttp.open("GET", "./json/userinfo.json", true);
-xhttp.send();
-/*JSON data import End*/
+if(window.location.hash === '#incorrectPass'){
+    alert("Incorrect Password");
+    window.location.hash = '';
+}
+if(window.location.hash === '#notFound'){
+    alert("User not found");
+    window.location.hash = '';
+}
+if(window.location.hash === '#accountCreated'){
+    alert("Account Created Successfully");
+    window.location.hash = '';
+}
+if(window.location.hash === '#emailExists'){
+    alert("Email already exists");
+    toggle();
+    window.location.hash = '';
+}
+if(window.location.hash === '#usernameExists'){
+    alert("Username already exists");
+    toggle();
+    window.location.hash = '';
+}
+/* Hash Events End */

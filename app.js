@@ -7,6 +7,7 @@ const port = 3000; // running on port 3000
 // assign public directory to serve static files through express
 app.use(express.static("public"));
 app.use(express.json()); // to parse incoming request body
+app.use(express.urlencoded({ extended: false })); // to parse URL encoded bodies (as sent by HTML forms)
 
 app.use(favicon("./public/favicon.ico"));
 
@@ -15,6 +16,9 @@ app.use("/products", products);
 
 const summaryOfCharges = require("./routes/summaryOfCharges.js");
 app.use("/summaryOfCharges", summaryOfCharges);
+
+const auth = require("./routes/auth.js");
+app.use("/auth", auth);
 
 // start server, listen on port specified by port variable
 app.listen(port, () => {

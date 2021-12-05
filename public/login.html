@@ -26,7 +26,7 @@
     <div id="loginContent">
         <div class="container">
             <div class="signin">
-                <form class="form">
+                <form class="form" action="/auth/login" method="POST">
                     <h1>Sign In</h1>
                     <div class="social-container">
                         <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
@@ -34,8 +34,8 @@
                         <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
                     </div>
                     <span>or use your account</span>
-                    <input type="email" placeholder="Email" id="loginEmail">
-                    <input type="password" placeholder="Password" id="loginPass">
+                    <input type="text" placeholder="Email or Username" id="loginEmail" name="loginEmail">
+                    <input type="password" placeholder="Password" id="loginPass" name="loginPass">
                     <div id="loginCheckbox">
                         <input type="checkbox" name="showPass" id="showPass">
                         <label for="showPass">Show Password</label>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="signup hidden">
-                <form class="form">
+                <form class="form" action="/auth/register" method="POST">
                     <h1>Create Account</h1>
                     <div class="social-container">
                         <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
@@ -58,19 +58,26 @@
                         <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
                     </div>
                     <div class="form-control" id="firstControl">
-                        <input type="text" placeholder="Username" id="username">
+                        <div>
+                            <input type="text" placeholder="First Name" id="firstname" name="firstname">
+                            <input type="text" placeholder="Last Name" id="lastname" name="lastname">
+                        </div>
                         <small>error message</small>
                     </div>
                     <div class="form-control">
-                        <input type="text" placeholder="Email" id="email">
+                        <input type="text" placeholder="Username" id="username" name="username">
                         <small>error message</small>
                     </div>
                     <div class="form-control">
-                        <input type="password" placeholder="Password" id="password">
+                        <input type="text" placeholder="Email" id="email" name="email">
                         <small>error message</small>
                     </div>
                     <div class="form-control">
-                        <input type="password" placeholder="Re-enter Password" id="password2">
+                        <input type="password" placeholder="Password" id="password" name="password">
+                        <small>error message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="password" placeholder="Re-enter Password" id="password2" name="password2">
                         <small>error message</small>
                     </div>
                     <button type="submit" class="btn">Sign Up</button>
