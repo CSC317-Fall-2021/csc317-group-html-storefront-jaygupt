@@ -641,6 +641,39 @@ button > a {
     font-weight: bold;
 }
 
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+  
+#navbarDropdown{
+display: none;
+position: absolute;
+background-color: #3b4047;
+min-width: 160px;
+overflow: auto;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+top: 150%;
+left: -33%;
+text-align: center;
+}
+
+#navbarDropdown a{
+color: #ffffff;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+#navbarDropdown a:hover{
+    color: #f08f57;
+}
+
+#navbarDropdown.show{
+    display: block;
+}
+
 @media(max-width: 1030px) {
     .navbar {
         font-size: 1rem;
