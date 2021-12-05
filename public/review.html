@@ -40,31 +40,36 @@
   </footer>
 
   <!-- Script Tags -->
-  <script type="text/javascript" defer>
+  <script src="js/main.js"></script>
+  <script type="text/javascript">
     const subtotalReviewElement = document.getElementsByClassName("subtotal-amount amount")[0];
     const discountReviewElement = document.getElementsByClassName("discount-amount amount")[0];
     const taxReviewElement = document.getElementsByClassName("tax-amount amount")[0];
     const deliveryReviewElement = document.getElementsByClassName("delivery-amount amount")[0];
     const totalReviewElement = document.getElementsByClassName("total-amount amount")[0];
 
-    // query localStorage for values
-    const subtotalReviewValue = localStorage.getItem("subtotal");
-    const discountReviewValue = localStorage.getItem("discount");
+    postData("/summaryOfCharges/", {"userID": 1}).then(result => {
+      result = result[0];
 
-    // add success class if discount is not 0
-    if (discountReviewValue != 0) {
-      discountReviewElement.classList.add("success");
-    }
+      // query localStorage for values
+      const subtotalReviewValue = result["subtotal"].toFixed(2);
+      const discountReviewValue = result["discount"].toFixed(2);
 
-    const taxReviewValue = localStorage.getItem("tax");
-    const deliveryReviewValue = localStorage.getItem("delivery");
-    const totalReviewValue = localStorage.getItem("total");
+      // add success class if discount is not 0
+      if (discountReviewValue != 0) {
+        discountReviewElement.classList.add("success");
+      }
 
-    subtotalReviewElement.textContent = "$" + subtotalReviewValue; // set review subtotal value
-    discountReviewElement.textContent = "-$" + discountReviewValue; // set review discount value
-    taxReviewElement.textContent = "$" + taxReviewValue; // set review tax value
-    deliveryReviewElement.textContent = "$" + deliveryReviewValue; // set review delivery value
-    totalReviewElement.textContent = "$" + totalReviewValue; // set review total value
+      const taxReviewValue = result["tax"].toFixed(2);
+      const deliveryReviewValue = result["delivery"].toFixed(2);
+      const totalReviewValue = result["total"].toFixed(2);
+
+      subtotalReviewElement.textContent = "$" + subtotalReviewValue; // set review subtotal value
+      discountReviewElement.textContent = "-$" + discountReviewValue; // set review discount value
+      taxReviewElement.textContent = "$" + taxReviewValue; // set review tax value
+      deliveryReviewElement.textContent = "$" + deliveryReviewValue; // set review delivery value
+      totalReviewElement.textContent = "$" + totalReviewValue; // set review total value
+    });
   </script>
 </body>
 
