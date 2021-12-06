@@ -750,3 +750,49 @@ display: block;
         transform: translateY(-100%);
     }
 }
+
+/* Search Results */
+#results {
+    font-size: 2.5em;
+    margin: 50px 0;
+    text-align: center;
+}
+
+#noResults {
+    font-size: 1.75em;
+    margin: 50px 0;
+    text-align: center;
+}
+
+#searchItems {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    margin: 30px auto;
+    row-gap: 20px;
+    width: 90%;
+}
+
+#imageColumn {
+    text-align: center;
+}
+
+#searchProductColumn {
+    padding-left: 20px;
+}
+
+.search-column {
+    background-color: #f08f57;
+    color: white;
+    font-size: 1.5em;
+    padding: 5px;
+    text-align: center;
+}
+
+.item-price {
+    font-size: 1.25em;
+    margin-top: 10px;
+}
+
+.add-to-cart-button {
+    margin: 0 auto;
+}
