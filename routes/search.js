@@ -25,7 +25,12 @@ router.get("/", (req, res) => {
       "Cars and Motorcycles": "cars_and_motorcycles"
     }
 
-    res.render("search_results", {searchResults: results, categoryToFolder: categoryToFolder, searchTerm: searchTerm});
+    res.render("pages/search_results", {
+      searchResults: results, 
+      categoryToFolder: categoryToFolder, 
+      searchTerm: searchTerm,
+      pageName: "Search"
+    });
   });
 });
 

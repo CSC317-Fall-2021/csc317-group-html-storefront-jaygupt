@@ -8,19 +8,7 @@
 </head>
 
 <body leftmargin="0" topmargin="0">
-    <!-- Navbar Beginning -->
-    <header>
-        <nav class="navbar">
-            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</a></h1>
-            <a href="index.html">HOME</a>
-            <a href="categories.html">CATEGORIES</a>
-            <input type="text" placeholder="Search products..." id="productSearch">
-            <a href="#" class="current">LOGIN/REGISTER</a>
-            <a href="cart.html">CART</a>
-            <a href="about_us.html">ABOUT</a>
-        </nav>
-    </header>
-    <!-- Navbar Ending -->
+    <%- include("../partials/navbar"); %>
 
     <!-- Login/Register -->
     <div id="loginContent">
@@ -92,13 +80,10 @@
     </div>
     <!-- Login/Register Ending -->
 
-    <!-- Footer Beginning -->
-    <footer class="footer">
-        <p>GoodGame.com, Copyright &copy;2021</p>
-    </footer>
-    <!-- Footer Ending -->
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/login.js"></script>
+    <%- include("../partials/footer"); %>
+
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

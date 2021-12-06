@@ -70,7 +70,7 @@ button > a {
     width: 100%;
 }
 
-.navbar a.current {
+.navbar a.active {
     color: #f08f57;
 }
 
@@ -768,7 +768,7 @@ display: block;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 1fr;
     margin: 30px auto;
-    row-gap: 20px;
+    row-gap: 30px;
     width: 90%;
 }
 

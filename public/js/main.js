@@ -1,7 +1,3 @@
-// cart and quantities defined here
-const cart = JSON.parse(localStorage.getItem("cart")) || [];
-const quantities = JSON.parse(localStorage.getItem("quantities")) || [];
-
 // returns corresponding category folder
 const categoryToFolder = {
   "Action Figures": "action_figures",

@@ -9,31 +9,14 @@
 </head>
 
 <body leftmargin="0" topmargin="0">
-    <!-- Navbar Beginning -->
-    <header>
-        <nav class="navbar">
-            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span
-                        class="logo-g">G</span>ame</a></h1>
-            <a href="index.html">HOME</a>
-            <a href="#" class="current">CATEGORIES</a>
-            <input type="text" placeholder="Search products..." id="productSearch">
-            <a href="login.html">LOGIN/REGISTER</a>
-            <a href="cart.html">CART</a>
-            <a href="about_us.html">ABOUT</a>
-        </nav>
-    </header>
-    <!-- Navbar Ending -->
+    <%- include("../partials/navbar"); %>
 
     <div id="categories"></div>
 
-    <!-- Footer Beginning -->
-    <footer class="footer">
-        <p>GoodGame.com, Copyright &copy;2021</p>
-    </footer>
-    <!-- Footer Ending -->
+    <%- include("../partials/footer"); %>
 
     <!-- Script Tags -->
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/add_to_cart.js"></script>
     <script>
         /* carousel drag function */
@@ -90,7 +73,7 @@
             }
         }
     </script>
-    <script type="text/javascript">
+    <script>
         /* add elements to DOM */
         var categoriesDivElement = document.getElementById("categories");
 
@@ -116,15 +99,15 @@
 
                     gridItem += `
                         <div id=${productID} class="product">
-                            <a href="product_pages/${categoryFolder}/${productFile}.html">
+                            <a href="product_pages/${categoryFolder}/${productFile}">
                                 <img class="item-image" src="images/product_images/${categoryFolder}/${productFile}.jpg"
                                     alt="${productTitle}" />
                             </a>
                             <div class="product-title">${productTitle}</div>
                             <div class="item-price">$${productPrice}</div>`;
 
-                            if (quantityBought) {
-                                gridItem += `
+                    if (quantityBought) {
+                        gridItem += `
                                 <button class="btn add-to-cart" style="display: none;">Add to Cart</button>
                                 <div class="increment-and-decrement">
                                     <button class="minus-btn">-</button>
@@ -132,8 +115,8 @@
                                     <button class="plus-btn">+</button>
                                 </div>
                                 `;
-                            } else {
-                                gridItem += `
+                    } else {
+                        gridItem += `
                                 <button class="btn add-to-cart">Add to Cart</button>
                                 <div class="increment-and-decrement" style="display: none;">
                                     <button class="minus-btn">-</button>
@@ -141,14 +124,14 @@
                                     <button class="plus-btn">+</button>
                                 </div>
                                 `;
-                            }
+                    }
 
                     gridItem += "</div>";
                 }
 
                 gridItem += `</div>
                             </div>`;
-                
+
                 categoriesDivElement.innerHTML += gridItem;
             }
         }

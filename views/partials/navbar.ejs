@@ -1,0 +1,12 @@
+<header>
+  <nav class="navbar">
+    <h1 id="logo"><a href="/" id="logo-text"><span class="logo-g">G</span>ood<span
+          class="logo-g">G</span>ame</a></h1>
+    <a href="/" class="<%= pageName === 'Home' && 'active' %>">HOME</a>
+    <a href="/categories" class="<%= pageName === 'Categories' && 'active' %>">CATEGORIES</a>
+    <input type="text" placeholder="Search products..." id="productSearch">
+    <a href="/login" class="<%= pageName === 'Login' && 'active' %>">LOGIN/REGISTER</a>
+    <a href="/cart" class="<%= pageName === 'Cart' && 'active' %>">CART</a>
+    <a href="/about_us" class="<%= pageName === 'About Us' && 'active' %>">ABOUT</a>
+  </nav>
+</header>

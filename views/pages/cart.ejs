@@ -10,20 +10,7 @@
 </head>
 
 <body>
-    <!--Navbar Start-->
-    <header>
-        <nav class="navbar">
-            <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span
-                        class="logo-g">G</span>ame</a></h1>
-            <a href="index.html">HOME</a>
-            <a href="categories.html">CATEGORIES</a>
-            <input type="text" placeholder="Search products..." id="productSearch">
-            <a href="login.html">LOGIN/REGISTER</a>
-            <a href="#" class="current">CART</a>
-            <a href="about_us.html">ABOUT</a>
-        </nav>
-    </header>
-    <!--Navbar End-->
+    <%- include("../partials/navbar"); %>
 
     <div class="title">Cart</div>
     <div id="cart">
@@ -67,20 +54,18 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <p>GoodGame.com, Copyright &copy;2021</p>
-    </footer>
+    <%- include("../partials/footer"); %>
 
     <!-- Script Tags -->
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript">
+    <script src="js/main.js"></script>
+    <script>
         const cartDivElement = document.getElementById("cart");
         const cartItemsDivElement = document.getElementById("cartItems");
         const bottomPartDivElement = document.getElementById("bottomPart");
         const noItemsDivElement = document.getElementById("noItems"); // message
 
         // for now, send userID of 1
-        postData("/products/cart", {"userID": 1}).then(result => {
+        postData("/products/cart", { "userID": 1 }).then(result => {
             if (result.length == 0) {
                 // if no cart items, only show the "There are no items..." message
                 cartItemsDivElement.style.display = "none";
@@ -105,10 +90,10 @@
                 const correspondingCategoryFolder = categoryToFolder[result[i].category];
                 const productPageURL = result[i].file_name;
                 const productImageSrc = `images/product_images/${correspondingCategoryFolder}/${productPageURL}.jpg`;
-                const linkToProductPage = `product_pages/${correspondingCategoryFolder}/${productPageURL}.html`;
+                const linkToProductPage = `product_pages/${correspondingCategoryFolder}/${productPageURL}`;
 
-                cartItemsDivElementContent += 
-                `
+                cartItemsDivElementContent +=
+                    `
                 <div class="item-picture">
                     <a href=${linkToProductPage}>
                         <img src=${productImageSrc} alt=${productName}>
@@ -145,13 +130,13 @@
         }).then(() => {
             // using querySelectorAll in order to add an event listener to each remove button
             const removeFromCartButtons = cartItemsDivElement.querySelectorAll(".remove-button");
-            
+
             removeFromCartButtons.forEach(btn => {
                 btn.addEventListener('click', function () {
                     const itemKey = btn.getAttribute("itemkey");
 
                     // remove the item by setting its quantity to 0
-                    postData("/products/updateCart", {"productID": itemKey, "newQuantity": 0}).then(() => {
+                    postData("/products/updateCart", { "productID": itemKey, "newQuantity": 0 }).then(() => {
                         location.reload();
                     });
                 });
@@ -176,7 +161,7 @@
                     const correspondingProductID = event.target.getAttribute("productid");
 
                     // productID, newQuantity
-                    postData("/products/updateCart", {"productID": correspondingProductID, "newQuantity": valueChangedTo}).then(result => {
+                    postData("/products/updateCart", { "productID": correspondingProductID, "newQuantity": valueChangedTo }).then(result => {
                         location.reload();
                     });
                 });
@@ -197,7 +182,7 @@
             }
 
             var discountSummaryValue;
-            postData("summaryOfCharges/receivesDiscountValue", {"userID": 1}).then(result => {
+            postData("summaryOfCharges/receivesDiscountValue", { "userID": 1 }).then(result => {
                 if (result[0].receivesDiscount) {
                     couponInputField.disabled = true; // disable after getting it correct
                     discountSummaryElement.classList.add("success");
@@ -208,7 +193,7 @@
                 }
             }).then(() => {
                 // tax is 7.25% of subtotal
-                const taxSummaryValue = summarySubtotalValue * 0.0725; 
+                const taxSummaryValue = summarySubtotalValue * 0.0725;
 
                 // delivery is $5
                 const deliverySummaryValue = 5;
@@ -218,8 +203,8 @@
 
                 // userID is 1 (for now)
                 postData("/summaryOfCharges/updateCharges", {
-                    "userID": 1, 
-                    "subtotal": summarySubtotalValue, 
+                    "userID": 1,
+                    "subtotal": summarySubtotalValue,
                     "discount": discountSummaryValue,
                     "tax": taxSummaryValue,
                     "delivery": deliverySummaryValue,
@@ -243,7 +228,7 @@
 
         applyButton.addEventListener("click", () => {
             if (couponInputField.value == "GabrielGames") {
-                postData("/summaryOfCharges/receivesDiscount", {"userID": 1, "receivesDiscount": true}).then(result => {
+                postData("/summaryOfCharges/receivesDiscount", { "userID": 1, "receivesDiscount": true }).then(result => {
                     console.log(result);
                 });
             }
