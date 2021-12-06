@@ -52,17 +52,17 @@
       result = result[0];
 
       // query localStorage for values
-      const subtotalReviewValue = result["subtotal"].toFixed(2);
-      const discountReviewValue = result["discount"].toFixed(2);
+      const subtotalReviewValue = parseFloat(result["subtotal"]).toFixed(2);
+      const discountReviewValue = parseFloat(result["discount"]).toFixed(2);
 
       // add success class if discount is not 0
       if (discountReviewValue != 0) {
         discountReviewElement.classList.add("success");
       }
 
-      const taxReviewValue = result["tax"].toFixed(2);
-      const deliveryReviewValue = result["delivery"].toFixed(2);
-      const totalReviewValue = result["total"].toFixed(2);
+      const taxReviewValue = parseFloat(result["tax"]).toFixed(2);
+      const deliveryReviewValue = parseFloat(result["delivery"]).toFixed(2);
+      const totalReviewValue = parseFloat(result["total"]).toFixed(2);
 
       subtotalReviewElement.textContent = "$" + subtotalReviewValue; // set review subtotal value
       discountReviewElement.textContent = "-$" + discountReviewValue; // set review discount value

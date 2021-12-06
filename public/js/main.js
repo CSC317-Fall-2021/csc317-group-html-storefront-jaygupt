@@ -31,9 +31,11 @@ async function postData(endpoint, data = {}) {
 }
 
 // Search Bar
-const productSearchInput = document.getElementById("productSearch");
-productSearchInput.addEventListener("keyup", (event) => {
-  if (event.key === "Enter") {
-    window.location.replace(`/search?name=${productSearchInput.value}`);
-  }
-});
+if (document.getElementById("productSearch")) {
+  const productSearchInput = document.getElementById("productSearch");
+  productSearchInput.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+      window.location.replace(`/search?name=${productSearchInput.value}`);
+    }
+  });
+}
