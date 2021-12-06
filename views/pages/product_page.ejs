@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    Product - <%- mainProduct.name; %>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/product_page.css">
+</head>
+
+<body leftmargin="0" topmargin="0">
+  <%- include("../partials/navbar.ejs") %>
+
+  <!-- Main Product Image & Description (Beginning) -->
+  <div id="mainProduct" class="grid-container">
+    <% productID=mainProduct.product_ID; %>
+      <% name=mainProduct.name; %>
+        <% price=mainProduct.price; %>
+          <% description=mainProduct.description; %>
+            <% categoryFolder=categoryToFolder[mainProduct.category]; %>
+              <% fileName=mainProduct.file_name; %>
+                <% quantityBought=mainProduct.quantity_bought; %>
+                  <% mainProductImageURL="../../images/product_images/" + categoryFolder + "/" + fileName + ".jpg" ; %>
+
+                    <div id="slider">
+                      <% for (var i=1; i < 5; i++) { %>
+                        <input type="radio" name="slider" id="slide<%- i %>">
+                        <% } %>
+
+                          <div id="slides">
+                            <div id="overflow">
+                              <div class="inner">
+                                <% for (var i=1; i < 5; i++) { %>
+                                  <div class="slide slide-<%- i %>">
+                                    <div class="slide-content">
+                                      <img src="<%- mainProductImageURL %>" alt="<%- name %>">
+                                    </div>
+                                  </div>
+                                  <% } %>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="miniImages">
+                            <% for (var i=1; i < 5; i++) { %>
+                              <div class="mini-image">
+                                <label for="slide<%- i %>" class="slide-<%- i %>">
+                                  <img src="<%- mainProductImageURL %>" alt="<%- name %>">
+                                </label>
+                              </div>
+                              <% } %>
+                          </div>
+                    </div>
+                    <div id="<%- productID %>" class="product-specification">
+                      <div class="product-title">
+                        <%- name %>
+                      </div>
+                      <div class="product-price">Price: $<%- price %>
+                      </div>
+                      <div class="product-description">
+                        <%- description %>
+                      </div>
+                      <% if (quantityBought) { %>
+                        <button class="btn add-to-cart" style="display: none;">Add to Cart</button>
+                        <div class="increment-and-decrement">
+                          <button class="minus-btn">-</button>
+                          <input type="text" class="quantity" value="<%- quantityBought %>" readonly>
+                          <button class="plus-btn">+</button>
+                        </div>
+                        <% } else { %>
+                          <button class="btn add-to-cart">Add to Cart</button>
+                          <div class="increment-and-decrement" style="display: none;">
+                            <button class="minus-btn">-</button>
+                            <input type="text" class="quantity" value="1" readonly>
+                            <button class="plus-btn">+</button>
+                          </div>
+                          <% } %>
+                    </div>
+  </div>
+  <!-- Main Product Image & Description (Ending) -->
+
+  <!-- Similar Products (Beginning) -->
+  <div class="similar-products-header">Similar Products</div>
+  <div class="similar-products">
+    <% for (var i=0; i < similarProducts.length; i++) { %>
+      <% similarProductID=similarProducts[i].product_ID; %>
+        <% similarProductName=similarProducts[i].name; %>
+          <% similarProductPrice=similarProducts[i].price; %>
+            <% similarProductDescription=similarProducts[i].description; %>
+              <% similarProductFileName=similarProducts[i].file_name; %>
+                <% similarProductQuantityBought=similarProducts[i].quantity_bought; %>
+                  <% similarProductImageURL="../../images/product_images/" + categoryFolder + "/" +
+                    similarProductFileName + ".jpg" ; %>
+
+                    <div id="<%- similarProductID %>" class="similar-product">
+                      <a href="<%- similarProductFileName %>">
+                        <img class="similar-product-image" src="<%- similarProductImageURL %>"
+                          alt="<%- similarProductName %>">
+                      </a>
+                      <div class="similar-product-title product-title">
+                        <%- similarProductName %>
+                      </div>
+                      <div class="similar-product-price">$<%- similarProductPrice %>
+                      </div>
+                      <% if (similarProductQuantityBought) { %>
+                        <button class="btn add-to-cart" style="display: none;">Add to Cart</button>
+                        <div class="increment-and-decrement">
+                          <button class="minus-btn">-</button>
+                          <input type="text" class="quantity" value="<%- similarProductQuantityBought %>" readonly>
+                          <button class="plus-btn">+</button>
+                        </div>
+                        <% } else { %>
+                          <button class="btn add-to-cart">Add to Cart</button>
+                          <div class="increment-and-decrement" style="display: none;">
+                            <button class="minus-btn">-</button>
+                            <input type="text" class="quantity" value="1" readonly>
+                            <button class="plus-btn">+</button>
+                          </div>
+                          <% } %>
+                    </div>
+                    <% } %>
+  </div>
+  <!-- Similar Products (Ending) -->
+
+  <%- include("../partials/footer.ejs") %>
+
+  <!-- Script Tags -->
+  <script src="../../js/main.js"></script>
+  <script src="../../js/add_to_cart.js"></script>
+  <script>
+    addToCart();
+  </script>
+</body>
+
+</html>

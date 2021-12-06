@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Review</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Review</title>
 </head>
 
 <body>
-    <!--Navbar Start-->
-    <header>
-      <nav class="checkout-navbar navbar">CHECKOUT</nav>
+  <!--Navbar Start-->
+  <header>
+    <nav class="checkout-navbar navbar">CHECKOUT</nav>
   </header>
   <!--Navbar End-->
 
@@ -31,7 +31,7 @@
     <div class="total">Total:</div>
     <div class="total-amount amount"></div>
     <a id="reviewButton" href="confirmation.html">
-        <button class="btn">Confirm!</button>
+      <button class="btn">Confirm!</button>
     </a>
   </div>
 
@@ -41,14 +41,14 @@
 
   <!-- Script Tags -->
   <script src="js/main.js"></script>
-  <script type="text/javascript">
+  <script>
     const subtotalReviewElement = document.getElementsByClassName("subtotal-amount amount")[0];
     const discountReviewElement = document.getElementsByClassName("discount-amount amount")[0];
     const taxReviewElement = document.getElementsByClassName("tax-amount amount")[0];
     const deliveryReviewElement = document.getElementsByClassName("delivery-amount amount")[0];
     const totalReviewElement = document.getElementsByClassName("total-amount amount")[0];
 
-    postData("/summaryOfCharges/", {"userID": 1}).then(result => {
+    postData("/summaryOfCharges/", { "userID": 1 }).then(result => {
       result = result[0];
 
       // query localStorage for values

@@ -55,22 +55,35 @@ router.get("/categoryData", (req, res) => {
 });
 
 // query for information on one product
-router.get("/:productName", (req, res) => {
-  const sql = "SELECT products.*, cart.user_ID, cart.quantity_bought FROM products LEFT JOIN cart ON products.product_ID = cart.product_ID WHERE name = ?";
-  con.query(sql, req.params.productName, (err, results, fields) => {
+router.get("/:productFileName", (req, res) => {
+  const sql = "SELECT products.*, cart.user_ID, cart.quantity_bought FROM products LEFT JOIN cart ON products.product_ID = cart.product_ID WHERE file_name = ?";
+  con.query(sql, req.params.productFileName, (err, results, fields) => {
     if (err) throw err;
     res.send(results);
   });
 });
 
 // query for similar products (other products in that category except that product)
-router.get("/similarProducts/:categoryName/:productName", (req, res) => {
-  const categoryName = req.params.categoryName;
-  const productName = req.params.productName;
+router.get("/similarProducts/:categoryName/:productFileName", (req, res) => {
+  const folderToCategory = {
+    "action_figures": "Action Figures",
+    "board_games": "Board Games",
+    "building_blocks": "Building Blocks",
+    "cards": "Cards",
+    "cars_and_motorcycles": "Cars and Motorcycles"
+  }
 
-  const sql = `SELECT products.*, cart.user_ID, cart.quantity_bought FROM products LEFT JOIN cart ON products.product_ID = cart.product_ID WHERE category = ? AND name != ? LIMIT 3`;
+  var categoryName = req.params.categoryName;
+  const productFileName = req.params.productFileName;
 
-  con.query(sql, [categoryName, productName], (err, results, fields) => {
+  // change from folder to category
+  if (categoryName in folderToCategory) {
+    categoryName = folderToCategory[categoryName];
+  }
+
+  const sql = `SELECT products.*, cart.user_ID, cart.quantity_bought FROM products LEFT JOIN cart ON products.product_ID = cart.product_ID WHERE category = ? AND file_name != ? LIMIT 3`;
+
+  con.query(sql, [categoryName, productFileName], (err, results, fields) => {
     if (err) throw err;
     res.send(results);
   });

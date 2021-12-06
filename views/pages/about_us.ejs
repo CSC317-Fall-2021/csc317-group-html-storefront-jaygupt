@@ -10,11 +10,7 @@
 </head>
 
 <body leftmargin="0" topmargin="0">
-  <!-- Navbar Beginning -->
-  <header>
-    <nav class="navbar"></nav>
-  </header>
-  <!-- Navbar Ending -->
+  <%- include("../partials/navbar"); %>
 
   <div class="title">About Us</div>
   <div class="about-text">
@@ -123,15 +119,10 @@
       ultrices porta enim, sed luctus arcu cursus nec.</p>
   </div>
 
-  <!-- Footer Beginning -->
-  <footer class="footer">
-    <p>GoodGame.com, Copyright &copy;2021</p>
-  </footer>
-  <!-- Footer Ending -->
+  <%- include("../partials/footer"); %>
 
   <!-- Script Tags -->
-  <script type="text/javascript" src="js/main.js" defer></script>
-  <script type="text/javascript" src="js/navbar.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 
 </html>

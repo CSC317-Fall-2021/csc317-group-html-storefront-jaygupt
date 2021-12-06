@@ -9,11 +9,7 @@
 </head>
 
 <body leftmargin="0" topmargin="0">
-    <!-- Navbar Beginning -->
-    <header>
-        <nav class="navbar"></nav>
-    </header>
-    <!-- Navbar Ending -->
+    <%- include("../partials/navbar"); %>
 
     <!-- Animated Banners Beginning -->
     <div id="animatedSlider">
@@ -64,16 +60,12 @@
     </div>
     <!-- Trending Section Ending -->
 
-    <!-- Footer Beginning -->
-    <footer class="footer">
-        <p>GoodGame.com, Copyright &copy;2021</p>
-    </footer>
-    <!-- Footer Ending -->
+    <%- include("../partials/footer"); %>
 
     <!-- Script Tags -->
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/add_to_cart.js"></script>
-    <script type="text/javascript">
+    <script>
         var gridContainerDivElement = document.getElementsByClassName("grid-container")[0];
 
         // displays trending products data
@@ -86,8 +78,8 @@
 
                 var gridItem = `
                     <div id=${trendingProductsData[i].product_ID} class="grid-item">
-                        <a href="product_pages/${categoryFolder}/${trendingProductsData[i].file_name}.html">
-                            <img 
+                        <a href="product_pages/${categoryFolder}/${trendingProductsData[i].file_name}">
+                            <img
                                 class="trending-item-image" 
                                 src="images/product_images/${categoryFolder}/${trendingProductsData[i].file_name}.jpg"
                                 alt=${trendingProductsData[i].name}
@@ -96,8 +88,8 @@
                         <div class="trending-item-name product-title">${trendingProductsData[i].name}</div>
                         <div class="trending-item-price">$${trendingProductsData[i].price}</div>`;
 
-                        if (quantityBought) {
-                            gridItem += `
+                if (quantityBought) {
+                    gridItem += `
                             <button class="btn add-to-cart" style="display: none;">Add to Cart</button>
                             <div class="increment-and-decrement">
                                 <button class="minus-btn">-</button>
@@ -105,8 +97,8 @@
                                 <button class="plus-btn">+</button>
                             </div>
                             `;
-                        } else {
-                            gridItem += `
+                } else {
+                    gridItem += `
                             <button class="btn add-to-cart">Add to Cart</button>
                             <div class="increment-and-decrement" style="display: none;">
                                 <button class="minus-btn">-</button>
@@ -114,7 +106,7 @@
                                 <button class="plus-btn">+</button>
                             </div>
                             `;
-                        }
+                }
 
                 gridItem += "</div>";
 
