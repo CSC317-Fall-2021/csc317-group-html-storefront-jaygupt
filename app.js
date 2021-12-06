@@ -4,7 +4,7 @@ const favicon = require('serve-favicon');
 const fetch = require('node-fetch');
 
 const app = express(); // create Express app
-const port = 3000; // running on port 3000
+const port = process.env.PORT;
 const path = require("path");
 
 // assign public directory to serve static files through express
@@ -40,8 +40,8 @@ app.get("/product_pages/:category/:product_name", (req, res) => {
   const productName = req.params.product_name;
 
   Promise.all([
-    fetch(`http://localhost:3000/products/${productName}`),
-    fetch(`http://localhost:3000/products/similarProducts/${category}/${productName}`)
+    fetch(`http://localhost:${port}/products/${productName}`),
+    fetch(`http://localhost:${port}/products/similarProducts/${category}/${productName}`)
   ]).then(responses => {
     return Promise.all(responses.map(response => {
       return response.json();
