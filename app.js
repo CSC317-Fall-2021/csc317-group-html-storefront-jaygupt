@@ -68,6 +68,12 @@ app.get("/product_pages/:category/:product_name", (req, res) => {
     console.log(err);
   });
 });
+
+// handle non-matching requests
+app.use((req, res, next) => {
+  // console.log(req.originalUrl);
+  res.status(404).render("pages/404", {urlPath: req.originalUrl});
+});
 // -----------------------------------------
 
 // start server, listen on port specified by port variable
