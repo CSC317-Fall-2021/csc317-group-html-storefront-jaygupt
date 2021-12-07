@@ -44,9 +44,8 @@ exports.login = (req, res) => {
             req.session.isAuth = true;
             con.query("UPDATE users SET session_id = ? WHERE user_ID = ?",[req.session.id, result[0].user_ID], (err,result) => {
                 if(err) throw err;
-                console.log(req.session.id);
             });
-            res.redirect("/login#loggedIn");
+            res.redirect("/");
         }
     });
 }

@@ -128,10 +128,6 @@ function togglePass(){
 /*Show password functionality End*/
 
 /* Hash Events Start */
-if(window.location.hash === '#loggedIn'){
-    alert("Login Succesfull");
-    window.location.hash = '';
-}
 if(window.location.hash === '#incorrectPass'){
     alert("Incorrect Password");
     window.location.hash = '';

@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <%- include("../partials/navbar"); %>
+    <header>
+        <nav class="navbar"></nav>
+    </header>
 
     <div class="title">Cart</div>
     <div id="cart">
@@ -57,6 +59,7 @@
     <%- include("../partials/footer"); %>
 
     <!-- Script Tags -->
+    <script src="js/navbar.js"></script>
     <script src="js/main.js"></script>
     <script>
         const cartDivElement = document.getElementById("cart");

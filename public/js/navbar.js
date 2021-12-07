@@ -1,12 +1,35 @@
 const navbar = document.querySelector("nav.navbar");
 
-navbar.innerHTML = `<h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</a></h1>
-                    <a href="index.html">HOME</a>
-                    <a href="categories.html">CATEGORIES</a>
-                    <input type="text" placeholder="Search products..." id="productSearch">
-                    <a href="login.html">LOGIN/REGISTER</a>
-                    <a href="cart.html">CART</a>
-                    <a href="about_us.html">ABOUT</a>`;
+let cookie = document.cookie
+            .split(';')
+            .map(cookie => cookie.split('='))
+            .reduce((accumulator, [key, value]) => ({...accumulator, [key.trim()]: decodeURIComponent(value)}), {});
+
+if(cookie.sessionID){
+    navbar.innerHTML = `<h1 id="logo"><a href="/" id="logo-text"><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</a></h1>
+                        <a href="/">HOME</a>
+                        <a href="/categories">CATEGORIES</a>
+                        <input type="text" placeholder="Search products..." id="productSearch">
+                        <div class="dropdown">
+                            <a href="#" id="navbarDropLink">USERNAME</a>
+                            <div id="navbarDropdown">
+                                <a href="#">Profile</a>
+                                <a href="#">Orders</a>
+                                <a href="#">Saved Cards</a>
+                                <a href="#">Sign Out</a>
+                            </div>
+                        </div>
+                        <a href="/cart">CART</a>`
+}
+else{
+    navbar.innerHTML = `<h1 id="logo"><a href="/" id="logo-text"><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</a></h1>
+                        <a href="/" class="<%= pageName === 'Home' && 'active' %>">HOME</a>
+                        <a href="/categories" class="<%= pageName === 'Categories' && 'active' %>">CATEGORIES</a>
+                        <input type="text" placeholder="Search products..." id="productSearch">
+                        <a href="/login" class="<%= pageName === 'Login' && 'active' %>">LOGIN/REGISTER</a>
+                        <a href="/cart" class="<%= pageName === 'Cart' && 'active' %>">CART</a>
+                        <a href="/about_us" class="<%= pageName === 'About Us' && 'active' %>">ABOUT</a>`;
+}
 
 const navLinks = Array.from(document.querySelectorAll("nav.navbar > a"));
 
@@ -16,6 +39,21 @@ if(window.location.pathname === '/'){
 navLinks.forEach((link) => {
     let tmp = new URL(link.href);
     if(window.location.pathname === tmp.pathname){
-        link.classList.add('current');
+        link.classList.add('active');
+    }
+});
+
+const navbarDropLink = document.querySelector("#navbarDropLink");
+const navbarDropdown = document.querySelector("#navbarDropdown");
+
+navbarDropLink.addEventListener('click', (e) => {
+    navbarDropdown.classList.toggle('show');
+});
+
+window.addEventListener('click', (e) => {
+    if(e.target !== navbarDropLink){
+        if(navbarDropdown.classList.contains('show')){
+            navbarDropdown.classList.remove('show');
+        }
     }
 });

@@ -21,9 +21,13 @@ app.use(favicon("./public/favicon.ico"));
 
 app.use(
   session({
+    key: "sessionID",
     secret: "key that will sign cookie",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: false
+    }
   })
 );
 
