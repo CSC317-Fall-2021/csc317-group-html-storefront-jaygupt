@@ -1,6 +1,7 @@
 require('dotenv').config(); // require and configure dotenv
 const express = require("express"); // import Express library
 const favicon = require('serve-favicon');
+const session = require("express-session");
 const fetch = require('node-fetch');
 
 const app = express(); // create Express app
@@ -17,6 +18,14 @@ app.use(express.json()); // to parse incoming request body
 app.use(express.urlencoded({ extended: false })); // to parse URL encoded bodies (as sent by HTML forms)
 
 app.use(favicon("./public/favicon.ico"));
+
+app.use(
+  session({
+    secret: "key that will sign cookie",
+    resave: false,
+    saveUninitialized: false
+  })
+);
 
 // -----------------------------------------
 // ROUTING

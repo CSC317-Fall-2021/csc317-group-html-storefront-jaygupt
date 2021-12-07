@@ -15,16 +15,16 @@ exports.register = (req,res) => {
 
         if(result.length > 0){
             if(result[0].email === email){
-                res.redirect("/login.html#emailExists");
+                res.redirect("/login#emailExists");
             }
             else if(result[0].username === username){
-                res.redirect("/login.html#usernameExists");
+                res.redirect("/login#usernameExists");
             }
         }
         else{
             con.query("INSERT INTO users SET ?", { first_name: firstname, last_name: lastname, email: email, username: username, password: password }, (err, result) => {
                 if(err) throw err;
-                res.redirect("/login.html#accountCreated");
+                res.redirect("/login#accountCreated");
             });
         }
     });
@@ -35,13 +35,18 @@ exports.login = (req, res) => {
     con.query("SELECT * FROM users WHERE email = ? OR username = ?", [loginEmail, loginEmail], (err,result) => {
         if(err) throw err;
         if(result.length === 0){
-            res.redirect("/login.html#notFound");
+            res.redirect("/login#notFound");
         }
         else if(result[0].password !== loginPass){
-            res.redirect("/login.html#incorrectPass");
+            res.redirect("/login#incorrectPass");
         }
         else{
-            res.redirect("/login.html#loggedIn");
+            req.session.isAuth = true;
+            con.query("UPDATE users SET session_id = ? WHERE user_ID = ?",[req.session.id, result[0].user_ID], (err,result) => {
+                if(err) throw err;
+                console.log(req.session.id);
+            });
+            res.redirect("/login#loggedIn");
         }
     });
 }
