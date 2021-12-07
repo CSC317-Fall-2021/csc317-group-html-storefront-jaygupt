@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Account Information</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <main>
+            <!-- Navbar Beginning -->
+            <header>
+                <nav class="navbar">
+                    <h1 id="logo"><a href="index.html" id="logo-text"><span class="logo-g">G</span>ood<span class="logo-g">G</span>ame</a></h1>
+                    <a href="index.html">HOME</a>
+                    <a href="#" class="current">CATEGORIES</a>
+                    <input type="text" placeholder="Search products..." id="productSearch">
+                    <a href="login.html">LOGIN/REGISTER</a>
+                    <a href="cart.html">CART</a>
+                    <a href="about_us.html">ABOUT</a>
+                </nav>
+            </header>
+            <!-- Navbar Ending -->
+
+            <div class="grid"> <!--Main grid wrapper div-->
+
+                <div class="account"><!--Account div-->
+                    <h1>Your Account Information</h1> 
+                        <div>
+                            <img class="image" src="/images/silhouette.jpg" alt="photo">
+                            <p>Add or Change your photo</p>
+                            <button class="btn">Add/Change Image</button>
+                            <button class="btn edit_btn">Edit Information</button>
+                        </div>
+                </div><!--End of account div-->
+
+                <div class="details"> <!--Details wrapper div-->
+
+                    <div id="userInformation"> <!--Information div-->
+                        <h1>Personal Information</h1> <!--<button class="btn edit_btn">Edit Information</button>-->
+                        <div class="user-form">
+                            <div class="first-name">
+                                <label for="firstName"><span class="required-asterisk">*</span>First Name:</label>
+                                <input type="text" name="firstName" id="firstName" placeholder="Johnny">
+                            </div>
+                            <div class="last-name">
+                                <label for="lastName"><span class="required-asterisk">*</span>Last Name:</label>
+                                <input type="text" name="lastName" id="lastName" placeholder="Appleseed">
+                            </div>
+                            <div class="phone-number">
+                                <label for="phoneNumber"><span class="required-asterisk">*</span>Phone Number:</label>
+                                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="(123) 456-7890">
+                            </div>
+                            <div class="email-order-confirmation">
+                                <label for="emailOrderConfirmation"><span class="required-asterisk">*</span>Email:</label>
+                                <input type="email" name="emailOrderConfirmation" id="emailOrderConfirmation" placeholder="johnnyappleseed@gmail.com">
+                            </div>
+                            <div class="pass-word">
+                                <label for="password"><span class="required-asterisk">*</span>Password:</label>
+                                <input type="text" name="password" id="password" placeholder="********">
+                            </div>
+                            <div class="city">
+                                <label for="reentrepassword"><span class="required-asterisk">*</span>Re-enter Password:</label>
+                                <input type="text" name="reenterpassword" id="reenterpassword" placeholder="********">
+                            </div>
+                        </div>
+                        
+                    </div> <!--End of information div-->
+            
+                    <div id="userInformation" class="userInformation-wrapper"> <!--Shipping div-->
+                        <h1>Shipping Information</h1> <!--<button class="btn edit_btn">Edit Information</button>-->
+                        <div>
+                            <div id="userInformation"></div>
+                            <div class="user-form">
+                                <div class="first-name">
+                                    <label for="firstName"><span class="required-asterisk">*</span>First Name:</label>
+                                    <input type="text" name="firstName" id="firstName_sh" placeholder="Johnny">
+                                </div>
+                                <div class="last-name">
+                                    <label for="lastName"><span class="required-asterisk">*</span>Last Name:</label>
+                                    <input type="text" name="lastName" id="lastName_sh" placeholder="Appleseed">
+                                </div>
+                                <div class="street-address">
+                                    <label for="streetAddress"><span class="required-asterisk">*</span>Street Address:</label>
+                                    <input type="text" name="streetAddress" id="streetAddress_sh" placeholder="1234 Greendale Way">
+                                </div>
+                                <div class="city">
+                                    <label for="city"><span class="required-asterisk">*</span>City:</label>
+                                    <input type="text" name="city" id="city_sh" placeholder="San Francisco">
+                                </div>
+                                <div class="state">
+                                    <label for="state"><span class="required-asterisk">*</span>State:</label>
+                                    <input type="text" name="state" id="state_sh" placeholder="California">
+                                </div>
+                                <div class="postal-code">
+                                    <label for="postalCode"><span class="required-asterisk">*</span>Postal Code:</label>
+                                    <input type="number" name="postalCode" id="postalCode_sh" placeholder="12345">
+                                </div>
+                                <div class="country">
+                                    <label for="country"><span class="required-asterisk">*</span>Country:</label>
+                                    <input type="text" name="country" id="country_sh" placeholder="United States">
+
+                                </div>
+                            </div>
+                    </div> <!--End of shipping div-->
+            
+                    <div id="creditcard" class="creditcard-wrapper"> <!--Shipping div-->
+                        <h1>Credit Card Information</h1> <!--<button class="btn edit_btn">Edit Information</button>-->
+                        <div>
+                            <div id="userInformation"></div>
+                            <div class="user-form">
+                                <div class="name-on-card">
+                                    <label for="cardName"><span class="required-asterisk">*</span>Name On Card:</label>
+                                    <input type="text" name="cardName" id="cardName" placeholder="Johnny Appleseed">
+                                </div>
+                                <div class="street-address">
+                                    <label for="streetAddress"><span class="required-asterisk">*</span>Street Address:</label>
+                                    <input type="text" name="streetAddress" id="streetAddress" placeholder="1234 Greendale Way">
+                                </div>
+                                <div class="street-address">
+                                    <label for="creditCardNumber"><span class="required-asterisk">*</span>Credit Card Number:</label>
+                                    <input type="text" name="creditCardNumber" id="creditCardNumber" placeholder="0123 4567 8910 1112">
+                                </div>
+                                <div class="expiration">
+                                    <label for="expirationDate"><span class="required-asterisk">*</span>Expiration Date</Datag>:</label>
+                                    <input type="text" name="expirationDate" id="city" placeholder="MM/YY">
+                                </div>
+                                <div class="cvv">
+                                    <label for="cvv"><span class="required-asterisk">*</span>CVV:</label>
+                                    <input type="text" name="cvv" id="cvvNumber" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div> <!--End of shipping div-->
+
+                    <div id="billing" class="billing-wrapper"> <!--Billing div-->
+                        <h1>Billing Information</h1> <!--<button class="btn edit_btn">Edit Information</button>-->
+                            
+                            <!-- <input type="checkbox" id="billing_info" name="billing_info" value="">
+                            <label for=""> Same As Shipping</label> -->
+
+                        <div>
+                            <div id="userInformation"></div>
+                            <div class="user-form">
+                                <div class="first-name">
+                                    <label for="firstName"><span class="required-asterisk">*</span>First Name:</label>
+                                    <input type="text" name="firstName" id="firstName_sh2" placeholder="Johnny">
+                                </div>
+                                <div class="last-name">
+                                    <label for="lastName"><span class="required-asterisk">*</span>Last Name:</label>
+                                    <input type="text" name="lastName" id="lastName_sh2" placeholder="Appleseed">
+                                </div>
+                                <div class="street-address">
+                                    <label for="streetAddress"><span class="required-asterisk">*</span>Street Address:</label>
+                                    <input type="text" name="streetAddress" id="streetAddress_sh2" placeholder="1234 Greendale Way">
+                                </div>
+                                <div class="postal-code">
+                                    <label for="postalCode"><span class="required-asterisk">*</span>Postal Code:</label>
+                                    <input type="number" name="postalCode" id="postalCode_sh2" placeholder="12345">
+                                </div>
+                                <div class="country">
+                                    <label for="country"><span class="required-asterisk">*</span>Country:</label>
+                                    <input type="text" name="country" id="country_sh3" placeholder="United States">
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--End of Billing div-->
+
+                    <button class="btn save">Save</button>
+                    
+                </div> <!--End of details wrapper div-->
+            </div> <!--End of main grid wrapper div-->
+
+            <script src="/js/account_information.js"></script>
+            
+        </main>
+
+        <!-- Footer Beginning -->
+        <footer class="footer">
+            <p>GoodGame.com, Copyright &copy;2021</p>
+        </footer>
+        <!-- Footer Ending -->
+
+    </body>
+</html>
