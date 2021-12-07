@@ -1,5 +1,4 @@
 const mysql = require("mysql2");
-const path = require("path");
 
 const con = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -41,11 +40,15 @@ exports.login = (req, res) => {
             res.redirect("/login#incorrectPass");
         }
         else{
+            let myResult = result[0];
             req.session.isAuth = true;
-            con.query("UPDATE users SET session_id = ? WHERE user_ID = ?",[req.session.id, result[0].user_ID], (err,result) => {
+            con.query("UPDATE users SET session_id = ? WHERE user_ID = ?",[req.session.id, myResult.user_ID], (err,result) => {
                 if(err) throw err;
+                con.query("SELECT * FROM users WHERE user_ID = ?", myResult.user_ID, (err, result) => {
+                    if(err) throw err;
+                    res.redirect(`/?user=${result[0].session_id}`);
+                });
             });
-            res.redirect("/");
         }
     });
 }

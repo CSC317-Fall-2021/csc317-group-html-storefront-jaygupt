@@ -1,4 +1,5 @@
 const navbar = document.querySelector("nav.navbar");
+let userName = navbar.getAttribute('data-userName');
 
 let cookie = document.cookie
             .split(';')
@@ -11,7 +12,7 @@ if(cookie.sessionID){
                         <a href="/categories">CATEGORIES</a>
                         <input type="text" placeholder="Search products..." id="productSearch">
                         <div class="dropdown">
-                            <a href="#" id="navbarDropLink">USERNAME</a>
+                            <a href="#" id="navbarDropLink">${userName}</a>
                             <div id="navbarDropdown">
                                 <a href="#">Profile</a>
                                 <a href="#">Orders</a>
@@ -62,5 +63,5 @@ const signOutLink = document.querySelector("#signOutLink");
 
 signOutLink.addEventListener('click', (e) => {
     document.cookie = "sessionID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.pathname = "/";
+    window.location.href = "/";
 });

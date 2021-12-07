@@ -1,10 +1,40 @@
 const express = require("express");
 const router = express.Router();
+const mysql = require("mysql2");
+const url = require("url");
+
+const con = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
+});
 
 router.get("/", (req, res) => {
-  res.render("pages/index", {
-    pageName: "Home"
+  let fullUrl = new URL(req.protocol + "://" + req.get('host') + req.originalUrl);
+  let sessionId;
+  fullUrl.searchParams.forEach((value,name) => {
+    if(name === 'user'){
+      sessionId = value;
+    }
   });
+  if(sessionId){
+    con.query("SELECT * FROM users WHERE session_id = ?", sessionId, (err, result) => {
+      if(err) throw err;
+      if(result.length > 0){
+        res.render("pages/index", {
+          pageName: "Home",
+          userName: result[0].username
+        });
+      }
+    });
+  }
+  else{
+    res.render("pages/index", {
+      pageName: "Home",
+      userName: "null"
+    });
+  }
 });
 
 router.get("/categories", (req, res) => {

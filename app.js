@@ -83,6 +83,12 @@ app.get("/product_pages/:category/:product_name", (req, res) => {
   });
 });
 
+app.get("/user", (req, res) => {
+  res.render("pages/index", {
+    pageName: "Home"
+  });
+});
+
 // handle non-matching requests
 app.use((req, res, next) => {
   // console.log(req.originalUrl);
