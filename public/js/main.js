@@ -32,7 +32,6 @@ async function postData(endpoint, data = {}) {
 
 // Search Bar
 if (document.getElementById("productSearch")) {
-  console.log("getting");
   const productSearchInput = document.getElementById("productSearch");
   productSearchInput.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {

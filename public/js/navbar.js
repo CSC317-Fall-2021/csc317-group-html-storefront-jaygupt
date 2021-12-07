@@ -16,7 +16,7 @@ if(cookie.sessionID){
                                 <a href="#">Profile</a>
                                 <a href="#">Orders</a>
                                 <a href="#">Saved Cards</a>
-                                <a href="#">Sign Out</a>
+                                <a href="#" id="signOutLink">Sign Out</a>
                             </div>
                         </div>
                         <a href="/cart">CART</a>`
@@ -56,4 +56,11 @@ window.addEventListener('click', (e) => {
             navbarDropdown.classList.remove('show');
         }
     }
+});
+
+const signOutLink = document.querySelector("#signOutLink");
+
+signOutLink.addEventListener('click', (e) => {
+    document.cookie = "sessionID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.pathname = "/";
 });
