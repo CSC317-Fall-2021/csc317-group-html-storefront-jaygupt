@@ -30,7 +30,7 @@ CREATE TABLE `cart` (
   KEY `product_ID` (`product_ID`),
   CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`),
   CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_ID`) REFERENCES `products` (`product_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
