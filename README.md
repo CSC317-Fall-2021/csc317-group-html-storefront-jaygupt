@@ -1,13 +1,17 @@
 # How to Setup the Application
 1) run command: *npm install*
 2) Have a .env file on the same level as app.js. The .env file should have the following fields:
-DB_HOST=(YOUR DB HOST)
-DB_USER=(YOUR DB USER)
-DB_PASSWORD=(YOUR DB Password)
-DB_DATABASE=(YOUR DB Database)
-PORT=(Port you WANT TO RUN On)
+DB_HOST=(Your DB Host)
+DB_USER=(Your DB Username)
+DB_PASSWORD=(Your DB Password)
+DB_DATABASE=mydb
+PORT=(Port you want to Run On)
+3) Create a database called mydb in MySQL.
 3) Go to Server -> Data Import: Import from Dump Project Folder (Use SQL_Files folder).
 4) run command: *npm start* to start the application at your specified port.
+5) The default user has the following credentials (in the webapp):
+username: testuser
+password: thisisatest
 
 # CSC317-Group-Project-HTML-Storefront
 
