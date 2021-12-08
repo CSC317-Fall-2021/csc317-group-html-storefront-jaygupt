@@ -14,7 +14,7 @@ if(cookie.sessionID){
                         <div class="dropdown">
                             <a href="#" id="navbarDropLink">${userName}</a>
                             <div id="navbarDropdown">
-                                <a href="#">Profile</a>
+                                <a href="/account_information.html">Profile</a>
                                 <a href="#">Orders</a>
                                 <a href="#">Saved Cards</a>
                                 <a href="#" id="signOutLink">Sign Out</a>

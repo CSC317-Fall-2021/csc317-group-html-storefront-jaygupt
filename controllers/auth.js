@@ -7,8 +7,31 @@ const con = mysql.createConnection({
   database: process.env.DB_DATABASE
 });
 
+function caesarCipher(password) {
+    password = password.toLowerCase();
+
+    var resultingPassword = "";
+    var characterCode = 0;
+
+    for (var i = 0; i < password.length; i++) {
+        const letter = password[i];
+        characterCode = letter.charCodeAt() + 8;
+
+        // to wrap the alphabet
+        if (characterCode > 122) {
+            // 130
+            characterCode = 96 + characterCode % 122; // 96 + 130 % 122 = 96 + 8 = 104 => h
+        }
+
+        resultingPassword += String.fromCharCode(characterCode);
+    }
+
+    return resultingPassword;
+}
+
 exports.register = (req,res) => {
     const { firstname, lastname, username, email, password } = req.body;
+    const encryptedPassword = caesarCipher(password); 
     con.query("SELECT * FROM users WHERE email = ? OR username = ?", [email, username], (err,result) => {
         if(err) throw err;
 
@@ -21,7 +44,7 @@ exports.register = (req,res) => {
             }
         }
         else{
-            con.query("INSERT INTO users SET ?", { first_name: firstname, last_name: lastname, email: email, username: username, password: password }, (err, result) => {
+            con.query("INSERT INTO users SET ?", { first_name: firstname, last_name: lastname, email: email, username: username, password: encryptedPassword }, (err, result) => {
                 if(err) throw err;
                 res.redirect("/login#accountCreated");
             });
@@ -31,12 +54,13 @@ exports.register = (req,res) => {
 
 exports.login = (req, res) => {
     const { loginEmail, loginPass } = req.body;
+    const encryptedLoginPass = caesarCipher(loginPass);
     con.query("SELECT * FROM users WHERE email = ? OR username = ?", [loginEmail, loginEmail], (err,result) => {
         if(err) throw err;
         if(result.length === 0){
             res.redirect("/login#notFound");
         }
-        else if(result[0].password !== loginPass){
+        else if(result[0].password !== encryptedLoginPass){
             res.redirect("/login#incorrectPass");
         }
         else{
