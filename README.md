@@ -1,3 +1,14 @@
+# How to Setup the Application
+1) run command: *npm install*
+2) Have a .env file on the same level as app.js. The .env file should have the following fields:
+DB_HOST=(YOUR DB HOST)
+DB_USER=(YOUR DB USER)
+DB_PASSWORD=(YOUR DB Password)
+DB_DATABASE=(YOUR DB Database)
+PORT=(Port you WANT TO RUN On)
+3) Go to Server -> Data Import: Import from Dump Project Folder (Use SQL_Files folder).
+4) run command: *npm start* to start the application at your specified port.
+
 # CSC317-Group-Project-HTML-Storefront
 
 This is a GROUP assignment. 
